@@ -1,0 +1,987 @@
+{
+  "typen": [
+    "Glut",
+    "Flut",
+    "Wuchs",
+    "Funke",
+    "Stein",
+    "Frost",
+    "Klang",
+    "Nebel",
+    "Metall",
+    "Wind"
+  ],
+  "typTabelle": {
+    "Glut": {
+      "starkGegen": [
+        "Wuchs",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Stein"
+      ]
+    },
+    "Flut": {
+      "starkGegen": [
+        "Glut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Wuchs",
+        "Funke"
+      ]
+    },
+    "Wuchs": {
+      "starkGegen": [
+        "Flut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Frost"
+      ]
+    },
+    "Funke": {
+      "starkGegen": [
+        "Flut",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Stein",
+        "Wuchs"
+      ]
+    },
+    "Stein": {
+      "starkGegen": [
+        "Glut",
+        "Funke"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Wuchs"
+      ]
+    },
+    "Frost": {
+      "starkGegen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Stein"
+      ]
+    },
+    "Klang": {
+      "starkGegen": [
+        "Nebel",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Metall"
+      ]
+    },
+    "Nebel": {
+      "starkGegen": [
+        "Metall",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Klang",
+        "Glut"
+      ]
+    },
+    "Metall": {
+      "starkGegen": [
+        "Frost",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Nebel",
+        "Glut"
+      ]
+    },
+    "Wind": {
+      "starkGegen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Frost"
+      ]
+    }
+  },
+  "monster": [
+    {
+      "id": "M001",
+      "name": "Zirkelu",
+      "typen": [
+        "Glut"
+      ],
+      "beschreibung": "Kleiner sechsbeiniger Läufer mit kupferfarbenem Fell, ringförmigem Schweif und glimmenden Fühlern.",
+      "persoenlichkeitLebensraum": "Neugierig und gesellig; lebt an warmen Felsspalten.",
+      "kp": 42,
+      "angriff": 46,
+      "verteidigung": 38,
+      "tempo": 55,
+      "entwicklungLevel": 16,
+      "entwicktSichZu": "Brennaro",
+      "attacken": [
+        {
+          "name": "Glutfaden",
+          "typ": "Glut",
+          "staerke": 45,
+          "effekt": "10 % Chance: Angriff des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Wärmepuls",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Glutmantel",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Aschekreis",
+          "typ": "Glut",
+          "staerke": 80,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        }
+      ]
+    },
+    {
+      "id": "M002",
+      "name": "Brennaro",
+      "typen": [
+        "Glut"
+      ],
+      "beschreibung": "Langbeiniger Läufer mit keramischen Schulterplatten und einem leuchtenden Ring am Rücken.",
+      "persoenlichkeitLebensraum": "Wachsam; patrouilliert vulkanische Geröllfelder.",
+      "kp": 65,
+      "angriff": 70,
+      "verteidigung": 61,
+      "tempo": 72,
+      "entwicklungLevel": 36,
+      "entwicktSichZu": "Vulkaron",
+      "attacken": [
+        {
+          "name": "Glutfaden",
+          "typ": "Glut",
+          "staerke": 45,
+          "effekt": "10 % Chance: Angriff des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Wärmepuls",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Glutmantel",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Aschekreis",
+          "typ": "Glut",
+          "staerke": 80,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        }
+      ]
+    },
+    {
+      "id": "M003",
+      "name": "Vulkaron",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Massiger Wächter auf vier Beinen mit schwarzer Keramikpanzerung und rot glühenden Fugen.",
+      "persoenlichkeitLebensraum": "Geduldig und beschützend; bewohnt erkaltete Lavahöhlen.",
+      "kp": 95,
+      "angriff": 104,
+      "verteidigung": 96,
+      "tempo": 67,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Glutfaden",
+          "typ": "Glut",
+          "staerke": 45,
+          "effekt": "10 % Chance: Angriff des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Wärmepuls",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schieferstoß",
+          "typ": "Stein",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Glutmantel",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ]
+    },
+    {
+      "id": "M004",
+      "name": "Plitscho",
+      "typen": [
+        "Flut"
+      ],
+      "beschreibung": "Flacher Ufergleiter mit türkisfarbener Haut, vier Paddelfüßen und einer transparenten Rückenflosse.",
+      "persoenlichkeitLebensraum": "Verspielt; sammelt glänzende Kiesel in Bacharmen.",
+      "kp": 46,
+      "angriff": 41,
+      "verteidigung": 45,
+      "tempo": 52,
+      "entwicklungLevel": 16,
+      "entwicktSichZu": "Rinnavo",
+      "attacken": [
+        {
+          "name": "Spritzbogen",
+          "typ": "Flut",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wirbelrinne",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Quellhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        },
+        {
+          "name": "Flutstoß",
+          "typ": "Flut",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M005",
+      "name": "Rinnavo",
+      "typen": [
+        "Flut"
+      ],
+      "beschreibung": "Geschmeidiger Wasserläufer mit zwei langen Flossenschleifen und stromlinienförmigem Körper.",
+      "persoenlichkeitLebensraum": "Hilfsbereit; lebt in schnell fließenden Flüssen.",
+      "kp": 69,
+      "angriff": 62,
+      "verteidigung": 65,
+      "tempo": 76,
+      "entwicklungLevel": 36,
+      "entwicktSichZu": "Strömara",
+      "attacken": [
+        {
+          "name": "Spritzbogen",
+          "typ": "Flut",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wirbelrinne",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Quellhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        },
+        {
+          "name": "Flutstoß",
+          "typ": "Flut",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M006",
+      "name": "Strömara",
+      "typen": [
+        "Flut",
+        "Wind"
+      ],
+      "beschreibung": "Eleganter Vierflosser mit segelförmigem Rückenkamm und spiralförmigen Wasserzeichen auf der Haut.",
+      "persoenlichkeitLebensraum": "Ruhig und freiheitsliebend; zieht durch Flussdeltas.",
+      "kp": 94,
+      "angriff": 82,
+      "verteidigung": 84,
+      "tempo": 108,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spritzbogen",
+          "typ": "Flut",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wirbelrinne",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Böenschub",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "Senkt Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Quellhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        }
+      ]
+    },
+    {
+      "id": "M007",
+      "name": "Moosli",
+      "typen": [
+        "Wuchs"
+      ],
+      "beschreibung": "Kugeliges Waldwesen mit samtigem Moosfell, zwei Wurzelfüßen und einem einzelnen Blattfächer.",
+      "persoenlichkeitLebensraum": "Schüchtern; schläft unter Farnen.",
+      "kp": 49,
+      "angriff": 39,
+      "verteidigung": 52,
+      "tempo": 35,
+      "entwicklungLevel": 16,
+      "entwicktSichZu": "Rankuro",
+      "attacken": [
+        {
+          "name": "Blattwirbel",
+          "typ": "Wuchs",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wurzelgriff",
+          "typ": "Wuchs",
+          "staerke": 60,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Grünruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        },
+        {
+          "name": "Rankenhieb",
+          "typ": "Wuchs",
+          "staerke": 80,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M008",
+      "name": "Rankuro",
+      "typen": [
+        "Wuchs"
+      ],
+      "beschreibung": "Gedrungener Waldläufer mit geflochtenen Rankenarmen und blattartigen Ohren.",
+      "persoenlichkeitLebensraum": "Fürsorglich; pflegt Lichtungen.",
+      "kp": 74,
+      "angriff": 64,
+      "verteidigung": 79,
+      "tempo": 48,
+      "entwicklungLevel": 36,
+      "entwicktSichZu": "Hainwacht",
+      "attacken": [
+        {
+          "name": "Blattwirbel",
+          "typ": "Wuchs",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wurzelgriff",
+          "typ": "Wuchs",
+          "staerke": 60,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Grünruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        },
+        {
+          "name": "Rankenhieb",
+          "typ": "Wuchs",
+          "staerke": 80,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M009",
+      "name": "Hainwacht",
+      "typen": [
+        "Wuchs",
+        "Nebel"
+      ],
+      "beschreibung": "Hochgewachsener Hüter mit wurzelartigen Beinen, schwebendem Flechtenmantel und nebelgefüllter Baumkrone.",
+      "persoenlichkeitLebensraum": "Besonnen; schützt alte Nebelwälder.",
+      "kp": 112,
+      "angriff": 79,
+      "verteidigung": 108,
+      "tempo": 55,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blattwirbel",
+          "typ": "Wuchs",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wurzelgriff",
+          "typ": "Wuchs",
+          "staerke": 60,
+          "effekt": "Senkt das Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Schleierzug",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Grünruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Heilt 20 % der maximalen KP; einmal pro Kampf."
+        }
+      ]
+    },
+    {
+      "id": "M010",
+      "name": "Knisterl",
+      "typen": [
+        "Funke"
+      ],
+      "beschreibung": "Kleines sechsbeiniges Insektenwesen mit bernsteinfarbenem Panzer und zwei gezackten Antennen.",
+      "persoenlichkeitLebensraum": "Ungeduldig; lebt in trockenen Schilffeldern.",
+      "kp": 38,
+      "angriff": 48,
+      "verteidigung": 34,
+      "tempo": 70,
+      "entwicklungLevel": 24,
+      "entwicktSichZu": "Voltaro",
+      "attacken": [
+        {
+          "name": "Funkenstich",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance: Tempo des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Ladungsstoß",
+          "typ": "Funke",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromtakt",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht eigenes Tempo für 3 Runden um 15 %."
+        },
+        {
+          "name": "Spulenblitz",
+          "typ": "Funke",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M011",
+      "name": "Voltaro",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Großes Insektenwesen mit silbernen Flügeldecken, leitenden Beinringen und leuchtendem Brustkern.",
+      "persoenlichkeitLebensraum": "Tatkräftig; baut Nester in verlassenen Metallgerüsten.",
+      "kp": 78,
+      "angriff": 94,
+      "verteidigung": 72,
+      "tempo": 106,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Funkenstich",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance: Tempo des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Ladungsstoß",
+          "typ": "Funke",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Legierungshieb",
+          "typ": "Metall",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromtakt",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht eigenes Tempo für 3 Runden um 15 %."
+        }
+      ]
+    },
+    {
+      "id": "M012",
+      "name": "Kieselix",
+      "typen": [
+        "Stein"
+      ],
+      "beschreibung": "Rundes Kriechwesen aus geschichteten Kieselplatten mit vier kurzen Steinstummeln.",
+      "persoenlichkeitLebensraum": "Gelassen; ruht in Kiesbetten.",
+      "kp": 54,
+      "angriff": 43,
+      "verteidigung": 66,
+      "tempo": 24,
+      "entwicklungLevel": 20,
+      "entwicktSichZu": "Schollram",
+      "attacken": [
+        {
+          "name": "Kieselschlag",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schieferstoß",
+          "typ": "Stein",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Plattenwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Felsdruck",
+          "typ": "Stein",
+          "staerke": 90,
+          "effekt": "Eigenes Tempo in der nächsten Runde −10 %."
+        }
+      ]
+    },
+    {
+      "id": "M013",
+      "name": "Schollram",
+      "typen": [
+        "Stein"
+      ],
+      "beschreibung": "Breiter Sechsbeiner mit schräg gestapelten Schieferplatten und einer kantigen Stirn.",
+      "persoenlichkeitLebensraum": "Stur; gräbt in Hochebenen.",
+      "kp": 80,
+      "angriff": 70,
+      "verteidigung": 94,
+      "tempo": 37,
+      "entwicklungLevel": 40,
+      "entwicktSichZu": "Bergorun",
+      "attacken": [
+        {
+          "name": "Kieselschlag",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schieferstoß",
+          "typ": "Stein",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Plattenwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Felsdruck",
+          "typ": "Stein",
+          "staerke": 90,
+          "effekt": "Eigenes Tempo in der nächsten Runde −10 %."
+        }
+      ]
+    },
+    {
+      "id": "M014",
+      "name": "Bergorun",
+      "typen": [
+        "Stein",
+        "Wind"
+      ],
+      "beschreibung": "Riesiger sechsbeiniger Felswanderer mit hohlen Windkanälen im Rücken und flatternden Mineralfahnen.",
+      "persoenlichkeitLebensraum": "Würdevoll; wandert über Gebirgskämme.",
+      "kp": 116,
+      "angriff": 100,
+      "verteidigung": 118,
+      "tempo": 44,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Kieselschlag",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schieferstoß",
+          "typ": "Stein",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Böenschub",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "Senkt Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Plattenwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ]
+    },
+    {
+      "id": "M015",
+      "name": "Flirri",
+      "typen": [
+        "Nebel"
+      ],
+      "beschreibung": "Schwebendes Tropfenwesen mit drei durchscheinenden Schleiern und einem sanft leuchtenden Kern.",
+      "persoenlichkeitLebensraum": "Scheu; erscheint an nebligen Seen.",
+      "kp": 40,
+      "angriff": 38,
+      "verteidigung": 42,
+      "tempo": 73,
+      "entwicklungLevel": 28,
+      "entwicktSichZu": "Schleiera",
+      "attacken": [
+        {
+          "name": "Dunsttupfer",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schleierzug",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Trugschleier",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 15 %."
+        },
+        {
+          "name": "Dunstwoge",
+          "typ": "Nebel",
+          "staerke": 80,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M016",
+      "name": "Schleiera",
+      "typen": [
+        "Nebel",
+        "Klang"
+      ],
+      "beschreibung": "Schwebende Gestalt aus überlappenden Dunstbändern mit gläsernen Resonanzringen.",
+      "persoenlichkeitLebensraum": "Verspielt; antwortet Wanderern mit Echos.",
+      "kp": 77,
+      "angriff": 77,
+      "verteidigung": 70,
+      "tempo": 109,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Dunsttupfer",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schleierzug",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Echowelle",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Trugschleier",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 15 %."
+        }
+      ]
+    },
+    {
+      "id": "M017",
+      "name": "Reifling",
+      "typen": [
+        "Frost"
+      ],
+      "beschreibung": "Kleines Tier mit sechs weichen Beinen, weißen Kristallborsten und sternförmigem Stirnschild.",
+      "persoenlichkeitLebensraum": "Vorsichtig; lebt in frostigen Höhlen.",
+      "kp": 47,
+      "angriff": 43,
+      "verteidigung": 57,
+      "tempo": 39,
+      "entwicklungLevel": 30,
+      "entwicktSichZu": "Kristavor",
+      "attacken": [
+        {
+          "name": "Reifhauch",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "10 % Chance: Tempo des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Eisfächer",
+          "typ": "Frost",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Kälteschild",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Kristallprall",
+          "typ": "Frost",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M018",
+      "name": "Kristavor",
+      "typen": [
+        "Frost",
+        "Metall"
+      ],
+      "beschreibung": "Gedrungener Sechsbeiner mit spiegelnden Eis-Metall-Schuppen und einer fächerartigen Kristallkrone.",
+      "persoenlichkeitLebensraum": "Standhaft; bewacht vereiste Erzadern.",
+      "kp": 91,
+      "angriff": 87,
+      "verteidigung": 105,
+      "tempo": 58,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Reifhauch",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "10 % Chance: Tempo des Ziels für 1 Runde −10 %."
+        },
+        {
+          "name": "Eisfächer",
+          "typ": "Frost",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Legierungshieb",
+          "typ": "Metall",
+          "staerke": 70,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Kälteschild",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ]
+    },
+    {
+      "id": "M019",
+      "name": "Piepra",
+      "typen": [
+        "Klang"
+      ],
+      "beschreibung": "Kleines rundes Bodenwesen mit großen trichterförmigen Ohren und gestreiftem Kehlsack.",
+      "persoenlichkeitLebensraum": "Gesellig; lebt in Graslandschaften.",
+      "kp": 41,
+      "angriff": 37,
+      "verteidigung": 40,
+      "tempo": 64,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Halluro",
+      "attacken": [
+        {
+          "name": "Klickruf",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowelle",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Stimmfokus",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht eigenen Angriff für 3 Runden um 15 %."
+        },
+        {
+          "name": "Resonanzstoß",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M020",
+      "name": "Halluro",
+      "typen": [
+        "Klang"
+      ],
+      "beschreibung": "Aufrechter Läufer mit zwei Resonanzkammern an den Schultern und langem schwingendem Hals.",
+      "persoenlichkeitLebensraum": "Neugierig; erkundet Felsschluchten.",
+      "kp": 64,
+      "angriff": 63,
+      "verteidigung": 58,
+      "tempo": 83,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Sonorak",
+      "attacken": [
+        {
+          "name": "Klickruf",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowelle",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Stimmfokus",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht eigenen Angriff für 3 Runden um 15 %."
+        },
+        {
+          "name": "Resonanzstoß",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ]
+    },
+    {
+      "id": "M021",
+      "name": "Sonorak",
+      "typen": [
+        "Klang",
+        "Wind"
+      ],
+      "beschreibung": "Schlanker Hochlandläufer mit schwebenden Klangscheiben und einem fächerartigen Luftsegel.",
+      "persoenlichkeitLebensraum": "Lebhaft; ruft bei Sonnenaufgang über Täler.",
+      "kp": 88,
+      "angriff": 93,
+      "verteidigung": 77,
+      "tempo": 115,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Klickruf",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowelle",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "Senkt Angriff des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Böenschub",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "Senkt Tempo des Ziels für 2 Runden um 10 %."
+        },
+        {
+          "name": "Stimmfokus",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht eigenen Angriff für 3 Runden um 15 %."
+        }
+      ]
+    }
+  ]
+}

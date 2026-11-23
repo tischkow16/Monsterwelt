@@ -1,0 +1,3793 @@
+{
+  "typen": [
+    "Glut",
+    "Flut",
+    "Wuchs",
+    "Funke",
+    "Stein",
+    "Frost",
+    "Klang",
+    "Nebel",
+    "Metall",
+    "Wind",
+    "Geist"
+  ],
+  "typTabelle": {
+    "Glut": {
+      "starkGegen": [
+        "Wuchs",
+        "Frost",
+        "Geist"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Stein"
+      ]
+    },
+    "Flut": {
+      "starkGegen": [
+        "Glut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Wuchs",
+        "Funke"
+      ]
+    },
+    "Wuchs": {
+      "starkGegen": [
+        "Flut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Frost"
+      ]
+    },
+    "Funke": {
+      "starkGegen": [
+        "Flut",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Stein",
+        "Wuchs"
+      ]
+    },
+    "Stein": {
+      "starkGegen": [
+        "Glut",
+        "Funke"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Wuchs"
+      ]
+    },
+    "Frost": {
+      "starkGegen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Stein"
+      ]
+    },
+    "Klang": {
+      "starkGegen": [
+        "Nebel",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Metall",
+        "Geist"
+      ]
+    },
+    "Nebel": {
+      "starkGegen": [
+        "Metall",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Klang",
+        "Glut",
+        "Geist"
+      ]
+    },
+    "Metall": {
+      "starkGegen": [
+        "Frost",
+        "Klang",
+        "Geist"
+      ],
+      "schwachGegen": [
+        "Nebel",
+        "Glut"
+      ]
+    },
+    "Wind": {
+      "starkGegen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Frost"
+      ]
+    },
+    "Geist": {
+      "starkGegen": [
+        "Nebel",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Metall",
+        "Glut"
+      ]
+    }
+  },
+  "champions": [
+    {
+      "id": "C01",
+      "name": "Mira",
+      "titel": "Die Flutstrategin",
+      "arena": "Gezeitenarena",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: Verlangsamung und robuste Flutverteidigung.",
+      "belohnung": {
+        "titel": "Die Flutstrategin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M087",
+          "name": "Schleusant",
+          "level": 100,
+          "attacken": [
+            "Schleusant-Spritzfächer",
+            "Schleusant-Plattenstoß",
+            "Schleusant-Wasserhaut",
+            "Schleusant-Flutklinge"
+          ]
+        },
+        {
+          "monsterId": "M105",
+          "name": "Neruvia",
+          "level": 100,
+          "attacken": [
+            "Neruvia-Spritzfächer",
+            "Neruvia-Kältestoß",
+            "Neruvia-Wasserhaut",
+            "Gezeitenstillstand"
+          ]
+        },
+        {
+          "monsterId": "M006",
+          "name": "Strömara",
+          "level": 100,
+          "attacken": [
+            "Spritzbogen",
+            "Wirbelrinne",
+            "Böenschub",
+            "Quellhaut"
+          ]
+        },
+        {
+          "monsterId": "M048",
+          "name": "Aquarion",
+          "level": 100,
+          "attacken": [
+            "Aquarion-Quellstoß",
+            "Aquarion-Luftschnitt",
+            "Aquarion-Wächterschutz",
+            "Tiefenwirbel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Barek",
+      "titel": "Der Erzbrecher",
+      "arena": "Ambosskolosseum",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: hohe Verteidigung und harte Konter.",
+      "belohnung": {
+        "titel": "Der Erzbrecher",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M101",
+          "name": "Ambossar",
+          "level": 100,
+          "attacken": [
+            "Ambossar-Nietenschub",
+            "Ambossar-Kohlenbogen",
+            "Ambossar-Panzerhaltung",
+            "Ambossar-Stahlbogen"
+          ]
+        },
+        {
+          "monsterId": "M093",
+          "name": "Kammolith",
+          "level": 100,
+          "attacken": [
+            "Kammolith-Gerölltritt",
+            "Kammolith-Kältestoß",
+            "Kammolith-Schieferwall",
+            "Kammolith-Felswucht"
+          ]
+        },
+        {
+          "monsterId": "M027",
+          "name": "Titanor",
+          "level": 100,
+          "attacken": [
+            "Titanor-Nietenschlag",
+            "Titanor-Kieselschild",
+            "Titanor-Panzerklang",
+            "Titanor-Bodenwelle"
+          ]
+        },
+        {
+          "monsterId": "M081",
+          "name": "Pyrothar",
+          "level": 100,
+          "attacken": [
+            "Funkenritze",
+            "Klingenlauf",
+            "Aschehaut",
+            "Kernschmelze"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Sela",
+      "titel": "Die Sturmvirtuosin",
+      "arena": "Wolkenbühne",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: hohes Tempo und kontrollierende Klangattacken.",
+      "belohnung": {
+        "titel": "Die Sturmvirtuosin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M103",
+          "name": "Orkanfied",
+          "level": 100,
+          "attacken": [
+            "Orkanfied-Böenstoß",
+            "Orkanfied-Hallstoß",
+            "Orkanfied-Segelhaltung",
+            "Orkanfied-Wirbelkante"
+          ]
+        },
+        {
+          "monsterId": "M091",
+          "name": "Spulenrix",
+          "level": 100,
+          "attacken": [
+            "Spulenrix-Funkensprung",
+            "Spulenrix-Luftsichel",
+            "Spulenrix-Spulenruhe",
+            "Spulenrix-Spannungsbogen"
+          ]
+        },
+        {
+          "monsterId": "M024",
+          "name": "Sturmarik",
+          "level": 100,
+          "attacken": [
+            "Sturmarik-Böenstoß",
+            "Sturmarik-Ladungszacke",
+            "Sturmarik-Windschirm",
+            "Sturmarik-Funkenkette"
+          ]
+        },
+        {
+          "monsterId": "M110",
+          "name": "Iskariel",
+          "level": 100,
+          "attacken": [
+            "Iskariel-Reifsplitter",
+            "Iskariel-Luftsichel",
+            "Iskariel-Frostpanzer",
+            "Himmelsreif"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Noxen",
+      "titel": "Der Schleiermeister",
+      "arena": "Dämmerkuppel",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: Statuswechsel und geduldige Kämpfe.",
+      "belohnung": {
+        "titel": "Der Schleiermeister",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M095",
+          "name": "Schleierfex",
+          "level": 100,
+          "attacken": [
+            "Schleierfex-Dunsthieb",
+            "Schleierfex-Luftsichel",
+            "Schleierfex-Nebelhülle",
+            "Schleierfex-Trugwelle"
+          ]
+        },
+        {
+          "monsterId": "M099",
+          "name": "Mondschorf",
+          "level": 100,
+          "attacken": [
+            "Mondschorf-Dunsthieb",
+            "Mondschorf-Kältestoß",
+            "Mondschorf-Nebelhülle",
+            "Mondschorf-Trugwelle"
+          ]
+        },
+        {
+          "monsterId": "M050",
+          "name": "Noctarion",
+          "level": 100,
+          "attacken": [
+            "Noctarion-Schleierhieb",
+            "Noctarion-Eisfächer",
+            "Noctarion-Wächterschutz",
+            "Dunkelschleier"
+          ]
+        },
+        {
+          "monsterId": "M107",
+          "name": "Vesperox",
+          "level": 100,
+          "attacken": [
+            "Vesperox-Dunsthieb",
+            "Vesperox-Plattenstoß",
+            "Vesperox-Nebelhülle",
+            "Leerstahlschnitt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "Runa",
+      "titel": "Die Wurzelkönigin",
+      "arena": "Hainzirkel",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: defensive Stärkung und ausdauernde Angriffe.",
+      "belohnung": {
+        "titel": "Die Wurzelkönigin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M089",
+          "name": "Laubkranz",
+          "level": 100,
+          "attacken": [
+            "Laubkranz-Rankenzug",
+            "Laubkranz-Hallstoß",
+            "Laubkranz-Wurzelruhe",
+            "Laubkranz-Blätterkreis"
+          ]
+        },
+        {
+          "monsterId": "M009",
+          "name": "Hainwacht",
+          "level": 100,
+          "attacken": [
+            "Blattwirbel",
+            "Wurzelgriff",
+            "Schleierzug",
+            "Grünruhe"
+          ]
+        },
+        {
+          "monsterId": "M082",
+          "name": "Sylvaris",
+          "level": 100,
+          "attacken": [
+            "Blattschnitt",
+            "Luftklinge",
+            "Wurzelruhe",
+            "Weltenkeim"
+          ]
+        },
+        {
+          "monsterId": "M108",
+          "name": "Echoryn",
+          "level": 100,
+          "attacken": [
+            "Echoryn-Tonschlag",
+            "Echoryn-Saatenstoß",
+            "Echoryn-Stimmruhe",
+            "Urwaldresonanz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "name": "Taron",
+      "titel": "Der Meister aller Ringe",
+      "arena": "Ursprungsarena",
+      "schwierigkeit": "Extrem",
+      "strategie": "Taktik: wechselnde Typen und legendäre Endphase.",
+      "belohnung": {
+        "titel": "Der Meister aller Ringe",
+        "muenzen": 25000
+      },
+      "team": [
+        {
+          "monsterId": "M085",
+          "name": "Schlackhorn",
+          "level": 100,
+          "attacken": [
+            "Schlackhorn-Glutritze",
+            "Schlackhorn-Gratkante",
+            "Schlackhorn-Hitzeschild",
+            "Schlackhorn-Schmelzwelle"
+          ]
+        },
+        {
+          "monsterId": "M109",
+          "name": "Voltraxis",
+          "level": 100,
+          "attacken": [
+            "Voltraxis-Funkensprung",
+            "Voltraxis-Gratkante",
+            "Voltraxis-Spulenruhe",
+            "Donnerbruch"
+          ]
+        },
+        {
+          "monsterId": "M113",
+          "name": "Ferragant",
+          "level": 100,
+          "attacken": [
+            "Ferragant-Nietenschub",
+            "Ferragant-Quellschub",
+            "Ferragant-Panzerhaltung",
+            "Tiefendruck"
+          ]
+        },
+        {
+          "monsterId": "M083",
+          "name": "Ferrumon",
+          "level": 100,
+          "attacken": [
+            "Nietenschlag",
+            "Spulenstoß",
+            "Stahlhaltung",
+            "Magnetsturm"
+          ]
+        },
+        {
+          "monsterId": "M052",
+          "name": "Ursphäron",
+          "level": 100,
+          "attacken": [
+            "Ursphäron-Schleierhieb",
+            "Ursphäron-Stahlbogen",
+            "Ursphäron-Wächterschutz",
+            "Ursprungspuls"
+          ]
+        }
+      ]
+    }
+  ],
+  "kampfregeln": {
+    "maxLevel": 100,
+    "championStartLevel": 100,
+    "championMonsterFangbar": false,
+    "legendäreSpezialattackenProKampf": 1,
+    "championBelohnungNurBeimErstenSieg": true
+  },
+  "typenAnzeigeNamen": {
+    "Funke": "Elektro"
+  },
+  "shinyRegeln": {
+    "chance": 0.002,
+    "chanceAlsBruch": "1:500",
+    "werteBonus": 0,
+    "hinweis": "Shiny ist eine Farbvariante desselben Monsters und kein zusätzlicher Monster-Datensatz."
+  },
+  "generationenAnzahl": 6,
+  "monster": [
+    {
+      "id": "M154",
+      "name": "Quellip",
+      "typen": [
+        "Flut",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein amphibischer Quellhüter mit türkisfarbenen Schuppen, flachen Blattflossen und einer schalenförmigen Stirn. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt an moosigen Quellbecken; verhält sich vorsichtig und fürsorglich.",
+      "kp": 39,
+      "angriff": 54,
+      "verteidigung": 46,
+      "tempo": 51,
+      "entwicklungLevel": 19,
+      "entwicktSichZu": "Bachlorn",
+      "attacken": [
+        {
+          "name": "Quellstoß Quellip",
+          "typ": "Flut",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenhieb Quellip",
+          "typ": "Wuchs",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Quellip",
+          "typ": "Flut",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Quellip",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M155",
+      "name": "Bachlorn",
+      "typen": [
+        "Flut",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein amphibischer Quellhüter mit türkisfarbenen Schuppen, flachen Blattflossen und einer schalenförmigen Stirn. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt an moosigen Quellbecken; verhält sich vorsichtig und fürsorglich.",
+      "kp": 66,
+      "angriff": 76,
+      "verteidigung": 67,
+      "tempo": 67,
+      "entwicklungLevel": 40,
+      "entwicktSichZu": "Flutkrone",
+      "attacken": [
+        {
+          "name": "Quellstoß Bachlorn",
+          "typ": "Flut",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenhieb Bachlorn",
+          "typ": "Wuchs",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Bachlorn",
+          "typ": "Flut",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Bachlorn",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M156",
+      "name": "Flutkrone",
+      "typen": [
+        "Flut",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein amphibischer Quellhüter mit türkisfarbenen Schuppen, flachen Blattflossen und einer schalenförmigen Stirn. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt an moosigen Quellbecken; verhält sich vorsichtig und fürsorglich.",
+      "kp": 91,
+      "angriff": 103,
+      "verteidigung": 89,
+      "tempo": 88,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Quellstoß Flutkrone",
+          "typ": "Flut",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenhieb Flutkrone",
+          "typ": "Wuchs",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Flutkrone",
+          "typ": "Flut",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Flutkrone",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M157",
+      "name": "Keimsa",
+      "typen": [
+        "Wuchs",
+        "Stein"
+      ],
+      "beschreibung": "Ein gepanzerter Samenläufer mit braunen Wurzelbeinen, fächerförmigen Blättern und runden Kieselplatten. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in sonnenwarmen Schluchtgärten; verhält sich geduldig und territorial.",
+      "kp": 42,
+      "angriff": 57,
+      "verteidigung": 49,
+      "tempo": 54,
+      "entwicklungLevel": 20,
+      "entwicktSichZu": "Laubhorn",
+      "attacken": [
+        {
+          "name": "Blattfächer Keimsa",
+          "typ": "Wuchs",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Keimsa",
+          "typ": "Stein",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Keimsa",
+          "typ": "Wuchs",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Keimsa",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M158",
+      "name": "Laubhorn",
+      "typen": [
+        "Wuchs",
+        "Stein"
+      ],
+      "beschreibung": "Ein gepanzerter Samenläufer mit braunen Wurzelbeinen, fächerförmigen Blättern und runden Kieselplatten. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in sonnenwarmen Schluchtgärten; verhält sich geduldig und territorial.",
+      "kp": 69,
+      "angriff": 79,
+      "verteidigung": 70,
+      "tempo": 70,
+      "entwicklungLevel": 41,
+      "entwicktSichZu": "Kronenhirn",
+      "attacken": [
+        {
+          "name": "Blattfächer Laubhorn",
+          "typ": "Wuchs",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Laubhorn",
+          "typ": "Stein",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Laubhorn",
+          "typ": "Wuchs",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Laubhorn",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M159",
+      "name": "Kronenhirn",
+      "typen": [
+        "Wuchs",
+        "Stein"
+      ],
+      "beschreibung": "Ein gepanzerter Samenläufer mit braunen Wurzelbeinen, fächerförmigen Blättern und runden Kieselplatten. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in sonnenwarmen Schluchtgärten; verhält sich geduldig und territorial.",
+      "kp": 94,
+      "angriff": 106,
+      "verteidigung": 92,
+      "tempo": 91,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blattfächer Kronenhirn",
+          "typ": "Wuchs",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Kronenhirn",
+          "typ": "Stein",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Kronenhirn",
+          "typ": "Wuchs",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Kronenhirn",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M160",
+      "name": "Zappeli",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Ein rollender Stromspeicher mit kupfernen Spiralhörnern, blauen Lichtadern und einem segmentierten Körper. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt auf alten Hochspannungsfeldern; verhält sich neugierig und ungestüm.",
+      "kp": 45,
+      "angriff": 60,
+      "verteidigung": 52,
+      "tempo": 57,
+      "entwicklungLevel": 21,
+      "entwicktSichZu": "Spuloran",
+      "attacken": [
+        {
+          "name": "Ladungsfunke Zappeli",
+          "typ": "Funke",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Zappeli",
+          "typ": "Metall",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Zappeli",
+          "typ": "Funke",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Zappeli",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M161",
+      "name": "Spuloran",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Ein rollender Stromspeicher mit kupfernen Spiralhörnern, blauen Lichtadern und einem segmentierten Körper. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt auf alten Hochspannungsfeldern; verhält sich neugierig und ungestüm.",
+      "kp": 72,
+      "angriff": 82,
+      "verteidigung": 73,
+      "tempo": 73,
+      "entwicklungLevel": 42,
+      "entwicktSichZu": "Gewitterox",
+      "attacken": [
+        {
+          "name": "Ladungsfunke Spuloran",
+          "typ": "Funke",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Spuloran",
+          "typ": "Metall",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Spuloran",
+          "typ": "Funke",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Spuloran",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M162",
+      "name": "Gewitterox",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Ein rollender Stromspeicher mit kupfernen Spiralhörnern, blauen Lichtadern und einem segmentierten Körper. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt auf alten Hochspannungsfeldern; verhält sich neugierig und ungestüm.",
+      "kp": 97,
+      "angriff": 109,
+      "verteidigung": 95,
+      "tempo": 94,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ladungsfunke Gewitterox",
+          "typ": "Funke",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Gewitterox",
+          "typ": "Metall",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Gewitterox",
+          "typ": "Funke",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Gewitterox",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M163",
+      "name": "Flammel",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Ein vulkanischer Krustenläufer mit schwarzer Lavahaut, glühenden Rückenrissen und breiten Vorderklauen. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in erstarrten Lavafeldern; verhält sich stur und loyal.",
+      "kp": 48,
+      "angriff": 63,
+      "verteidigung": 55,
+      "tempo": 60,
+      "entwicklungLevel": 22,
+      "entwicktSichZu": "Glosser",
+      "attacken": [
+        {
+          "name": "Glutnadel Flammel",
+          "typ": "Glut",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Flammel",
+          "typ": "Stein",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schmelzstoß Flammel",
+          "typ": "Glut",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Flammel",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M164",
+      "name": "Glosser",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Ein vulkanischer Krustenläufer mit schwarzer Lavahaut, glühenden Rückenrissen und breiten Vorderklauen. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in erstarrten Lavafeldern; verhält sich stur und loyal.",
+      "kp": 75,
+      "angriff": 85,
+      "verteidigung": 76,
+      "tempo": 76,
+      "entwicklungLevel": 43,
+      "entwicktSichZu": "Schmelzram",
+      "attacken": [
+        {
+          "name": "Glutnadel Glosser",
+          "typ": "Glut",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Glosser",
+          "typ": "Stein",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schmelzstoß Glosser",
+          "typ": "Glut",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Glosser",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M165",
+      "name": "Schmelzram",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Ein vulkanischer Krustenläufer mit schwarzer Lavahaut, glühenden Rückenrissen und breiten Vorderklauen. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in erstarrten Lavafeldern; verhält sich stur und loyal.",
+      "kp": 100,
+      "angriff": 112,
+      "verteidigung": 98,
+      "tempo": 97,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Glutnadel Schmelzram",
+          "typ": "Glut",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Schmelzram",
+          "typ": "Stein",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schmelzstoß Schmelzram",
+          "typ": "Glut",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Schmelzram",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M166",
+      "name": "Nebuli",
+      "typen": [
+        "Geist",
+        "Wind"
+      ],
+      "beschreibung": "Ein schwebender Schleierwanderer mit halbtransparenten Segelarmen, bernsteinfarbenen Augen und einem geknoteten Nebelschwanz. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt über verfallenen Windmühlen; verhält sich scheu und verspielt.",
+      "kp": 36,
+      "angriff": 51,
+      "verteidigung": 43,
+      "tempo": 48,
+      "entwicklungLevel": 23,
+      "entwicktSichZu": "Hauchveil",
+      "attacken": [
+        {
+          "name": "Spukfaden Nebuli",
+          "typ": "Geist",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Nebuli",
+          "typ": "Wind",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Nebuli",
+          "typ": "Geist",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Nebuli",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M167",
+      "name": "Hauchveil",
+      "typen": [
+        "Geist",
+        "Wind"
+      ],
+      "beschreibung": "Ein schwebender Schleierwanderer mit halbtransparenten Segelarmen, bernsteinfarbenen Augen und einem geknoteten Nebelschwanz. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt über verfallenen Windmühlen; verhält sich scheu und verspielt.",
+      "kp": 63,
+      "angriff": 73,
+      "verteidigung": 64,
+      "tempo": 64,
+      "entwicklungLevel": 44,
+      "entwicktSichZu": "Spuksegel",
+      "attacken": [
+        {
+          "name": "Spukfaden Hauchveil",
+          "typ": "Geist",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Hauchveil",
+          "typ": "Wind",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Hauchveil",
+          "typ": "Geist",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Hauchveil",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M168",
+      "name": "Spuksegel",
+      "typen": [
+        "Geist",
+        "Wind"
+      ],
+      "beschreibung": "Ein schwebender Schleierwanderer mit halbtransparenten Segelarmen, bernsteinfarbenen Augen und einem geknoteten Nebelschwanz. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt über verfallenen Windmühlen; verhält sich scheu und verspielt.",
+      "kp": 88,
+      "angriff": 100,
+      "verteidigung": 86,
+      "tempo": 85,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfaden Spuksegel",
+          "typ": "Geist",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Spuksegel",
+          "typ": "Wind",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Spuksegel",
+          "typ": "Geist",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Spuksegel",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M169",
+      "name": "Flocksi",
+      "typen": [
+        "Frost",
+        "Flut"
+      ],
+      "beschreibung": "Ein eisiger Höhlenwächter mit perlmuttfarbenen Schuppen, eisigen Kammzähnen und einem breiten Paddelschwanz. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in unterirdischen Schmelzwasserseen; verhält sich ruhig und wachsam.",
+      "kp": 39,
+      "angriff": 54,
+      "verteidigung": 46,
+      "tempo": 51,
+      "entwicklungLevel": 24,
+      "entwicktSichZu": "Reifzahn",
+      "attacken": [
+        {
+          "name": "Reifsplitter Flocksi",
+          "typ": "Frost",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen Flocksi",
+          "typ": "Flut",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Eisriss Flocksi",
+          "typ": "Frost",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Flocksi",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M170",
+      "name": "Reifzahn",
+      "typen": [
+        "Frost",
+        "Flut"
+      ],
+      "beschreibung": "Ein eisiger Höhlenwächter mit perlmuttfarbenen Schuppen, eisigen Kammzähnen und einem breiten Paddelschwanz. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in unterirdischen Schmelzwasserseen; verhält sich ruhig und wachsam.",
+      "kp": 66,
+      "angriff": 76,
+      "verteidigung": 67,
+      "tempo": 67,
+      "entwicklungLevel": 45,
+      "entwicktSichZu": "Gletschermaul",
+      "attacken": [
+        {
+          "name": "Reifsplitter Reifzahn",
+          "typ": "Frost",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen Reifzahn",
+          "typ": "Flut",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Eisriss Reifzahn",
+          "typ": "Frost",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Reifzahn",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M171",
+      "name": "Gletschermaul",
+      "typen": [
+        "Frost",
+        "Flut"
+      ],
+      "beschreibung": "Ein eisiger Höhlenwächter mit perlmuttfarbenen Schuppen, eisigen Kammzähnen und einem breiten Paddelschwanz. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in unterirdischen Schmelzwasserseen; verhält sich ruhig und wachsam.",
+      "kp": 91,
+      "angriff": 103,
+      "verteidigung": 89,
+      "tempo": 88,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Reifsplitter Gletschermaul",
+          "typ": "Frost",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen Gletschermaul",
+          "typ": "Flut",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Eisriss Gletschermaul",
+          "typ": "Frost",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Gletschermaul",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M172",
+      "name": "Klingel",
+      "typen": [
+        "Klang",
+        "Metall"
+      ],
+      "beschreibung": "Ein wandelndes Glockenwesen mit bronzenen Klangplatten, schwingenden Antennen und kurzen Gelenkbeinen. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in verlassenen Turmruinen; verhält sich gesellig und lautstark.",
+      "kp": 42,
+      "angriff": 57,
+      "verteidigung": 49,
+      "tempo": 54,
+      "entwicklungLevel": 25,
+      "entwicktSichZu": "Gongaro",
+      "attacken": [
+        {
+          "name": "Tonstoß Klingel",
+          "typ": "Klang",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Klingel",
+          "typ": "Metall",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Klingel",
+          "typ": "Klang",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Klingel",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M173",
+      "name": "Gongaro",
+      "typen": [
+        "Klang",
+        "Metall"
+      ],
+      "beschreibung": "Ein wandelndes Glockenwesen mit bronzenen Klangplatten, schwingenden Antennen und kurzen Gelenkbeinen. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in verlassenen Turmruinen; verhält sich gesellig und lautstark.",
+      "kp": 69,
+      "angriff": 79,
+      "verteidigung": 70,
+      "tempo": 70,
+      "entwicklungLevel": 46,
+      "entwicktSichZu": "Resonantor",
+      "attacken": [
+        {
+          "name": "Tonstoß Gongaro",
+          "typ": "Klang",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Gongaro",
+          "typ": "Metall",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Gongaro",
+          "typ": "Klang",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Gongaro",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M174",
+      "name": "Resonantor",
+      "typen": [
+        "Klang",
+        "Metall"
+      ],
+      "beschreibung": "Ein wandelndes Glockenwesen mit bronzenen Klangplatten, schwingenden Antennen und kurzen Gelenkbeinen. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in verlassenen Turmruinen; verhält sich gesellig und lautstark.",
+      "kp": 94,
+      "angriff": 106,
+      "verteidigung": 92,
+      "tempo": 91,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Tonstoß Resonantor",
+          "typ": "Klang",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag Resonantor",
+          "typ": "Metall",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Resonantor",
+          "typ": "Klang",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Resonantor",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M175",
+      "name": "Dornip",
+      "typen": [
+        "Wuchs",
+        "Nebel"
+      ],
+      "beschreibung": "Ein rankenbewehrter Nachtgärtner mit violetten Dornenkronen, samtigen Blättern und leuchtenden Sporen. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in nebeligen Dornmooren; verhält sich misstrauisch und beschützend.",
+      "kp": 45,
+      "angriff": 60,
+      "verteidigung": 52,
+      "tempo": 57,
+      "entwicklungLevel": 26,
+      "entwicktSichZu": "Stachelweid",
+      "attacken": [
+        {
+          "name": "Blattfächer Dornip",
+          "typ": "Wuchs",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nebelspirale Dornip",
+          "typ": "Nebel",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Dornip",
+          "typ": "Wuchs",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunstschutz Dornip",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M176",
+      "name": "Stachelweid",
+      "typen": [
+        "Wuchs",
+        "Nebel"
+      ],
+      "beschreibung": "Ein rankenbewehrter Nachtgärtner mit violetten Dornenkronen, samtigen Blättern und leuchtenden Sporen. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in nebeligen Dornmooren; verhält sich misstrauisch und beschützend.",
+      "kp": 72,
+      "angriff": 82,
+      "verteidigung": 73,
+      "tempo": 73,
+      "entwicklungLevel": 47,
+      "entwicktSichZu": "Dornenfürst",
+      "attacken": [
+        {
+          "name": "Blattfächer Stachelweid",
+          "typ": "Wuchs",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nebelspirale Stachelweid",
+          "typ": "Nebel",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Stachelweid",
+          "typ": "Wuchs",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunstschutz Stachelweid",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M177",
+      "name": "Dornenfürst",
+      "typen": [
+        "Wuchs",
+        "Nebel"
+      ],
+      "beschreibung": "Ein rankenbewehrter Nachtgärtner mit violetten Dornenkronen, samtigen Blättern und leuchtenden Sporen. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in nebeligen Dornmooren; verhält sich misstrauisch und beschützend.",
+      "kp": 97,
+      "angriff": 109,
+      "verteidigung": 95,
+      "tempo": 94,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blattfächer Dornenfürst",
+          "typ": "Wuchs",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nebelspirale Dornenfürst",
+          "typ": "Nebel",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Dornenfürst",
+          "typ": "Wuchs",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunstschutz Dornenfürst",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M178",
+      "name": "Sanda",
+      "typen": [
+        "Stein",
+        "Wind"
+      ],
+      "beschreibung": "Ein flinker Sandgleiter mit sandfarbenen Rückenplatten, zwei Segelohren und einem schaufelförmigen Schwanz. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt zwischen wandernden Dünen; verhält sich freiheitsliebend und flink.",
+      "kp": 48,
+      "angriff": 63,
+      "verteidigung": 55,
+      "tempo": 60,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Kieselwind",
+      "attacken": [
+        {
+          "name": "Kieselwurf Sanda",
+          "typ": "Stein",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Sanda",
+          "typ": "Wind",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Felsramme Sanda",
+          "typ": "Stein",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Sanda",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M179",
+      "name": "Kieselwind",
+      "typen": [
+        "Stein",
+        "Wind"
+      ],
+      "beschreibung": "Ein flinker Sandgleiter mit sandfarbenen Rückenplatten, zwei Segelohren und einem schaufelförmigen Schwanz. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt zwischen wandernden Dünen; verhält sich freiheitsliebend und flink.",
+      "kp": 75,
+      "angriff": 85,
+      "verteidigung": 76,
+      "tempo": 76,
+      "entwicklungLevel": 48,
+      "entwicktSichZu": "Dünenkamm",
+      "attacken": [
+        {
+          "name": "Kieselwurf Kieselwind",
+          "typ": "Stein",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Kieselwind",
+          "typ": "Wind",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Felsramme Kieselwind",
+          "typ": "Stein",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Kieselwind",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M180",
+      "name": "Dünenkamm",
+      "typen": [
+        "Stein",
+        "Wind"
+      ],
+      "beschreibung": "Ein flinker Sandgleiter mit sandfarbenen Rückenplatten, zwei Segelohren und einem schaufelförmigen Schwanz. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt zwischen wandernden Dünen; verhält sich freiheitsliebend und flink.",
+      "kp": 100,
+      "angriff": 112,
+      "verteidigung": 98,
+      "tempo": 97,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Kieselwurf Dünenkamm",
+          "typ": "Stein",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Dünenkamm",
+          "typ": "Wind",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Felsramme Dünenkamm",
+          "typ": "Stein",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Dünenkamm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M181",
+      "name": "Tropfi",
+      "typen": [
+        "Flut",
+        "Funke"
+      ],
+      "beschreibung": "Ein Regenwolkenläufer mit durchscheinenden Regentropfenfäden, gelben Blitzflecken und vier schmalen Beinen. In Entwicklungsstufe 1 von 3 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in sturmreichen Küstenwäldern; verhält sich lebhaft und hilfsbereit.",
+      "kp": 36,
+      "angriff": 51,
+      "verteidigung": 43,
+      "tempo": 48,
+      "entwicklungLevel": 19,
+      "entwicktSichZu": "Regenschweif",
+      "attacken": [
+        {
+          "name": "Quellstoß Tropfi",
+          "typ": "Flut",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spulenstoß Tropfi",
+          "typ": "Funke",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Tropfi",
+          "typ": "Flut",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromschild Tropfi",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M182",
+      "name": "Regenschweif",
+      "typen": [
+        "Flut",
+        "Funke"
+      ],
+      "beschreibung": "Ein Regenwolkenläufer mit durchscheinenden Regentropfenfäden, gelben Blitzflecken und vier schmalen Beinen. In Entwicklungsstufe 2 von 3 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in sturmreichen Küstenwäldern; verhält sich lebhaft und hilfsbereit.",
+      "kp": 63,
+      "angriff": 73,
+      "verteidigung": 64,
+      "tempo": 64,
+      "entwicklungLevel": 39,
+      "entwicktSichZu": "Monsunor",
+      "attacken": [
+        {
+          "name": "Quellstoß Regenschweif",
+          "typ": "Flut",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spulenstoß Regenschweif",
+          "typ": "Funke",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Regenschweif",
+          "typ": "Flut",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromschild Regenschweif",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M183",
+      "name": "Monsunor",
+      "typen": [
+        "Flut",
+        "Funke"
+      ],
+      "beschreibung": "Ein Regenwolkenläufer mit durchscheinenden Regentropfenfäden, gelben Blitzflecken und vier schmalen Beinen. In Entwicklungsstufe 3 von 3 ist sein Körper groß und eindrucksvoll.",
+      "persoenlichkeitLebensraum": "Lebt in sturmreichen Küstenwäldern; verhält sich lebhaft und hilfsbereit.",
+      "kp": 88,
+      "angriff": 100,
+      "verteidigung": 86,
+      "tempo": 85,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Quellstoß Monsunor",
+          "typ": "Flut",
+          "staerke": 76,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spulenstoß Monsunor",
+          "typ": "Funke",
+          "staerke": 88,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Monsunor",
+          "typ": "Flut",
+          "staerke": 97,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromschild Monsunor",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M184",
+      "name": "Wisperl",
+      "typen": [
+        "Geist",
+        "Klang"
+      ],
+      "beschreibung": "Ein maskierter Rufer mit porzellanartigen Gesichtsschalen und schwebenden Tonringen. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in hallenden Felskapellen; verhält sich still und aufmerksam.",
+      "kp": 52,
+      "angriff": 62,
+      "verteidigung": 54,
+      "tempo": 59,
+      "entwicklungLevel": 20,
+      "entwicktSichZu": "Echomask",
+      "attacken": [
+        {
+          "name": "Spukfaden Wisperl",
+          "typ": "Geist",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonanzstoß Wisperl",
+          "typ": "Klang",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Wisperl",
+          "typ": "Geist",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowand Wisperl",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M185",
+      "name": "Echomask",
+      "typen": [
+        "Geist",
+        "Klang"
+      ],
+      "beschreibung": "Ein maskierter Rufer mit porzellanartigen Gesichtsschalen und schwebenden Tonringen. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in hallenden Felskapellen; verhält sich still und aufmerksam.",
+      "kp": 88,
+      "angriff": 98,
+      "verteidigung": 85,
+      "tempo": 90,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfaden Echomask",
+          "typ": "Geist",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonanzstoß Echomask",
+          "typ": "Klang",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Echomask",
+          "typ": "Geist",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowand Echomask",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M186",
+      "name": "Korali",
+      "typen": [
+        "Flut",
+        "Stein"
+      ],
+      "beschreibung": "Ein lebender Riffbauer mit korallenroten Armen und muschelförmigen Panzersegmenten. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt an geschützten Felsriffen; verhält sich gemeinschaftlich und beharrlich.",
+      "kp": 55,
+      "angriff": 65,
+      "verteidigung": 57,
+      "tempo": 62,
+      "entwicklungLevel": 21,
+      "entwicktSichZu": "Riffgarde",
+      "attacken": [
+        {
+          "name": "Quellstoß Korali",
+          "typ": "Flut",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Korali",
+          "typ": "Stein",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Korali",
+          "typ": "Flut",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Korali",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M187",
+      "name": "Riffgarde",
+      "typen": [
+        "Flut",
+        "Stein"
+      ],
+      "beschreibung": "Ein lebender Riffbauer mit korallenroten Armen und muschelförmigen Panzersegmenten. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt an geschützten Felsriffen; verhält sich gemeinschaftlich und beharrlich.",
+      "kp": 91,
+      "angriff": 101,
+      "verteidigung": 88,
+      "tempo": 93,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Quellstoß Riffgarde",
+          "typ": "Flut",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schollenstoß Riffgarde",
+          "typ": "Stein",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsriss Riffgarde",
+          "typ": "Flut",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Riffgarde",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M188",
+      "name": "Blitzelmo",
+      "typen": [
+        "Funke",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein fadenwebender Stromsammler mit grünen Fadenfühlern und elektrisch glimmenden Blattscheiben. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in feuchten Baumkronen; verhält sich eifrig und erfinderisch.",
+      "kp": 58,
+      "angriff": 68,
+      "verteidigung": 60,
+      "tempo": 65,
+      "entwicklungLevel": 22,
+      "entwicktSichZu": "Spannweber",
+      "attacken": [
+        {
+          "name": "Ladungsfunke Blitzelmo",
+          "typ": "Funke",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenhieb Blitzelmo",
+          "typ": "Wuchs",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Blitzelmo",
+          "typ": "Funke",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Blitzelmo",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M189",
+      "name": "Spannweber",
+      "typen": [
+        "Funke",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein fadenwebender Stromsammler mit grünen Fadenfühlern und elektrisch glimmenden Blattscheiben. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in feuchten Baumkronen; verhält sich eifrig und erfinderisch.",
+      "kp": 94,
+      "angriff": 104,
+      "verteidigung": 91,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ladungsfunke Spannweber",
+          "typ": "Funke",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenhieb Spannweber",
+          "typ": "Wuchs",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Spannweber",
+          "typ": "Funke",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Spannweber",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M190",
+      "name": "Aschi",
+      "typen": [
+        "Glut",
+        "Wind"
+      ],
+      "beschreibung": "Ein flatternder Aschenhüpfer mit grauen Federfächern und einem glimmenden Brustkern. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt über warmen Kraterwinden; verhält sich mutig und unruhig.",
+      "kp": 61,
+      "angriff": 71,
+      "verteidigung": 63,
+      "tempo": 68,
+      "entwicklungLevel": 23,
+      "entwicktSichZu": "Glutvogel",
+      "attacken": [
+        {
+          "name": "Glutnadel Aschi",
+          "typ": "Glut",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Aschi",
+          "typ": "Wind",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schmelzstoß Aschi",
+          "typ": "Glut",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Aschi",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M191",
+      "name": "Glutvogel",
+      "typen": [
+        "Glut",
+        "Wind"
+      ],
+      "beschreibung": "Ein flatternder Aschenhüpfer mit grauen Federfächern und einem glimmenden Brustkern. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt über warmen Kraterwinden; verhält sich mutig und unruhig.",
+      "kp": 97,
+      "angriff": 107,
+      "verteidigung": 94,
+      "tempo": 99,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Glutnadel Glutvogel",
+          "typ": "Glut",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Glutvogel",
+          "typ": "Wind",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schmelzstoß Glutvogel",
+          "typ": "Glut",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Glutvogel",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M192",
+      "name": "Wurzelin",
+      "typen": [
+        "Wuchs",
+        "Flut"
+      ],
+      "beschreibung": "Ein sumpfiger Wurzelträger mit breiten Schilfschultern und einem wassergefüllten Rumpf. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in überfluteten Erlenwäldern; verhält sich sanft und ausdauernd.",
+      "kp": 49,
+      "angriff": 59,
+      "verteidigung": 51,
+      "tempo": 56,
+      "entwicklungLevel": 24,
+      "entwicktSichZu": "Moorkoloss",
+      "attacken": [
+        {
+          "name": "Blattfächer Wurzelin",
+          "typ": "Wuchs",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen Wurzelin",
+          "typ": "Flut",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Wurzelin",
+          "typ": "Wuchs",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Wurzelin",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M193",
+      "name": "Moorkoloss",
+      "typen": [
+        "Wuchs",
+        "Flut"
+      ],
+      "beschreibung": "Ein sumpfiger Wurzelträger mit breiten Schilfschultern und einem wassergefüllten Rumpf. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in überfluteten Erlenwäldern; verhält sich sanft und ausdauernd.",
+      "kp": 85,
+      "angriff": 95,
+      "verteidigung": 82,
+      "tempo": 87,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blattfächer Moorkoloss",
+          "typ": "Wuchs",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen Moorkoloss",
+          "typ": "Flut",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Moorkoloss",
+          "typ": "Wuchs",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Moorkoloss",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M194",
+      "name": "Funster",
+      "typen": [
+        "Funke",
+        "Frost"
+      ],
+      "beschreibung": "Ein knisternder Eiskristall mit sechs kantigen Eisarmen und gelben Funkenknoten. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt an vereisten Wetterstationen; verhält sich temperamentvoll und wachsam.",
+      "kp": 52,
+      "angriff": 62,
+      "verteidigung": 54,
+      "tempo": 59,
+      "entwicklungLevel": 25,
+      "entwicktSichZu": "Stromklirr",
+      "attacken": [
+        {
+          "name": "Ladungsfunke Funster",
+          "typ": "Funke",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kältewelle Funster",
+          "typ": "Frost",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Funster",
+          "typ": "Funke",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Frostpanzer Funster",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M195",
+      "name": "Stromklirr",
+      "typen": [
+        "Funke",
+        "Frost"
+      ],
+      "beschreibung": "Ein knisternder Eiskristall mit sechs kantigen Eisarmen und gelben Funkenknoten. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt an vereisten Wetterstationen; verhält sich temperamentvoll und wachsam.",
+      "kp": 88,
+      "angriff": 98,
+      "verteidigung": 85,
+      "tempo": 90,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ladungsfunke Stromklirr",
+          "typ": "Funke",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kältewelle Stromklirr",
+          "typ": "Frost",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Stromklirr",
+          "typ": "Funke",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Frostpanzer Stromklirr",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M196",
+      "name": "Grabli",
+      "typen": [
+        "Geist",
+        "Glut"
+      ],
+      "beschreibung": "Ein glimmender Grablichtgeist mit hohlen Steinaugen und einer orange leuchtenden Bauchlaterne. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in alten Felsgräbern; verhält sich freundlich und nachdenklich.",
+      "kp": 55,
+      "angriff": 65,
+      "verteidigung": 57,
+      "tempo": 62,
+      "entwicklungLevel": 26,
+      "entwicktSichZu": "Gruftlater",
+      "attacken": [
+        {
+          "name": "Spukfaden Grabli",
+          "typ": "Geist",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Aschewirbel Grabli",
+          "typ": "Glut",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Grabli",
+          "typ": "Geist",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Hitzeschutz Grabli",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M197",
+      "name": "Gruftlater",
+      "typen": [
+        "Geist",
+        "Glut"
+      ],
+      "beschreibung": "Ein glimmender Grablichtgeist mit hohlen Steinaugen und einer orange leuchtenden Bauchlaterne. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in alten Felsgräbern; verhält sich freundlich und nachdenklich.",
+      "kp": 91,
+      "angriff": 101,
+      "verteidigung": 88,
+      "tempo": 93,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfaden Gruftlater",
+          "typ": "Geist",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Aschewirbel Gruftlater",
+          "typ": "Glut",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Gruftlater",
+          "typ": "Geist",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Hitzeschutz Gruftlater",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Gold und Dunkelblau",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M198",
+      "name": "Eisenip",
+      "typen": [
+        "Metall",
+        "Wind"
+      ],
+      "beschreibung": "Ein mechanischer Segelflieger mit silbernen Federklingen und einem schmalen Ringrumpf. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt über metallreichen Hochplateaus; verhält sich präzise und stolz.",
+      "kp": 58,
+      "angriff": 68,
+      "verteidigung": 60,
+      "tempo": 65,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Stahlfeder",
+      "attacken": [
+        {
+          "name": "Metallklang Eisenip",
+          "typ": "Metall",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Eisenip",
+          "typ": "Wind",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stahlbogen Eisenip",
+          "typ": "Metall",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Eisenip",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M199",
+      "name": "Stahlfeder",
+      "typen": [
+        "Metall",
+        "Wind"
+      ],
+      "beschreibung": "Ein mechanischer Segelflieger mit silbernen Federklingen und einem schmalen Ringrumpf. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt über metallreichen Hochplateaus; verhält sich präzise und stolz.",
+      "kp": 94,
+      "angriff": 104,
+      "verteidigung": 91,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Metallklang Stahlfeder",
+          "typ": "Metall",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Stahlfeder",
+          "typ": "Wind",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stahlbogen Stahlfeder",
+          "typ": "Metall",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Stahlfeder",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Rosé und Eisweiß",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M200",
+      "name": "Kiesklo",
+      "typen": [
+        "Stein",
+        "Nebel"
+      ],
+      "beschreibung": "Ein dunkler Felskriecher mit sechseckigen Basaltschuppen und violetten Dampfspalten. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt in tiefen Rauchschluchten; verhält sich langsam und unbeirrbar.",
+      "kp": 61,
+      "angriff": 71,
+      "verteidigung": 63,
+      "tempo": 68,
+      "entwicklungLevel": 19,
+      "entwicktSichZu": "Basaltor",
+      "attacken": [
+        {
+          "name": "Kieselwurf Kiesklo",
+          "typ": "Stein",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nebelspirale Kiesklo",
+          "typ": "Nebel",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Felsramme Kiesklo",
+          "typ": "Stein",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunstschutz Kiesklo",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M201",
+      "name": "Basaltor",
+      "typen": [
+        "Stein",
+        "Nebel"
+      ],
+      "beschreibung": "Ein dunkler Felskriecher mit sechseckigen Basaltschuppen und violetten Dampfspalten. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt in tiefen Rauchschluchten; verhält sich langsam und unbeirrbar.",
+      "kp": 97,
+      "angriff": 107,
+      "verteidigung": 94,
+      "tempo": 99,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Kieselwurf Basaltor",
+          "typ": "Stein",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nebelspirale Basaltor",
+          "typ": "Nebel",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Felsramme Basaltor",
+          "typ": "Stein",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunstschutz Basaltor",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Violett und Mint",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M202",
+      "name": "Tonli",
+      "typen": [
+        "Klang",
+        "Wind"
+      ],
+      "beschreibung": "Ein windspielartiger Klanggleiter mit hölzernen Resonanzrippen und zwei schimmernden Membranflügeln. In Entwicklungsstufe 1 von 2 ist sein Körper klein und biegsam.",
+      "persoenlichkeitLebensraum": "Lebt an windigen Klippen; verhält sich heiter und aufmerksam.",
+      "kp": 49,
+      "angriff": 59,
+      "verteidigung": 51,
+      "tempo": 56,
+      "entwicklungLevel": 20,
+      "entwicktSichZu": "Schallbogen",
+      "attacken": [
+        {
+          "name": "Tonstoß Tonli",
+          "typ": "Klang",
+          "staerke": 42,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Tonli",
+          "typ": "Wind",
+          "staerke": 54,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Tonli",
+          "typ": "Klang",
+          "staerke": 67,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Tonli",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M203",
+      "name": "Schallbogen",
+      "typen": [
+        "Klang",
+        "Wind"
+      ],
+      "beschreibung": "Ein windspielartiger Klanggleiter mit hölzernen Resonanzrippen und zwei schimmernden Membranflügeln. In Entwicklungsstufe 2 von 2 ist sein Körper kräftiger und deutlicher gepanzert.",
+      "persoenlichkeitLebensraum": "Lebt an windigen Klippen; verhält sich heiter und aufmerksam.",
+      "kp": 85,
+      "angriff": 95,
+      "verteidigung": 82,
+      "tempo": 87,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Tonstoß Schallbogen",
+          "typ": "Klang",
+          "staerke": 59,
+          "effekt": "10 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Luftschere Schallbogen",
+          "typ": "Wind",
+          "staerke": 71,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Schallbogen",
+          "typ": "Klang",
+          "staerke": 82,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Windfokus Schallbogen",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Petrol",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M204",
+      "name": "Thalassyr",
+      "typen": [
+        "Flut",
+        "Geist"
+      ],
+      "beschreibung": "Ein uralter Gezeitenwächter mit drei durchsichtigen Flossenringen und einem Herz aus Tiefenwasser.",
+      "persoenlichkeitLebensraum": "Bewacht in einer versunkenen Sternwarte und erscheint nur selten.",
+      "kp": 110,
+      "angriff": 112,
+      "verteidigung": 108,
+      "tempo": 102,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Wellenbogen Thalassyr",
+          "typ": "Flut",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Thalassyr",
+          "typ": "Geist",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Thalassyr",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Gezeitenurteil",
+          "typ": "Flut",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M205",
+      "name": "Floradorn",
+      "typen": [
+        "Wuchs",
+        "Metall"
+      ],
+      "beschreibung": "Ein gewaltiger Kronenwächter mit smaragdgrünen Metallblättern und schwebenden Samenkapseln.",
+      "persoenlichkeitLebensraum": "Bewacht im versiegelten Eisenhain und erscheint nur selten.",
+      "kp": 114,
+      "angriff": 115,
+      "verteidigung": 113,
+      "tempo": 109,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Rankenhieb Floradorn",
+          "typ": "Wuchs",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stahlbogen Floradorn",
+          "typ": "Metall",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Keimschutz Floradorn",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Eisenblüte",
+          "typ": "Wuchs",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M206",
+      "name": "Voltaraum",
+      "typen": [
+        "Funke",
+        "Wind"
+      ],
+      "beschreibung": "Ein schwebender Blitzkoloss mit vier kreisenden Wolkenscheiben und kupfernen Schweifbändern.",
+      "persoenlichkeitLebensraum": "Bewacht über dem endlosen Sturmgrat und erscheint nur selten.",
+      "kp": 118,
+      "angriff": 118,
+      "verteidigung": 118,
+      "tempo": 116,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spulenstoß Voltaraum",
+          "typ": "Funke",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Sturmkante Voltaraum",
+          "typ": "Wind",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Stromschild Voltaraum",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Himmelsladung",
+          "typ": "Funke",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M207",
+      "name": "Cindravel",
+      "typen": [
+        "Glut",
+        "Geist"
+      ],
+      "beschreibung": "Ein schwarzer Glutgeist mit einer ringförmigen Flammenkrone und zerbrochenen Obsidianflügeln.",
+      "persoenlichkeitLebensraum": "Bewacht im Krater der stillen Asche und erscheint nur selten.",
+      "kp": 110,
+      "angriff": 112,
+      "verteidigung": 111,
+      "tempo": 106,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Aschewirbel Cindravel",
+          "typ": "Glut",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattenzug Cindravel",
+          "typ": "Geist",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Hitzeschutz Cindravel",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Seelenbrand",
+          "typ": "Glut",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M208",
+      "name": "Krysalon",
+      "typen": [
+        "Frost",
+        "Klang"
+      ],
+      "beschreibung": "Ein silberner Frostwächter mit kristallenen Stimmgabelarmen und schwebendem Eispanzer.",
+      "persoenlichkeitLebensraum": "Bewacht im singenden Gletscher und erscheint nur selten.",
+      "kp": 114,
+      "angriff": 115,
+      "verteidigung": 116,
+      "tempo": 113,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Kältewelle Krysalon",
+          "typ": "Frost",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gongwelle Krysalon",
+          "typ": "Klang",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Frostpanzer Krysalon",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Frostharmonie",
+          "typ": "Frost",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M209",
+      "name": "Gravemir",
+      "typen": [
+        "Stein",
+        "Nebel"
+      ],
+      "beschreibung": "Ein uralter Monolith mit vier frei schwebenden Felsfäusten und tiefblauen Nebelfugen.",
+      "persoenlichkeitLebensraum": "Bewacht unter den Nebelbergen und erscheint nur selten.",
+      "kp": 118,
+      "angriff": 118,
+      "verteidigung": 109,
+      "tempo": 103,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Schollenstoß Gravemir",
+          "typ": "Stein",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Trugschleier Gravemir",
+          "typ": "Nebel",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Steinhaut Gravemir",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schwerefeld",
+          "typ": "Stein",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M210",
+      "name": "Marisyl",
+      "typen": [
+        "Flut",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein majestätisches Seegraswesen mit sechs blattartigen Flossen und leuchtenden Wasserperlen.",
+      "persoenlichkeitLebensraum": "Bewacht im verborgenen Seegrasdom und erscheint nur selten.",
+      "kp": 110,
+      "angriff": 112,
+      "verteidigung": 114,
+      "tempo": 110,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Wellenbogen Marisyl",
+          "typ": "Flut",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelpuls Marisyl",
+          "typ": "Wuchs",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Flutmantel Marisyl",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Quellenerwachen",
+          "typ": "Flut",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M211",
+      "name": "Auronex",
+      "typen": [
+        "Metall",
+        "Funke"
+      ],
+      "beschreibung": "Ein goldener Magnetwächter mit versetzten Ringarmen und einem pulsierenden Prismenkern.",
+      "persoenlichkeitLebensraum": "Bewacht im verlassenen Himmelswerk und erscheint nur selten.",
+      "kp": 114,
+      "angriff": 115,
+      "verteidigung": 119,
+      "tempo": 117,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Nietenschlag Auronex",
+          "typ": "Metall",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltspitze Auronex",
+          "typ": "Funke",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Panzerfokus Auronex",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Prismenschlag",
+          "typ": "Metall",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M212",
+      "name": "Veylora",
+      "typen": [
+        "Geist",
+        "Nebel"
+      ],
+      "beschreibung": "Ein stiller Schleierhüter mit sieben schwebenden Maskenfragmenten und violettem Sternenstaub.",
+      "persoenlichkeitLebensraum": "Bewacht im Tor der verlorenen Stimmen und erscheint nur selten.",
+      "kp": 118,
+      "angriff": 118,
+      "verteidigung": 112,
+      "tempo": 107,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Seelenklang Veylora",
+          "typ": "Geist",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Trugschleier Veylora",
+          "typ": "Nebel",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schleierhut Veylora",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Maskenfinsternis",
+          "typ": "Geist",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M213",
+      "name": "Sonavyr",
+      "typen": [
+        "Klang",
+        "Wind"
+      ],
+      "beschreibung": "Ein schwebender Himmelsrufer mit gläsernen Resonanzsegeln und einer leuchtenden Brustspirale.",
+      "persoenlichkeitLebensraum": "Bewacht auf der höchsten Wolkenbühne und erscheint nur selten.",
+      "kp": 110,
+      "angriff": 112,
+      "verteidigung": 117,
+      "tempo": 114,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Resonanzstoß Sonavyr",
+          "typ": "Klang",
+          "staerke": 90,
+          "effekt": "15 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Sturmkante Sonavyr",
+          "typ": "Wind",
+          "staerke": 100,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echowand Sonavyr",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Urakkord",
+          "typ": "Klang",
+          "staerke": 115,
+          "effekt": "Einmal pro Kampf einsetzbar; 20 % Chance, das Tempo des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "generation": 6,
+      "kategorie": "Legendär",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Opalgold",
+        "effekt": "Sternenfunken beim Erscheinen",
+        "werteBonus": 0
+      }
+    }
+  ],
+  "entwicklungslinien": [
+    {
+      "linie": 1,
+      "namen": [
+        "Quellip",
+        "Bachlorn",
+        "Flutkrone"
+      ],
+      "entwicklungsLevel": [
+        19,
+        40
+      ]
+    },
+    {
+      "linie": 2,
+      "namen": [
+        "Keimsa",
+        "Laubhorn",
+        "Kronenhirn"
+      ],
+      "entwicklungsLevel": [
+        20,
+        41
+      ]
+    },
+    {
+      "linie": 3,
+      "namen": [
+        "Zappeli",
+        "Spuloran",
+        "Gewitterox"
+      ],
+      "entwicklungsLevel": [
+        21,
+        42
+      ]
+    },
+    {
+      "linie": 4,
+      "namen": [
+        "Flammel",
+        "Glosser",
+        "Schmelzram"
+      ],
+      "entwicklungsLevel": [
+        22,
+        43
+      ]
+    },
+    {
+      "linie": 5,
+      "namen": [
+        "Nebuli",
+        "Hauchveil",
+        "Spuksegel"
+      ],
+      "entwicklungsLevel": [
+        23,
+        44
+      ]
+    },
+    {
+      "linie": 6,
+      "namen": [
+        "Flocksi",
+        "Reifzahn",
+        "Gletschermaul"
+      ],
+      "entwicklungsLevel": [
+        24,
+        45
+      ]
+    },
+    {
+      "linie": 7,
+      "namen": [
+        "Klingel",
+        "Gongaro",
+        "Resonantor"
+      ],
+      "entwicklungsLevel": [
+        25,
+        46
+      ]
+    },
+    {
+      "linie": 8,
+      "namen": [
+        "Dornip",
+        "Stachelweid",
+        "Dornenfürst"
+      ],
+      "entwicklungsLevel": [
+        26,
+        47
+      ]
+    },
+    {
+      "linie": 9,
+      "namen": [
+        "Sanda",
+        "Kieselwind",
+        "Dünenkamm"
+      ],
+      "entwicklungsLevel": [
+        18,
+        48
+      ]
+    },
+    {
+      "linie": 10,
+      "namen": [
+        "Tropfi",
+        "Regenschweif",
+        "Monsunor"
+      ],
+      "entwicklungsLevel": [
+        19,
+        39
+      ]
+    },
+    {
+      "linie": 11,
+      "namen": [
+        "Wisperl",
+        "Echomask"
+      ],
+      "entwicklungsLevel": [
+        20
+      ]
+    },
+    {
+      "linie": 12,
+      "namen": [
+        "Korali",
+        "Riffgarde"
+      ],
+      "entwicklungsLevel": [
+        21
+      ]
+    },
+    {
+      "linie": 13,
+      "namen": [
+        "Blitzelmo",
+        "Spannweber"
+      ],
+      "entwicklungsLevel": [
+        22
+      ]
+    },
+    {
+      "linie": 14,
+      "namen": [
+        "Aschi",
+        "Glutvogel"
+      ],
+      "entwicklungsLevel": [
+        23
+      ]
+    },
+    {
+      "linie": 15,
+      "namen": [
+        "Wurzelin",
+        "Moorkoloss"
+      ],
+      "entwicklungsLevel": [
+        24
+      ]
+    },
+    {
+      "linie": 16,
+      "namen": [
+        "Funster",
+        "Stromklirr"
+      ],
+      "entwicklungsLevel": [
+        25
+      ]
+    },
+    {
+      "linie": 17,
+      "namen": [
+        "Grabli",
+        "Gruftlater"
+      ],
+      "entwicklungsLevel": [
+        26
+      ]
+    },
+    {
+      "linie": 18,
+      "namen": [
+        "Eisenip",
+        "Stahlfeder"
+      ],
+      "entwicklungsLevel": [
+        18
+      ]
+    },
+    {
+      "linie": 19,
+      "namen": [
+        "Kiesklo",
+        "Basaltor"
+      ],
+      "entwicklungsLevel": [
+        19
+      ]
+    },
+    {
+      "linie": 20,
+      "namen": [
+        "Tonli",
+        "Schallbogen"
+      ],
+      "entwicklungsLevel": [
+        20
+      ]
+    }
+  ]
+}

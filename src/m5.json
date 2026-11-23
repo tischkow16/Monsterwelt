@@ -1,0 +1,2172 @@
+{
+  "typen": [
+    "Glut",
+    "Flut",
+    "Wuchs",
+    "Funke",
+    "Stein",
+    "Frost",
+    "Klang",
+    "Nebel",
+    "Metall",
+    "Wind",
+    "Geist"
+  ],
+  "typTabelle": {
+    "Glut": {
+      "starkGegen": [
+        "Wuchs",
+        "Frost",
+        "Geist"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Stein"
+      ]
+    },
+    "Flut": {
+      "starkGegen": [
+        "Glut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Wuchs",
+        "Funke"
+      ]
+    },
+    "Wuchs": {
+      "starkGegen": [
+        "Flut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Frost"
+      ]
+    },
+    "Funke": {
+      "starkGegen": [
+        "Flut",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Stein",
+        "Wuchs"
+      ]
+    },
+    "Stein": {
+      "starkGegen": [
+        "Glut",
+        "Funke"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Wuchs"
+      ]
+    },
+    "Frost": {
+      "starkGegen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Stein"
+      ]
+    },
+    "Klang": {
+      "starkGegen": [
+        "Nebel",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Metall",
+        "Geist"
+      ]
+    },
+    "Nebel": {
+      "starkGegen": [
+        "Metall",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Klang",
+        "Glut",
+        "Geist"
+      ]
+    },
+    "Metall": {
+      "starkGegen": [
+        "Frost",
+        "Klang",
+        "Geist"
+      ],
+      "schwachGegen": [
+        "Nebel",
+        "Glut"
+      ]
+    },
+    "Wind": {
+      "starkGegen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Frost"
+      ]
+    },
+    "Geist": {
+      "starkGegen": [
+        "Nebel",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Metall",
+        "Glut"
+      ]
+    }
+  },
+  "typenAnzeigeNamen": {
+    "Funke": "Elektro"
+  },
+  "shinyRegeln": {
+    "chance": 0.002,
+    "chanceAlsBruch": "1:500",
+    "werteBonus": 0,
+    "hinweis": "Shiny ist eine Farbvariante desselben Monsters und kein zusätzlicher Monster-Datensatz."
+  },
+  "monster": [
+    {
+      "id": "M114",
+      "name": "Spukel",
+      "typen": [
+        "Geist"
+      ],
+      "beschreibung": "Ein schwebender Maskenträger aus Fadenrauch und matten Glasstücken.",
+      "persoenlichkeitLebensraum": "Verbirgt sich in stillgelegten Glockentürmen.",
+      "kp": 41,
+      "angriff": 50,
+      "verteidigung": 43,
+      "tempo": 50,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Schemenor",
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M115",
+      "name": "Schemenor",
+      "typen": [
+        "Geist",
+        "Nebel"
+      ],
+      "beschreibung": "Ein schwebender Maskenträger aus Fadenrauch und matten Glasstücken.",
+      "persoenlichkeitLebensraum": "Verbirgt sich in stillgelegten Glockentürmen.",
+      "kp": 65,
+      "angriff": 68,
+      "verteidigung": 68,
+      "tempo": 71,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Phantorim",
+      "attacken": [
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Dunstgriff",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schleierstoß",
+          "typ": "Nebel",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M116",
+      "name": "Phantorim",
+      "typen": [
+        "Geist",
+        "Nebel"
+      ],
+      "beschreibung": "Ein schwebender Maskenträger aus Fadenrauch und matten Glasstücken.",
+      "persoenlichkeitLebensraum": "Verbirgt sich in stillgelegten Glockentürmen.",
+      "kp": 95,
+      "angriff": 105,
+      "verteidigung": 93,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Trugschleier",
+          "typ": "Nebel",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Nebelriss",
+          "typ": "Nebel",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M117",
+      "name": "Zappin",
+      "typen": [
+        "Funke"
+      ],
+      "beschreibung": "Ein sechsgliedriger Stromsammler mit spiralförmigen Kupferhörnern.",
+      "persoenlichkeitLebensraum": "Sucht Gewitter über alten Bahntrassen.",
+      "kp": 46,
+      "angriff": 52,
+      "verteidigung": 40,
+      "tempo": 57,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Voltessa",
+      "attacken": [
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M118",
+      "name": "Voltessa",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Ein sechsgliedriger Stromsammler mit spiralförmigen Kupferhörnern.",
+      "persoenlichkeitLebensraum": "Sucht Gewitter über alten Bahntrassen.",
+      "kp": 72,
+      "angriff": 70,
+      "verteidigung": 66,
+      "tempo": 71,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Stromirax",
+      "attacken": [
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Erzpanzer",
+          "typ": "Metall",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Stahlspirale",
+          "typ": "Metall",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M119",
+      "name": "Stromirax",
+      "typen": [
+        "Funke",
+        "Metall"
+      ],
+      "beschreibung": "Ein sechsgliedriger Stromsammler mit spiralförmigen Kupferhörnern.",
+      "persoenlichkeitLebensraum": "Sucht Gewitter über alten Bahntrassen.",
+      "kp": 95,
+      "angriff": 97,
+      "verteidigung": 87,
+      "tempo": 88,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag",
+          "typ": "Metall",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Legierungsstoß",
+          "typ": "Metall",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M120",
+      "name": "Kerzli",
+      "typen": [
+        "Geist"
+      ],
+      "beschreibung": "Ein rußiger Laternengeist mit beweglichen Wachsflügeln.",
+      "persoenlichkeitLebensraum": "Leuchtet Wanderern in verlassenen Mooren.",
+      "kp": 46,
+      "angriff": 46,
+      "verteidigung": 35,
+      "tempo": 55,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Flammenseel",
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M121",
+      "name": "Flammenseel",
+      "typen": [
+        "Geist",
+        "Glut"
+      ],
+      "beschreibung": "Ein rußiger Laternengeist mit beweglichen Wachsflügeln.",
+      "persoenlichkeitLebensraum": "Leuchtet Wanderern in verlassenen Mooren.",
+      "kp": 72,
+      "angriff": 67,
+      "verteidigung": 65,
+      "tempo": 76,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Irrbrandor",
+      "attacken": [
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Hitzekegel",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Funkenregen",
+          "typ": "Glut",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M122",
+      "name": "Irrbrandor",
+      "typen": [
+        "Geist",
+        "Glut"
+      ],
+      "beschreibung": "Ein rußiger Laternengeist mit beweglichen Wachsflügeln.",
+      "persoenlichkeitLebensraum": "Leuchtet Wanderern in verlassenen Mooren.",
+      "kp": 93,
+      "angriff": 102,
+      "verteidigung": 93,
+      "tempo": 98,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Glutstoß",
+          "typ": "Glut",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Aschenring",
+          "typ": "Glut",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M123",
+      "name": "Klicko",
+      "typen": [
+        "Funke"
+      ],
+      "beschreibung": "Ein rundlicher Taktgeber mit vier schwingenden Resonanzstäben.",
+      "persoenlichkeitLebensraum": "Lebt in summenden Kristallhöhlen.",
+      "kp": 41,
+      "angriff": 42,
+      "verteidigung": 42,
+      "tempo": 50,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Schaltor",
+      "attacken": [
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M124",
+      "name": "Schaltor",
+      "typen": [
+        "Funke",
+        "Klang"
+      ],
+      "beschreibung": "Ein rundlicher Taktgeber mit vier schwingenden Resonanzstäben.",
+      "persoenlichkeitLebensraum": "Lebt in summenden Kristallhöhlen.",
+      "kp": 69,
+      "angriff": 65,
+      "verteidigung": 60,
+      "tempo": 68,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Relaisar",
+      "attacken": [
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonanzklang",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schallbogen",
+          "typ": "Klang",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M125",
+      "name": "Relaisar",
+      "typen": [
+        "Funke",
+        "Klang"
+      ],
+      "beschreibung": "Ein rundlicher Taktgeber mit vier schwingenden Resonanzstäben.",
+      "persoenlichkeitLebensraum": "Lebt in summenden Kristallhöhlen.",
+      "kp": 98,
+      "angriff": 98,
+      "verteidigung": 88,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Taktbruch",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Hallstoß",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M126",
+      "name": "Neblitz",
+      "typen": [
+        "Geist"
+      ],
+      "beschreibung": "Ein flatternder Windknoten mit durchsichtigen Schleierarmen.",
+      "persoenlichkeitLebensraum": "Tanzt in den Windschächten hoher Ruinen.",
+      "kp": 45,
+      "angriff": 42,
+      "verteidigung": 45,
+      "tempo": 54,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Schleudergeist",
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M127",
+      "name": "Schleudergeist",
+      "typen": [
+        "Geist",
+        "Wind"
+      ],
+      "beschreibung": "Ein flatternder Windknoten mit durchsichtigen Schleierarmen.",
+      "persoenlichkeitLebensraum": "Tanzt in den Windschächten hoher Ruinen.",
+      "kp": 68,
+      "angriff": 68,
+      "verteidigung": 65,
+      "tempo": 68,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Dunstvex",
+      "attacken": [
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Böenfächer",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Windklinge",
+          "typ": "Wind",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M128",
+      "name": "Dunstvex",
+      "typen": [
+        "Geist",
+        "Wind"
+      ],
+      "beschreibung": "Ein flatternder Windknoten mit durchsichtigen Schleierarmen.",
+      "persoenlichkeitLebensraum": "Tanzt in den Windschächten hoher Ruinen.",
+      "kp": 96,
+      "angriff": 105,
+      "verteidigung": 88,
+      "tempo": 97,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wirbellauf",
+          "typ": "Wind",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Sturmsog",
+          "typ": "Wind",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M129",
+      "name": "Moosfun",
+      "typen": [
+        "Wuchs"
+      ],
+      "beschreibung": "Ein Wurzelwesen mit bernsteinfarbenen Leiterbahnen im Holz.",
+      "persoenlichkeitLebensraum": "Wacht über regenreiche Urwälder.",
+      "kp": 43,
+      "angriff": 49,
+      "verteidigung": 42,
+      "tempo": 49,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Leitwurzel",
+      "attacken": [
+        {
+          "name": "Wurzelwelle",
+          "typ": "Wuchs",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Samenhagel",
+          "typ": "Wuchs",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blattschild",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Rankenzug",
+          "typ": "Wuchs",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M130",
+      "name": "Leitwurzel",
+      "typen": [
+        "Wuchs",
+        "Funke"
+      ],
+      "beschreibung": "Ein Wurzelwesen mit bernsteinfarbenen Leiterbahnen im Holz.",
+      "persoenlichkeitLebensraum": "Wacht über regenreiche Urwälder.",
+      "kp": 70,
+      "angriff": 72,
+      "verteidigung": 70,
+      "tempo": 67,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Donnerhain",
+      "attacken": [
+        {
+          "name": "Samenhagel",
+          "typ": "Wuchs",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rankenzug",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M131",
+      "name": "Donnerhain",
+      "typen": [
+        "Wuchs",
+        "Funke"
+      ],
+      "beschreibung": "Ein Wurzelwesen mit bernsteinfarbenen Leiterbahnen im Holz.",
+      "persoenlichkeitLebensraum": "Wacht über regenreiche Urwälder.",
+      "kp": 107,
+      "angriff": 117,
+      "verteidigung": 98,
+      "tempo": 107,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blattschild",
+          "typ": "Wuchs",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wurzelwelle",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Stark",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M132",
+      "name": "Knochil",
+      "typen": [
+        "Geist"
+      ],
+      "beschreibung": "Ein steinerner Klapperkörper aus ineinandergreifenden Kalkringen.",
+      "persoenlichkeitLebensraum": "Bewacht vergessene Steinkreise.",
+      "kp": 46,
+      "angriff": 52,
+      "verteidigung": 43,
+      "tempo": 49,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Rasselor",
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M133",
+      "name": "Rasselor",
+      "typen": [
+        "Geist",
+        "Stein"
+      ],
+      "beschreibung": "Ein steinerner Klapperkörper aus ineinandergreifenden Kalkringen.",
+      "persoenlichkeitLebensraum": "Bewacht vergessene Steinkreise.",
+      "kp": 70,
+      "angriff": 69,
+      "verteidigung": 68,
+      "tempo": 74,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Grabgolem",
+      "attacken": [
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Steinpanzer",
+          "typ": "Stein",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schotterwurf",
+          "typ": "Stein",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M134",
+      "name": "Grabgolem",
+      "typen": [
+        "Geist",
+        "Stein"
+      ],
+      "beschreibung": "Ein steinerner Klapperkörper aus ineinandergreifenden Kalkringen.",
+      "persoenlichkeitLebensraum": "Bewacht vergessene Steinkreise.",
+      "kp": 111,
+      "angriff": 109,
+      "verteidigung": 103,
+      "tempo": 106,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Bruchkante",
+          "typ": "Stein",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Felswoge",
+          "typ": "Stein",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Stark",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M135",
+      "name": "Funkfloss",
+      "typen": [
+        "Flut"
+      ],
+      "beschreibung": "Ein flacher Flossengleiter mit blauen Leuchtkanälen.",
+      "persoenlichkeitLebensraum": "Jagt im Brackwasser bei Gewittern.",
+      "kp": 46,
+      "angriff": 43,
+      "verteidigung": 44,
+      "tempo": 57,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Wellenvolt",
+      "attacken": [
+        {
+          "name": "Tiefensog",
+          "typ": "Flut",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wellenbogen",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gischtstoß",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Strömungsgriff",
+          "typ": "Flut",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M136",
+      "name": "Wellenvolt",
+      "typen": [
+        "Flut",
+        "Funke"
+      ],
+      "beschreibung": "Ein flacher Flossengleiter mit blauen Leuchtkanälen.",
+      "persoenlichkeitLebensraum": "Jagt im Brackwasser bei Gewittern.",
+      "kp": 68,
+      "angriff": 73,
+      "verteidigung": 64,
+      "tempo": 70,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Stromdelar",
+      "attacken": [
+        {
+          "name": "Wellenbogen",
+          "typ": "Flut",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strömungsgriff",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M137",
+      "name": "Stromdelar",
+      "typen": [
+        "Flut",
+        "Funke"
+      ],
+      "beschreibung": "Ein flacher Flossengleiter mit blauen Leuchtkanälen.",
+      "persoenlichkeitLebensraum": "Jagt im Brackwasser bei Gewittern.",
+      "kp": 96,
+      "angriff": 106,
+      "verteidigung": 93,
+      "tempo": 91,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Gischtstoß",
+          "typ": "Flut",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Tiefensog",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M138",
+      "name": "Reifspuk",
+      "typen": [
+        "Frost"
+      ],
+      "beschreibung": "Ein Eisnebelwesen mit sternförmiger Stirnplatte.",
+      "persoenlichkeitLebensraum": "Schläft unter gefrorenen Seen.",
+      "kp": 46,
+      "angriff": 42,
+      "verteidigung": 40,
+      "tempo": 55,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Frosthauch",
+      "attacken": [
+        {
+          "name": "Kältesog",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kristallschild",
+          "typ": "Frost",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Reifnadel",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Eisschwall",
+          "typ": "Frost",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M139",
+      "name": "Frosthauch",
+      "typen": [
+        "Frost",
+        "Geist"
+      ],
+      "beschreibung": "Ein Eisnebelwesen mit sternförmiger Stirnplatte.",
+      "persoenlichkeitLebensraum": "Schläft unter gefrorenen Seen.",
+      "kp": 66,
+      "angriff": 73,
+      "verteidigung": 70,
+      "tempo": 76,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Eisphantom",
+      "attacken": [
+        {
+          "name": "Kristallschild",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Eisschwall",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M140",
+      "name": "Eisphantom",
+      "typen": [
+        "Frost",
+        "Geist"
+      ],
+      "beschreibung": "Ein Eisnebelwesen mit sternförmiger Stirnplatte.",
+      "persoenlichkeitLebensraum": "Schläft unter gefrorenen Seen.",
+      "kp": 96,
+      "angriff": 100,
+      "verteidigung": 94,
+      "tempo": 93,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Reifnadel",
+          "typ": "Frost",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kältesog",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M141",
+      "name": "Erzling",
+      "typen": [
+        "Metall"
+      ],
+      "beschreibung": "Ein schwebender Erzkoloss aus ungleich großen Magnetringen.",
+      "persoenlichkeitLebensraum": "Zieht in tiefen Minen Metallstaub an.",
+      "kp": 42,
+      "angriff": 46,
+      "verteidigung": 42,
+      "tempo": 50,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Magnetor",
+      "attacken": [
+        {
+          "name": "Stahlspirale",
+          "typ": "Metall",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Legierungsstoß",
+          "typ": "Metall",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Erzpanzer",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Nietenschlag",
+          "typ": "Metall",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M142",
+      "name": "Magnetor",
+      "typen": [
+        "Metall",
+        "Funke"
+      ],
+      "beschreibung": "Ein schwebender Erzkoloss aus ungleich großen Magnetringen.",
+      "persoenlichkeitLebensraum": "Zieht in tiefen Minen Metallstaub an.",
+      "kp": 70,
+      "angriff": 75,
+      "verteidigung": 66,
+      "tempo": 69,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Polartitan",
+      "attacken": [
+        {
+          "name": "Legierungsstoß",
+          "typ": "Metall",
+          "staerke": 45,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nietenschlag",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 95,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Normal",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M143",
+      "name": "Polartitan",
+      "typen": [
+        "Metall",
+        "Funke"
+      ],
+      "beschreibung": "Ein schwebender Erzkoloss aus ungleich großen Magnetringen.",
+      "persoenlichkeitLebensraum": "Zieht in tiefen Minen Metallstaub an.",
+      "kp": 102,
+      "angriff": 113,
+      "verteidigung": 105,
+      "tempo": 100,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Erzpanzer",
+          "typ": "Metall",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stahlspirale",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Stark",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M144",
+      "name": "Nachtfalteris",
+      "typen": [
+        "Geist",
+        "Klang"
+      ],
+      "beschreibung": "Ein schmaler Nachtfalter mit lautlosen Pergamentflügeln.",
+      "persoenlichkeitLebensraum": "Fliegt nur bei völliger Dunkelheit.",
+      "kp": 101,
+      "angriff": 111,
+      "verteidigung": 90,
+      "tempo": 107,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonanzklang",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schallbogen",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M145",
+      "name": "Blitzhuf",
+      "typen": [
+        "Funke",
+        "Wind"
+      ],
+      "beschreibung": "Ein langbeiniger Läufer mit leuchtenden Gelenkbändern.",
+      "persoenlichkeitLebensraum": "Rennt auf offenen Sturmplateaus.",
+      "kp": 97,
+      "angriff": 102,
+      "verteidigung": 96,
+      "tempo": 105,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Windklinge",
+          "typ": "Wind",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Böenfächer",
+          "typ": "Wind",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M146",
+      "name": "Spiegelspuk",
+      "typen": [
+        "Geist",
+        "Metall"
+      ],
+      "beschreibung": "Ein gesichtsloser Geist in einem gekrümmten Spiegelrahmen.",
+      "persoenlichkeitLebensraum": "Erscheint in verlassenen Spiegelhallen.",
+      "kp": 99,
+      "angriff": 105,
+      "verteidigung": 97,
+      "tempo": 106,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Erzpanzer",
+          "typ": "Metall",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Stahlspirale",
+          "typ": "Metall",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M147",
+      "name": "Funkenkranz",
+      "typen": [
+        "Funke",
+        "Glut"
+      ],
+      "beschreibung": "Ein kreisförmiges Wesen aus rotierenden Wärmelinsen.",
+      "persoenlichkeitLebensraum": "Schwebt über heißen Stromquellen.",
+      "kp": 101,
+      "angriff": 108,
+      "verteidigung": 95,
+      "tempo": 104,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Funkenregen",
+          "typ": "Glut",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Hitzekegel",
+          "typ": "Glut",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M148",
+      "name": "Tiefenscheu",
+      "typen": [
+        "Geist",
+        "Flut"
+      ],
+      "beschreibung": "Ein gläserner Tiefseeschatten mit sechs langen Tastfäden.",
+      "persoenlichkeitLebensraum": "Meidet jede Lichtquelle in Meeresspalten.",
+      "kp": 97,
+      "angriff": 101,
+      "verteidigung": 98,
+      "tempo": 101,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Gischtstoß",
+          "typ": "Flut",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Tiefensog",
+          "typ": "Flut",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Selten",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M149",
+      "name": "Sternleiter",
+      "typen": [
+        "Funke",
+        "Frost"
+      ],
+      "beschreibung": "Ein schlanker Kristallkörper mit blitzenden Eisadern.",
+      "persoenlichkeitLebensraum": "Entsteht in polaren Gewittern.",
+      "kp": 102,
+      "angriff": 120,
+      "verteidigung": 103,
+      "tempo": 112,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kältesog",
+          "typ": "Frost",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Reifnadel",
+          "typ": "Frost",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Episch",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Silber und Violett",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M150",
+      "name": "Gruftwacht",
+      "typen": [
+        "Geist",
+        "Stein"
+      ],
+      "beschreibung": "Ein schwerer Wächter mit kantigem Torso und schwebenden Grabplatten.",
+      "persoenlichkeitLebensraum": "Beschützt alte Katakomben.",
+      "kp": 110,
+      "angriff": 116,
+      "verteidigung": 102,
+      "tempo": 111,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Bruchkante",
+          "typ": "Stein",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Felswoge",
+          "typ": "Stein",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Episch",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Kupfer und Türkis",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M151",
+      "name": "Voltkrone",
+      "typen": [
+        "Funke",
+        "Klang"
+      ],
+      "beschreibung": "Ein schwebender Kronenreif mit acht schallenden Metallzungen.",
+      "persoenlichkeitLebensraum": "Erzeugt Musik während Gewittern.",
+      "kp": 106,
+      "angriff": 119,
+      "verteidigung": 107,
+      "tempo": 116,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Blitzspirale",
+          "typ": "Funke",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Hallstoß",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Polsprung",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Taktbruch",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Episch",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Perlmutt und Gold",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M152",
+      "name": "Echoseele",
+      "typen": [
+        "Geist",
+        "Klang"
+      ],
+      "beschreibung": "Ein durchscheinender Körper mit drei konzentrischen Klangringen.",
+      "persoenlichkeitLebensraum": "Wiederholt Stimmen aus längst vergangenen Tagen.",
+      "kp": 105,
+      "angriff": 118,
+      "verteidigung": 104,
+      "tempo": 112,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echosog",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonanzklang",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spukfessel",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Schallbogen",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Episch",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Schwarz und Cyan",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    },
+    {
+      "id": "M153",
+      "name": "Nullfunke",
+      "typen": [
+        "Geist",
+        "Funke"
+      ],
+      "beschreibung": "Ein dunkler, facettierter Kern mit silbernen Entladungsfäden.",
+      "persoenlichkeitLebensraum": "Erscheint selten in dimensionslosen Gewitterfeldern.",
+      "kp": 116,
+      "angriff": 120,
+      "verteidigung": 110,
+      "tempo": 120,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Schattensaum",
+          "typ": "Geist",
+          "staerke": 60,
+          "effekt": "10 % Chance, das gegnerische Tempo für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Stromnetz",
+          "typ": "Funke",
+          "staerke": 85,
+          "effekt": "20 % Chance, den gegnerischen Angriff für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Seelenwelle",
+          "typ": "Geist",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 3 Runden um 20 %."
+        },
+        {
+          "name": "Ladungsbogen",
+          "typ": "Funke",
+          "staerke": 110,
+          "effekt": "Kein Zusatzeffekt."
+        }
+      ],
+      "generation": 5,
+      "kategorie": "Mythisch",
+      "shiny": {
+        "verfuegbar": true,
+        "chance": 0.002,
+        "farbvariante": "Weiß und Magenta",
+        "effekt": "Funkelpartikel beim Erscheinen",
+        "werteBonus": 0
+      }
+    }
+  ]
+}

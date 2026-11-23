@@ -1,0 +1,1806 @@
+{
+  "typen": [
+    "Glut",
+    "Flut",
+    "Wuchs",
+    "Funke",
+    "Stein",
+    "Frost",
+    "Klang",
+    "Nebel",
+    "Metall",
+    "Wind"
+  ],
+  "typTabelle": {
+    "Glut": {
+      "starkGegen": [
+        "Wuchs",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Stein"
+      ]
+    },
+    "Flut": {
+      "starkGegen": [
+        "Glut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Wuchs",
+        "Funke"
+      ]
+    },
+    "Wuchs": {
+      "starkGegen": [
+        "Flut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Frost"
+      ]
+    },
+    "Funke": {
+      "starkGegen": [
+        "Flut",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Stein",
+        "Wuchs"
+      ]
+    },
+    "Stein": {
+      "starkGegen": [
+        "Glut",
+        "Funke"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Wuchs"
+      ]
+    },
+    "Frost": {
+      "starkGegen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Stein"
+      ]
+    },
+    "Klang": {
+      "starkGegen": [
+        "Nebel",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Metall"
+      ]
+    },
+    "Nebel": {
+      "starkGegen": [
+        "Metall",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Klang",
+        "Glut"
+      ]
+    },
+    "Metall": {
+      "starkGegen": [
+        "Frost",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Nebel",
+        "Glut"
+      ]
+    },
+    "Wind": {
+      "starkGegen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Frost"
+      ]
+    }
+  },
+  "monster": [
+    {
+      "id": "M084",
+      "name": "Knirpsel",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Ein runder Kohlenhüpfer mit drei porösen Füßen und einer rot glimmenden Stirn.",
+      "persoenlichkeitLebensraum": "Verspielt; lebt an warmen Geröllfeldern.",
+      "kp": 61,
+      "angriff": 40,
+      "verteidigung": 62,
+      "tempo": 52,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Schlackhorn",
+      "attacken": [
+        {
+          "name": "Knirpsel-Glutritze",
+          "typ": "Glut",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Knirpsel-Gratkante",
+          "typ": "Stein",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Knirpsel-Hitzeschild",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Knirpsel-Schmelzwelle",
+          "typ": "Glut",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M085",
+      "name": "Schlackhorn",
+      "typen": [
+        "Glut",
+        "Stein"
+      ],
+      "beschreibung": "Ein breitbeiniger Schlackenläufer mit hohlem Rückenpanzer und glühenden Rippen.",
+      "persoenlichkeitLebensraum": "Territorial; patrouilliert alte Lavawege.",
+      "kp": 100,
+      "angriff": 98,
+      "verteidigung": 102,
+      "tempo": 108,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Schlackhorn-Glutritze",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schlackhorn-Gratkante",
+          "typ": "Stein",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schlackhorn-Hitzeschild",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Schlackhorn-Schmelzwelle",
+          "typ": "Glut",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M086",
+      "name": "Quibbel",
+      "typen": [
+        "Flut",
+        "Metall"
+      ],
+      "beschreibung": "Ein weiches Wasserwesen in einer durchsichtigen, sechseckigen Schale.",
+      "persoenlichkeitLebensraum": "Neugierig; wohnt in Regenzisternen.",
+      "kp": 63,
+      "angriff": 51,
+      "verteidigung": 57,
+      "tempo": 58,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Schleusant",
+      "attacken": [
+        {
+          "name": "Quibbel-Spritzfächer",
+          "typ": "Flut",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Quibbel-Plattenstoß",
+          "typ": "Metall",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Quibbel-Wasserhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Quibbel-Flutklinge",
+          "typ": "Flut",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M087",
+      "name": "Schleusant",
+      "typen": [
+        "Flut",
+        "Metall"
+      ],
+      "beschreibung": "Ein sechsarmiger Schleusenwächter mit beweglichen Wasserkammern in den Armen.",
+      "persoenlichkeitLebensraum": "Geduldig; schützt unterirdische Kanäle.",
+      "kp": 85,
+      "angriff": 98,
+      "verteidigung": 106,
+      "tempo": 71,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Schleusant-Spritzfächer",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schleusant-Plattenstoß",
+          "typ": "Metall",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schleusant-Wasserhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Schleusant-Flutklinge",
+          "typ": "Flut",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Kraftmonster",
+      "generation": 4
+    },
+    {
+      "id": "M088",
+      "name": "Knospir",
+      "typen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "beschreibung": "Ein hüpfender Samenkörper mit zwei gefalteten Blättern als Ohren.",
+      "persoenlichkeitLebensraum": "Scheu; versteckt sich in Streuobstwiesen.",
+      "kp": 63,
+      "angriff": 53,
+      "verteidigung": 39,
+      "tempo": 63,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Laubkranz",
+      "attacken": [
+        {
+          "name": "Knospir-Rankenzug",
+          "typ": "Wuchs",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Knospir-Hallstoß",
+          "typ": "Klang",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Knospir-Wurzelruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Knospir-Blätterkreis",
+          "typ": "Wuchs",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M089",
+      "name": "Laubkranz",
+      "typen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "beschreibung": "Ein schwebender Blätterkranz mit klingenden Samenkapseln und einem kleinen Holzkern.",
+      "persoenlichkeitLebensraum": "Fürsorglich; lebt in singenden Baumhainen.",
+      "kp": 89,
+      "angriff": 101,
+      "verteidigung": 92,
+      "tempo": 95,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Laubkranz-Rankenzug",
+          "typ": "Wuchs",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Laubkranz-Hallstoß",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Laubkranz-Wurzelruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Laubkranz-Blätterkreis",
+          "typ": "Wuchs",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M090",
+      "name": "Zirral",
+      "typen": [
+        "Funke",
+        "Wind"
+      ],
+      "beschreibung": "Ein dünner Flieger mit drei Drahtfedern als Schwanz und funkelnden Augen.",
+      "persoenlichkeitLebensraum": "Ungeduldig; saust über Stromwiesen.",
+      "kp": 41,
+      "angriff": 43,
+      "verteidigung": 42,
+      "tempo": 52,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Spulenrix",
+      "attacken": [
+        {
+          "name": "Zirral-Funkensprung",
+          "typ": "Funke",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Zirral-Luftsichel",
+          "typ": "Wind",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Zirral-Spulenruhe",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Zirral-Spannungsbogen",
+          "typ": "Funke",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M091",
+      "name": "Spulenrix",
+      "typen": [
+        "Funke",
+        "Wind"
+      ],
+      "beschreibung": "Ein pfeilförmiger Segler mit spiraligen Leitfedern und geladenen Flügelspitzen.",
+      "persoenlichkeitLebensraum": "Wachsam; nistet an hohen Windmasten.",
+      "kp": 105,
+      "angriff": 110,
+      "verteidigung": 93,
+      "tempo": 85,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Spulenrix-Funkensprung",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Spulenrix-Luftsichel",
+          "typ": "Wind",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Spulenrix-Spulenruhe",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Spulenrix-Spannungsbogen",
+          "typ": "Funke",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M092",
+      "name": "Bröckel",
+      "typen": [
+        "Stein",
+        "Frost"
+      ],
+      "beschreibung": "Ein kantiges Kieselwesen mit Raureif an den Schultern.",
+      "persoenlichkeitLebensraum": "Ausdauernd; gräbt im Frostschutt.",
+      "kp": 44,
+      "angriff": 57,
+      "verteidigung": 47,
+      "tempo": 40,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Kammolith",
+      "attacken": [
+        {
+          "name": "Bröckel-Gerölltritt",
+          "typ": "Stein",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Bröckel-Kältestoß",
+          "typ": "Frost",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Bröckel-Schieferwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Bröckel-Felswucht",
+          "typ": "Stein",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M093",
+      "name": "Kammolith",
+      "typen": [
+        "Stein",
+        "Frost"
+      ],
+      "beschreibung": "Ein schwerer Gratwanderer mit Eisadern und gezacktem Basaltkamm.",
+      "persoenlichkeitLebensraum": "Stoisch; lebt an vereisten Felsgraten.",
+      "kp": 105,
+      "angriff": 104,
+      "verteidigung": 108,
+      "tempo": 80,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Kammolith-Gerölltritt",
+          "typ": "Stein",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Kammolith-Kältestoß",
+          "typ": "Frost",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Kammolith-Schieferwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Kammolith-Felswucht",
+          "typ": "Stein",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Kraftmonster",
+      "generation": 4
+    },
+    {
+      "id": "M094",
+      "name": "Huschne",
+      "typen": [
+        "Nebel",
+        "Wind"
+      ],
+      "beschreibung": "Ein flaches Wesen mit vier flatternden Tuchflossen und einer schmalen Maske.",
+      "persoenlichkeitLebensraum": "Vorsichtig; treibt durch Morgentäler.",
+      "kp": 55,
+      "angriff": 45,
+      "verteidigung": 55,
+      "tempo": 62,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Schleierfex",
+      "attacken": [
+        {
+          "name": "Huschne-Dunsthieb",
+          "typ": "Nebel",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Huschne-Luftsichel",
+          "typ": "Wind",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Huschne-Nebelhülle",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Huschne-Trugwelle",
+          "typ": "Nebel",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M095",
+      "name": "Schleierfex",
+      "typen": [
+        "Nebel",
+        "Wind"
+      ],
+      "beschreibung": "Ein langgestreckter Nebelgleiter mit geteilten Segeln und schwebendem Maskengesicht.",
+      "persoenlichkeitLebensraum": "Listig; bewacht verlassene Passwege.",
+      "kp": 85,
+      "angriff": 91,
+      "verteidigung": 94,
+      "tempo": 110,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Schleierfex-Dunsthieb",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Schleierfex-Luftsichel",
+          "typ": "Wind",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Schleierfex-Nebelhülle",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Schleierfex-Trugwelle",
+          "typ": "Nebel",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M096",
+      "name": "Tinkel",
+      "typen": [
+        "Klang",
+        "Metall"
+      ],
+      "beschreibung": "Ein kleiner Kupferkörper mit zwei hohlen, pendelnden Beinen.",
+      "persoenlichkeitLebensraum": "Gesellig; lauscht in Werkhöfen.",
+      "kp": 45,
+      "angriff": 39,
+      "verteidigung": 54,
+      "tempo": 55,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Glockar",
+      "attacken": [
+        {
+          "name": "Tinkel-Tonschlag",
+          "typ": "Klang",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Tinkel-Plattenstoß",
+          "typ": "Metall",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Tinkel-Stimmruhe",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Tinkel-Resonanzbogen",
+          "typ": "Klang",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M097",
+      "name": "Glockar",
+      "typen": [
+        "Klang",
+        "Metall"
+      ],
+      "beschreibung": "Ein hochgewachsener Resonanzwächter mit fünf frei schwingenden Metallringen.",
+      "persoenlichkeitLebensraum": "Besonnen; lebt in alten Glockentürmen.",
+      "kp": 83,
+      "angriff": 86,
+      "verteidigung": 83,
+      "tempo": 92,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Glockar-Tonschlag",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Glockar-Plattenstoß",
+          "typ": "Metall",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Glockar-Stimmruhe",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Glockar-Resonanzbogen",
+          "typ": "Klang",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M098",
+      "name": "Dämmerl",
+      "typen": [
+        "Nebel",
+        "Frost"
+      ],
+      "beschreibung": "Ein pelziger Nachtknoten mit silbrigen Schuppen am Rücken.",
+      "persoenlichkeitLebensraum": "Still; ruht in kühlen Felsspalten.",
+      "kp": 52,
+      "angriff": 53,
+      "verteidigung": 57,
+      "tempo": 44,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Mondschorf",
+      "attacken": [
+        {
+          "name": "Dämmerl-Dunsthieb",
+          "typ": "Nebel",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dämmerl-Kältestoß",
+          "typ": "Frost",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Dämmerl-Nebelhülle",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Dämmerl-Trugwelle",
+          "typ": "Nebel",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M099",
+      "name": "Mondschorf",
+      "typen": [
+        "Nebel",
+        "Frost"
+      ],
+      "beschreibung": "Ein vierarmiger Höhlenkletterer mit gefrorenen Nebelschuppen und Sichelkrallen.",
+      "persoenlichkeitLebensraum": "Einzelgängerisch; durchstreift Mondhöhlen.",
+      "kp": 92,
+      "angriff": 93,
+      "verteidigung": 89,
+      "tempo": 108,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Mondschorf-Dunsthieb",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Mondschorf-Kältestoß",
+          "typ": "Frost",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Mondschorf-Nebelhülle",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Mondschorf-Trugwelle",
+          "typ": "Nebel",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Kraftmonster",
+      "generation": 4
+    },
+    {
+      "id": "M100",
+      "name": "Rostel",
+      "typen": [
+        "Metall",
+        "Glut"
+      ],
+      "beschreibung": "Ein kleiner Eisenläufer mit rötlichem Oxidfell und flachen Füßen.",
+      "persoenlichkeitLebensraum": "Fleißig; sammelt Erzreste.",
+      "kp": 49,
+      "angriff": 41,
+      "verteidigung": 47,
+      "tempo": 36,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Ambossar",
+      "attacken": [
+        {
+          "name": "Rostel-Nietenschub",
+          "typ": "Metall",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Rostel-Kohlenbogen",
+          "typ": "Glut",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Rostel-Panzerhaltung",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Rostel-Stahlbogen",
+          "typ": "Metall",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M101",
+      "name": "Ambossar",
+      "typen": [
+        "Metall",
+        "Glut"
+      ],
+      "beschreibung": "Ein gedrungener Schmiedekoloss mit zwei federnden Ambossarmen und Rauchöffnungen.",
+      "persoenlichkeitLebensraum": "Stur; bewacht aufgegebene Schmelzöfen.",
+      "kp": 101,
+      "angriff": 115,
+      "verteidigung": 103,
+      "tempo": 95,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ambossar-Nietenschub",
+          "typ": "Metall",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Ambossar-Kohlenbogen",
+          "typ": "Glut",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ambossar-Panzerhaltung",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Ambossar-Stahlbogen",
+          "typ": "Metall",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M102",
+      "name": "Fiedra",
+      "typen": [
+        "Wind",
+        "Klang"
+      ],
+      "beschreibung": "Ein federleichtes Dreieckswesen mit vibrierendem Brustsegel.",
+      "persoenlichkeitLebensraum": "Fröhlich; schwebt über Weiden.",
+      "kp": 43,
+      "angriff": 51,
+      "verteidigung": 45,
+      "tempo": 47,
+      "entwicklungLevel": 32,
+      "entwicktSichZu": "Orkanfied",
+      "attacken": [
+        {
+          "name": "Fiedra-Böenstoß",
+          "typ": "Wind",
+          "staerke": 42,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Fiedra-Hallstoß",
+          "typ": "Klang",
+          "staerke": 62,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Fiedra-Segelhaltung",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Fiedra-Wirbelkante",
+          "typ": "Wind",
+          "staerke": 82,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M103",
+      "name": "Orkanfied",
+      "typen": [
+        "Wind",
+        "Klang"
+      ],
+      "beschreibung": "Ein riesiger Himmelsgleiter mit vier Saitensegeln und einer hohlen Brustkammer.",
+      "persoenlichkeitLebensraum": "Stolz; singt in Hochlandstürmen.",
+      "kp": 91,
+      "angriff": 115,
+      "verteidigung": 84,
+      "tempo": 92,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Orkanfied-Böenstoß",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Orkanfied-Hallstoß",
+          "typ": "Klang",
+          "staerke": 85,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Orkanfied-Segelhaltung",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Orkanfied-Wirbelkante",
+          "typ": "Wind",
+          "staerke": 100,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 4
+    },
+    {
+      "id": "M104",
+      "name": "Auralith",
+      "typen": [
+        "Stein",
+        "Klang"
+      ],
+      "beschreibung": "Ein uralter stehender Monolith auf sechs schwebenden Steinfüßen, dessen Risse im Takt leuchten.",
+      "persoenlichkeitLebensraum": "Unerschütterlich; erwacht in vergessenen Resonanzschluchten.",
+      "kp": 109,
+      "angriff": 111,
+      "verteidigung": 106,
+      "tempo": 97,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Auralith-Gerölltritt",
+          "typ": "Stein",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Auralith-Hallstoß",
+          "typ": "Klang",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Auralith-Schieferwall",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Erdgedächtnis",
+          "typ": "Stein",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M105",
+      "name": "Neruvia",
+      "typen": [
+        "Flut",
+        "Frost"
+      ],
+      "beschreibung": "Ein durchsichtiges Tiefenwesen mit spiralförmigem Eisschild und langen Tropfenarmen.",
+      "persoenlichkeitLebensraum": "Ruhig; erscheint unter wandernden Packeisfeldern.",
+      "kp": 105,
+      "angriff": 111,
+      "verteidigung": 112,
+      "tempo": 108,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Neruvia-Spritzfächer",
+          "typ": "Flut",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Neruvia-Kältestoß",
+          "typ": "Frost",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Neruvia-Wasserhaut",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Gezeitenstillstand",
+          "typ": "Flut",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M106",
+      "name": "Solmara",
+      "typen": [
+        "Glut",
+        "Wind"
+      ],
+      "beschreibung": "Ein strahlenförmiger Segler mit kupfernen Sonnenschaufeln und glühendem Innenring.",
+      "persoenlichkeitLebensraum": "Freiheitsliebend; kreist über heißen Hochebenen.",
+      "kp": 117,
+      "angriff": 117,
+      "verteidigung": 115,
+      "tempo": 110,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Solmara-Glutritze",
+          "typ": "Glut",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Solmara-Luftsichel",
+          "typ": "Wind",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Solmara-Hitzeschild",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Zenitsturz",
+          "typ": "Glut",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M107",
+      "name": "Vesperox",
+      "typen": [
+        "Nebel",
+        "Metall"
+      ],
+      "beschreibung": "Ein massiger Nachtwächter aus matten Platten, die um eine leere Körpermitte schweben.",
+      "persoenlichkeitLebensraum": "Argwöhnisch; ruht in versunkenen Observatorien.",
+      "kp": 107,
+      "angriff": 110,
+      "verteidigung": 105,
+      "tempo": 103,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Vesperox-Dunsthieb",
+          "typ": "Nebel",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Vesperox-Plattenstoß",
+          "typ": "Metall",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Vesperox-Nebelhülle",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Leerstahlschnitt",
+          "typ": "Nebel",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M108",
+      "name": "Echoryn",
+      "typen": [
+        "Klang",
+        "Wuchs"
+      ],
+      "beschreibung": "Ein baumhohes Wesen aus hohlen Holzsäulen mit einer Krone schwingender Klangfäden.",
+      "persoenlichkeitLebensraum": "Sanft; wacht über das Echo uralter Wälder.",
+      "kp": 107,
+      "angriff": 116,
+      "verteidigung": 113,
+      "tempo": 114,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Echoryn-Tonschlag",
+          "typ": "Klang",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Echoryn-Saatenstoß",
+          "typ": "Wuchs",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Echoryn-Stimmruhe",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Urwaldresonanz",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M109",
+      "name": "Voltraxis",
+      "typen": [
+        "Funke",
+        "Stein"
+      ],
+      "beschreibung": "Ein kreisender Blitzkern, umgeben von neun scharfkantigen, magnetischen Felsinseln.",
+      "persoenlichkeitLebensraum": "Ungestüm; wohnt im Zentrum trockener Gewitter.",
+      "kp": 112,
+      "angriff": 120,
+      "verteidigung": 116,
+      "tempo": 107,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Voltraxis-Funkensprung",
+          "typ": "Funke",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Voltraxis-Gratkante",
+          "typ": "Stein",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Voltraxis-Spulenruhe",
+          "typ": "Funke",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Donnerbruch",
+          "typ": "Funke",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M110",
+      "name": "Iskariel",
+      "typen": [
+        "Frost",
+        "Wind"
+      ],
+      "beschreibung": "Ein schmaler Wolkengleiter mit gläsernen Flügelkämmen und einem gefrorenen Schweif.",
+      "persoenlichkeitLebensraum": "Distanziert; zieht über die höchsten Eisgipfel.",
+      "kp": 106,
+      "angriff": 110,
+      "verteidigung": 108,
+      "tempo": 109,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Iskariel-Reifsplitter",
+          "typ": "Frost",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Iskariel-Luftsichel",
+          "typ": "Wind",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Iskariel-Frostpanzer",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Himmelsreif",
+          "typ": "Frost",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M111",
+      "name": "Muravon",
+      "typen": [
+        "Wuchs",
+        "Nebel"
+      ],
+      "beschreibung": "Ein langsamer Moorhüter mit einem leuchtenden Pilzdom und wurzelartigen Stelzen.",
+      "persoenlichkeitLebensraum": "Geduldig; schützt uralte Nebelmoore.",
+      "kp": 108,
+      "angriff": 111,
+      "verteidigung": 110,
+      "tempo": 104,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Muravon-Rankenzug",
+          "typ": "Wuchs",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Muravon-Schleierstoß",
+          "typ": "Nebel",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Muravon-Wurzelruhe",
+          "typ": "Wuchs",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Sumpfgedächtnis",
+          "typ": "Wuchs",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M112",
+      "name": "Klangor",
+      "typen": [
+        "Klang",
+        "Funke"
+      ],
+      "beschreibung": "Ein sechseckiger Schwebekörper mit rotierenden Stimmgabelarmen und funkelnden Membranen.",
+      "persoenlichkeitLebensraum": "Neugierig; erscheint bei seltenen Polarlichtern.",
+      "kp": 113,
+      "angriff": 117,
+      "verteidigung": 115,
+      "tempo": 110,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Klangor-Tonschlag",
+          "typ": "Klang",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Klangor-Ladungsstoß",
+          "typ": "Funke",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Klangor-Stimmruhe",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Spektralakkord",
+          "typ": "Klang",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    },
+    {
+      "id": "M113",
+      "name": "Ferragant",
+      "typen": [
+        "Metall",
+        "Flut"
+      ],
+      "beschreibung": "Ein riesiger gepanzerter Tiefenläufer mit hydraulischen Flossen und einer Perlenkammer.",
+      "persoenlichkeitLebensraum": "Würdevoll; bewacht die versunkenen Metallgärten.",
+      "kp": 110,
+      "angriff": 115,
+      "verteidigung": 110,
+      "tempo": 113,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ferragant-Nietenschub",
+          "typ": "Metall",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Ferragant-Quellschub",
+          "typ": "Flut",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ferragant-Panzerhaltung",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Tiefendruck",
+          "typ": "Metall",
+          "staerke": 110,
+          "effekt": "Einmal pro Kampf; nach dem Treffer sinkt der eigene Angriff für 2 Runden um 15 %."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 4
+    }
+  ],
+  "champions": [
+    {
+      "id": "C01",
+      "name": "Mira",
+      "titel": "Die Flutstrategin",
+      "arena": "Gezeitenarena",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: Verlangsamung und robuste Flutverteidigung.",
+      "belohnung": {
+        "titel": "Die Flutstrategin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M087",
+          "name": "Schleusant",
+          "level": 100,
+          "attacken": [
+            "Schleusant-Spritzfächer",
+            "Schleusant-Plattenstoß",
+            "Schleusant-Wasserhaut",
+            "Schleusant-Flutklinge"
+          ]
+        },
+        {
+          "monsterId": "M105",
+          "name": "Neruvia",
+          "level": 100,
+          "attacken": [
+            "Neruvia-Spritzfächer",
+            "Neruvia-Kältestoß",
+            "Neruvia-Wasserhaut",
+            "Gezeitenstillstand"
+          ]
+        },
+        {
+          "monsterId": "M006",
+          "name": "Strömara",
+          "level": 100,
+          "attacken": [
+            "Spritzbogen",
+            "Wirbelrinne",
+            "Böenschub",
+            "Quellhaut"
+          ]
+        },
+        {
+          "monsterId": "M048",
+          "name": "Aquarion",
+          "level": 100,
+          "attacken": [
+            "Aquarion-Quellstoß",
+            "Aquarion-Luftschnitt",
+            "Aquarion-Wächterschutz",
+            "Tiefenwirbel"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C02",
+      "name": "Barek",
+      "titel": "Der Erzbrecher",
+      "arena": "Ambosskolosseum",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: hohe Verteidigung und harte Konter.",
+      "belohnung": {
+        "titel": "Der Erzbrecher",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M101",
+          "name": "Ambossar",
+          "level": 100,
+          "attacken": [
+            "Ambossar-Nietenschub",
+            "Ambossar-Kohlenbogen",
+            "Ambossar-Panzerhaltung",
+            "Ambossar-Stahlbogen"
+          ]
+        },
+        {
+          "monsterId": "M093",
+          "name": "Kammolith",
+          "level": 100,
+          "attacken": [
+            "Kammolith-Gerölltritt",
+            "Kammolith-Kältestoß",
+            "Kammolith-Schieferwall",
+            "Kammolith-Felswucht"
+          ]
+        },
+        {
+          "monsterId": "M027",
+          "name": "Titanor",
+          "level": 100,
+          "attacken": [
+            "Titanor-Nietenschlag",
+            "Titanor-Kieselschild",
+            "Titanor-Panzerklang",
+            "Titanor-Bodenwelle"
+          ]
+        },
+        {
+          "monsterId": "M081",
+          "name": "Pyrothar",
+          "level": 100,
+          "attacken": [
+            "Funkenritze",
+            "Klingenlauf",
+            "Aschehaut",
+            "Kernschmelze"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C03",
+      "name": "Sela",
+      "titel": "Die Sturmvirtuosin",
+      "arena": "Wolkenbühne",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: hohes Tempo und kontrollierende Klangattacken.",
+      "belohnung": {
+        "titel": "Die Sturmvirtuosin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M103",
+          "name": "Orkanfied",
+          "level": 100,
+          "attacken": [
+            "Orkanfied-Böenstoß",
+            "Orkanfied-Hallstoß",
+            "Orkanfied-Segelhaltung",
+            "Orkanfied-Wirbelkante"
+          ]
+        },
+        {
+          "monsterId": "M091",
+          "name": "Spulenrix",
+          "level": 100,
+          "attacken": [
+            "Spulenrix-Funkensprung",
+            "Spulenrix-Luftsichel",
+            "Spulenrix-Spulenruhe",
+            "Spulenrix-Spannungsbogen"
+          ]
+        },
+        {
+          "monsterId": "M024",
+          "name": "Sturmarik",
+          "level": 100,
+          "attacken": [
+            "Sturmarik-Böenstoß",
+            "Sturmarik-Ladungszacke",
+            "Sturmarik-Windschirm",
+            "Sturmarik-Funkenkette"
+          ]
+        },
+        {
+          "monsterId": "M110",
+          "name": "Iskariel",
+          "level": 100,
+          "attacken": [
+            "Iskariel-Reifsplitter",
+            "Iskariel-Luftsichel",
+            "Iskariel-Frostpanzer",
+            "Himmelsreif"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C04",
+      "name": "Noxen",
+      "titel": "Der Schleiermeister",
+      "arena": "Dämmerkuppel",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: Statuswechsel und geduldige Kämpfe.",
+      "belohnung": {
+        "titel": "Der Schleiermeister",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M095",
+          "name": "Schleierfex",
+          "level": 100,
+          "attacken": [
+            "Schleierfex-Dunsthieb",
+            "Schleierfex-Luftsichel",
+            "Schleierfex-Nebelhülle",
+            "Schleierfex-Trugwelle"
+          ]
+        },
+        {
+          "monsterId": "M099",
+          "name": "Mondschorf",
+          "level": 100,
+          "attacken": [
+            "Mondschorf-Dunsthieb",
+            "Mondschorf-Kältestoß",
+            "Mondschorf-Nebelhülle",
+            "Mondschorf-Trugwelle"
+          ]
+        },
+        {
+          "monsterId": "M050",
+          "name": "Noctarion",
+          "level": 100,
+          "attacken": [
+            "Noctarion-Schleierhieb",
+            "Noctarion-Eisfächer",
+            "Noctarion-Wächterschutz",
+            "Dunkelschleier"
+          ]
+        },
+        {
+          "monsterId": "M107",
+          "name": "Vesperox",
+          "level": 100,
+          "attacken": [
+            "Vesperox-Dunsthieb",
+            "Vesperox-Plattenstoß",
+            "Vesperox-Nebelhülle",
+            "Leerstahlschnitt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C05",
+      "name": "Runa",
+      "titel": "Die Wurzelkönigin",
+      "arena": "Hainzirkel",
+      "schwierigkeit": "Sehr schwer",
+      "strategie": "Taktik: defensive Stärkung und ausdauernde Angriffe.",
+      "belohnung": {
+        "titel": "Die Wurzelkönigin",
+        "muenzen": 12000
+      },
+      "team": [
+        {
+          "monsterId": "M089",
+          "name": "Laubkranz",
+          "level": 100,
+          "attacken": [
+            "Laubkranz-Rankenzug",
+            "Laubkranz-Hallstoß",
+            "Laubkranz-Wurzelruhe",
+            "Laubkranz-Blätterkreis"
+          ]
+        },
+        {
+          "monsterId": "M009",
+          "name": "Hainwacht",
+          "level": 100,
+          "attacken": [
+            "Blattwirbel",
+            "Wurzelgriff",
+            "Schleierzug",
+            "Grünruhe"
+          ]
+        },
+        {
+          "monsterId": "M082",
+          "name": "Sylvaris",
+          "level": 100,
+          "attacken": [
+            "Blattschnitt",
+            "Luftklinge",
+            "Wurzelruhe",
+            "Weltenkeim"
+          ]
+        },
+        {
+          "monsterId": "M108",
+          "name": "Echoryn",
+          "level": 100,
+          "attacken": [
+            "Echoryn-Tonschlag",
+            "Echoryn-Saatenstoß",
+            "Echoryn-Stimmruhe",
+            "Urwaldresonanz"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C06",
+      "name": "Taron",
+      "titel": "Der Meister aller Ringe",
+      "arena": "Ursprungsarena",
+      "schwierigkeit": "Extrem",
+      "strategie": "Taktik: wechselnde Typen und legendäre Endphase.",
+      "belohnung": {
+        "titel": "Der Meister aller Ringe",
+        "muenzen": 25000
+      },
+      "team": [
+        {
+          "monsterId": "M085",
+          "name": "Schlackhorn",
+          "level": 100,
+          "attacken": [
+            "Schlackhorn-Glutritze",
+            "Schlackhorn-Gratkante",
+            "Schlackhorn-Hitzeschild",
+            "Schlackhorn-Schmelzwelle"
+          ]
+        },
+        {
+          "monsterId": "M109",
+          "name": "Voltraxis",
+          "level": 100,
+          "attacken": [
+            "Voltraxis-Funkensprung",
+            "Voltraxis-Gratkante",
+            "Voltraxis-Spulenruhe",
+            "Donnerbruch"
+          ]
+        },
+        {
+          "monsterId": "M113",
+          "name": "Ferragant",
+          "level": 100,
+          "attacken": [
+            "Ferragant-Nietenschub",
+            "Ferragant-Quellschub",
+            "Ferragant-Panzerhaltung",
+            "Tiefendruck"
+          ]
+        },
+        {
+          "monsterId": "M083",
+          "name": "Ferrumon",
+          "level": 100,
+          "attacken": [
+            "Nietenschlag",
+            "Spulenstoß",
+            "Stahlhaltung",
+            "Magnetsturm"
+          ]
+        },
+        {
+          "monsterId": "M052",
+          "name": "Ursphäron",
+          "level": 100,
+          "attacken": [
+            "Ursphäron-Schleierhieb",
+            "Ursphäron-Stahlbogen",
+            "Ursphäron-Wächterschutz",
+            "Ursprungspuls"
+          ]
+        }
+      ]
+    }
+  ],
+  "kampfregeln": {
+    "maxLevel": 100,
+    "championStartLevel": 100,
+    "championMonsterFangbar": false,
+    "legendäreSpezialattackenProKampf": 1,
+    "championBelohnungNurBeimErstenSieg": true
+  }
+}

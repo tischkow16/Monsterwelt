@@ -1,0 +1,1471 @@
+{
+  "typen": [
+    "Glut",
+    "Flut",
+    "Wuchs",
+    "Funke",
+    "Stein",
+    "Frost",
+    "Klang",
+    "Nebel",
+    "Metall",
+    "Wind"
+  ],
+  "typTabelle": {
+    "Glut": {
+      "starkGegen": [
+        "Wuchs",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Stein"
+      ]
+    },
+    "Flut": {
+      "starkGegen": [
+        "Glut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Wuchs",
+        "Funke"
+      ]
+    },
+    "Wuchs": {
+      "starkGegen": [
+        "Flut",
+        "Stein"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Frost"
+      ]
+    },
+    "Funke": {
+      "starkGegen": [
+        "Flut",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Stein",
+        "Wuchs"
+      ]
+    },
+    "Stein": {
+      "starkGegen": [
+        "Glut",
+        "Funke"
+      ],
+      "schwachGegen": [
+        "Flut",
+        "Wuchs"
+      ]
+    },
+    "Frost": {
+      "starkGegen": [
+        "Wuchs",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Glut",
+        "Stein"
+      ]
+    },
+    "Klang": {
+      "starkGegen": [
+        "Nebel",
+        "Frost"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Metall"
+      ]
+    },
+    "Nebel": {
+      "starkGegen": [
+        "Metall",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Klang",
+        "Glut"
+      ]
+    },
+    "Metall": {
+      "starkGegen": [
+        "Frost",
+        "Klang"
+      ],
+      "schwachGegen": [
+        "Nebel",
+        "Glut"
+      ]
+    },
+    "Wind": {
+      "starkGegen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "schwachGegen": [
+        "Funke",
+        "Frost"
+      ]
+    }
+  },
+  "monster": [
+    {
+      "id": "M022",
+      "name": "Lufti",
+      "typen": [
+        "Wind"
+      ],
+      "beschreibung": "Kleiner Segelgleiter mit drei federartigen Flossen und rundem Körper.",
+      "persoenlichkeitLebensraum": "Verspielt; schwebt über Blumenwiesen.",
+      "kp": 41,
+      "angriff": 46,
+      "verteidigung": 43,
+      "tempo": 49,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Brisaro",
+      "attacken": [
+        {
+          "name": "Lufti-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Lufti-Luftschnitt",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Lufti-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Lufti-Wirbelsturz",
+          "typ": "Wind",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M023",
+      "name": "Brisaro",
+      "typen": [
+        "Wind"
+      ],
+      "beschreibung": "Schlanker Windläufer mit zwei breiten Seitenmembranen und gebogenem Stirnkamm.",
+      "persoenlichkeitLebensraum": "Wachsam; bewohnt windige Hochflächen.",
+      "kp": 72,
+      "angriff": 68,
+      "verteidigung": 65,
+      "tempo": 77,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Sturmarik",
+      "attacken": [
+        {
+          "name": "Brisaro-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Brisaro-Luftschnitt",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Brisaro-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Brisaro-Wirbelsturz",
+          "typ": "Wind",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M024",
+      "name": "Sturmarik",
+      "typen": [
+        "Wind",
+        "Funke"
+      ],
+      "beschreibung": "Großer Sturmsegler mit spiralförmigen Flügelkanten und blitzgesäumtem Rückenkamm.",
+      "persoenlichkeitLebensraum": "Unabhängig; nistet an Gewitterklippen.",
+      "kp": 96,
+      "angriff": 94,
+      "verteidigung": 88,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Sturmarik-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Sturmarik-Ladungszacke",
+          "typ": "Funke",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Sturmarik-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Sturmarik-Funkenkette",
+          "typ": "Funke",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M025",
+      "name": "Metalli",
+      "typen": [
+        "Metall"
+      ],
+      "beschreibung": "Kugeliges Wesen mit vier Gelenkfüßen und einer einzelnen Leuchtlinse.",
+      "persoenlichkeitLebensraum": "Sammelfreudig; lebt in alten Werkstätten.",
+      "kp": 44,
+      "angriff": 49,
+      "verteidigung": 37,
+      "tempo": 52,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Ferron",
+      "attacken": [
+        {
+          "name": "Metalli-Nietenschlag",
+          "typ": "Metall",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Metalli-Stahlbogen",
+          "typ": "Metall",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Metalli-Panzerklang",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Metalli-Ringhieb",
+          "typ": "Metall",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M026",
+      "name": "Ferron",
+      "typen": [
+        "Metall",
+        "Stein"
+      ],
+      "beschreibung": "Gedrungener Schrottsammler mit verschachtelten Panzerplatten und Magnetarmen.",
+      "persoenlichkeitLebensraum": "Geduldig; durchstreift Erzschluchten.",
+      "kp": 66,
+      "angriff": 71,
+      "verteidigung": 68,
+      "tempo": 71,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Titanor",
+      "attacken": [
+        {
+          "name": "Ferron-Nietenschlag",
+          "typ": "Metall",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Ferron-Kieselschild",
+          "typ": "Stein",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ferron-Panzerklang",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Ferron-Bodenwelle",
+          "typ": "Stein",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M027",
+      "name": "Titanor",
+      "typen": [
+        "Metall",
+        "Stein"
+      ],
+      "beschreibung": "Breiter Koloss aus ineinandergreifenden Metallringen und steinernen Standbeinen.",
+      "persoenlichkeitLebensraum": "Beschützend; bewacht unterirdische Schmiedehallen.",
+      "kp": 90,
+      "angriff": 97,
+      "verteidigung": 91,
+      "tempo": 90,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Titanor-Nietenschlag",
+          "typ": "Metall",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Titanor-Kieselschild",
+          "typ": "Stein",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Titanor-Panzerklang",
+          "typ": "Metall",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Titanor-Bodenwelle",
+          "typ": "Stein",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M028",
+      "name": "Dunkling",
+      "typen": [
+        "Nebel"
+      ],
+      "beschreibung": "Kleines nachtfarbenes Wesen mit tropfenförmigem Kopf und drei schwebenden Fühlern.",
+      "persoenlichkeitLebensraum": "Scheu; versteckt sich in Dämmerhöhlen.",
+      "kp": 47,
+      "angriff": 43,
+      "verteidigung": 40,
+      "tempo": 55,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Nachtor",
+      "attacken": [
+        {
+          "name": "Dunkling-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dunkling-Dunstwirbel",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Dunkling-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Dunkling-Nebelstoß",
+          "typ": "Nebel",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M029",
+      "name": "Nachtor",
+      "typen": [
+        "Nebel"
+      ],
+      "beschreibung": "Langbeiniges Dämmerwesen mit halbtransparentem Umhang und violetten Augenringen.",
+      "persoenlichkeitLebensraum": "Listig; wandert durch verlassene Gärten.",
+      "kp": 69,
+      "angriff": 74,
+      "verteidigung": 62,
+      "tempo": 74,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Finstramor",
+      "attacken": [
+        {
+          "name": "Nachtor-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Nachtor-Dunstwirbel",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Nachtor-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Nachtor-Nebelstoß",
+          "typ": "Nebel",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M030",
+      "name": "Finstramor",
+      "typen": [
+        "Nebel",
+        "Frost"
+      ],
+      "beschreibung": "Hohe Silhouette aus übereinanderliegenden Nebelbögen und frostigen Schwebesplittern.",
+      "persoenlichkeitLebensraum": "Ruhig; erscheint in frostigen Mondnächten.",
+      "kp": 93,
+      "angriff": 100,
+      "verteidigung": 85,
+      "tempo": 93,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Finstramor-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Finstramor-Eisfächer",
+          "typ": "Frost",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Finstramor-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Finstramor-Frostbogen",
+          "typ": "Frost",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M031",
+      "name": "Lumin",
+      "typen": [
+        "Klang"
+      ],
+      "beschreibung": "Kleines helles Wesen mit glockenförmigem Brustkorb und drei Lichtfäden.",
+      "persoenlichkeitLebensraum": "Fröhlich; lebt in sonnenbeschienenen Tälern.",
+      "kp": 41,
+      "angriff": 46,
+      "verteidigung": 43,
+      "tempo": 49,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Strahlino",
+      "attacken": [
+        {
+          "name": "Lumin-Hallimpuls",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Lumin-Resonanzstoß",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Lumin-Stimmgabel",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Lumin-Echokreis",
+          "typ": "Klang",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M032",
+      "name": "Strahlino",
+      "typen": [
+        "Klang",
+        "Glut"
+      ],
+      "beschreibung": "Vierbeiniges Resonanzwesen mit goldenen Rippenlamellen und leuchtendem Halsring.",
+      "persoenlichkeitLebensraum": "Gesellig; sammelt sich an warmen Felsbühnen.",
+      "kp": 72,
+      "angriff": 68,
+      "verteidigung": 65,
+      "tempo": 77,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Solavion",
+      "attacken": [
+        {
+          "name": "Strahlino-Hallimpuls",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Strahlino-Funkenbogen",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Strahlino-Stimmgabel",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Strahlino-Hitzekern",
+          "typ": "Glut",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M033",
+      "name": "Solavion",
+      "typen": [
+        "Klang",
+        "Glut"
+      ],
+      "beschreibung": "Majestätischer Klangwächter mit strahlenförmigen Schultersegeln und schwebender Sonnenkrone.",
+      "persoenlichkeitLebensraum": "Besonnen; bewohnt lichte Hochplateaus.",
+      "kp": 96,
+      "angriff": 94,
+      "verteidigung": 88,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Solavion-Hallimpuls",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Solavion-Funkenbogen",
+          "typ": "Glut",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Solavion-Stimmgabel",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Solavion-Hitzekern",
+          "typ": "Glut",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M034",
+      "name": "Toxli",
+      "typen": [
+        "Nebel"
+      ],
+      "beschreibung": "Kleines violettes Knollenwesen mit schrägen Blattfühlern und gepunkteter Haut.",
+      "persoenlichkeitLebensraum": "Neugierig; lebt an feuchten Baumstümpfen.",
+      "kp": 44,
+      "angriff": 49,
+      "verteidigung": 37,
+      "tempo": 52,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Giftrax",
+      "attacken": [
+        {
+          "name": "Toxli-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Toxli-Dunstwirbel",
+          "typ": "Nebel",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Toxli-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Toxli-Nebelstoß",
+          "typ": "Nebel",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M035",
+      "name": "Giftrax",
+      "typen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "beschreibung": "Flaches Kriechwesen mit fächerförmigen Sporenplatten und rankigen Beinen.",
+      "persoenlichkeitLebensraum": "Vorsichtig; zieht durch Pilzwälder.",
+      "kp": 66,
+      "angriff": 71,
+      "verteidigung": 68,
+      "tempo": 71,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Morbador",
+      "attacken": [
+        {
+          "name": "Giftrax-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Giftrax-Blattklinge",
+          "typ": "Wuchs",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Giftrax-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Giftrax-Moosruhe",
+          "typ": "Wuchs",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M036",
+      "name": "Morbador",
+      "typen": [
+        "Nebel",
+        "Wuchs"
+      ],
+      "beschreibung": "Massiger Sporenhüter mit pilzartigen Schulterschirmen und schwebenden Nebelblasen.",
+      "persoenlichkeitLebensraum": "Territorial; schützt alte Moorinseln.",
+      "kp": 90,
+      "angriff": 97,
+      "verteidigung": 91,
+      "tempo": 90,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Morbador-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Morbador-Blattklinge",
+          "typ": "Wuchs",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Morbador-Trugbild",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Morbador-Moosruhe",
+          "typ": "Wuchs",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M037",
+      "name": "Drakian",
+      "typen": [
+        "Wind"
+      ],
+      "beschreibung": "Kleiner schuppiger Kletterer mit zwei Stoffsegel-Flügeln und dreieckiger Schnauze.",
+      "persoenlichkeitLebensraum": "Mutig; lebt an warmen Steilhängen.",
+      "kp": 47,
+      "angriff": 43,
+      "verteidigung": 40,
+      "tempo": 55,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Wyrmendor",
+      "attacken": [
+        {
+          "name": "Drakian-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Drakian-Luftschnitt",
+          "typ": "Wind",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Drakian-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Drakian-Wirbelsturz",
+          "typ": "Wind",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M038",
+      "name": "Wyrmendor",
+      "typen": [
+        "Wind",
+        "Glut"
+      ],
+      "beschreibung": "Langgestreckter Klippengleiter mit rotblauen Flügelbahnen und glühenden Rückenschuppen.",
+      "persoenlichkeitLebensraum": "Stolz; kreist über Felsbögen.",
+      "kp": 69,
+      "angriff": 74,
+      "verteidigung": 62,
+      "tempo": 74,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Dravulkan",
+      "attacken": [
+        {
+          "name": "Wyrmendor-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Wyrmendor-Funkenbogen",
+          "typ": "Glut",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Wyrmendor-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Wyrmendor-Hitzekern",
+          "typ": "Glut",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M039",
+      "name": "Dravulkan",
+      "typen": [
+        "Wind",
+        "Glut"
+      ],
+      "beschreibung": "Großer Felssegler mit vier getrennten Flügelmembranen und glimmendem Brustkiel.",
+      "persoenlichkeitLebensraum": "Eigenwillig; bewohnt vulkanische Luftschluchten.",
+      "kp": 93,
+      "angriff": 100,
+      "verteidigung": 85,
+      "tempo": 93,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Dravulkan-Böenstoß",
+          "typ": "Wind",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Dravulkan-Funkenbogen",
+          "typ": "Glut",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Dravulkan-Windschirm",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Dravulkan-Hitzekern",
+          "typ": "Glut",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M040",
+      "name": "Terrab",
+      "typen": [
+        "Stein"
+      ],
+      "beschreibung": "Kleiner vierfüßiger Erdklumpen mit Moosohren und kantigem Rücken.",
+      "persoenlichkeitLebensraum": "Friedlich; ruht auf Waldlichtungen.",
+      "kp": 41,
+      "angriff": 46,
+      "verteidigung": 43,
+      "tempo": 49,
+      "entwicklungLevel": 18,
+      "entwicktSichZu": "Erdoran",
+      "attacken": [
+        {
+          "name": "Terrab-Schotterstoß",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Terrab-Kieselschild",
+          "typ": "Stein",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Terrab-Felskante",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Terrab-Bodenwelle",
+          "typ": "Stein",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M041",
+      "name": "Erdoran",
+      "typen": [
+        "Stein",
+        "Wuchs"
+      ],
+      "beschreibung": "Breiter Bodengänger mit wurzelartigen Vorderläufen und geschichteten Steinplatten.",
+      "persoenlichkeitLebensraum": "Fürsorglich; lebt in uralten Hainen.",
+      "kp": 72,
+      "angriff": 68,
+      "verteidigung": 65,
+      "tempo": 77,
+      "entwicklungLevel": 38,
+      "entwicktSichZu": "Geotitan",
+      "attacken": [
+        {
+          "name": "Erdoran-Schotterstoß",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Erdoran-Blattklinge",
+          "typ": "Wuchs",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Erdoran-Felskante",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Erdoran-Moosruhe",
+          "typ": "Wuchs",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M042",
+      "name": "Geotitan",
+      "typen": [
+        "Stein",
+        "Wuchs"
+      ],
+      "beschreibung": "Turmhoher Landschaftswächter mit Baumkronenrücken und gewaltigen Felsschultern.",
+      "persoenlichkeitLebensraum": "Langsam; wandert durch verwachsene Gebirgstäler.",
+      "kp": 96,
+      "angriff": 94,
+      "verteidigung": 88,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Geotitan-Schotterstoß",
+          "typ": "Stein",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Geotitan-Blattklinge",
+          "typ": "Wuchs",
+          "staerke": 75,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Geotitan-Felskante",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Geotitan-Moosruhe",
+          "typ": "Wuchs",
+          "staerke": 90,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M043",
+      "name": "Froschi",
+      "typen": [
+        "Frost"
+      ],
+      "beschreibung": "Kleiner gleitender Frosttropfen mit drei kristallinen Schweiffedern.",
+      "persoenlichkeitLebensraum": "Neugierig; spielt an gefrorenen Quellen.",
+      "kp": 51,
+      "angriff": 58,
+      "verteidigung": 45,
+      "tempo": 58,
+      "entwicklungLevel": 29,
+      "entwicktSichZu": "Glazaro",
+      "attacken": [
+        {
+          "name": "Froschi-Reifnadel",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Froschi-Eisfächer",
+          "typ": "Frost",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Froschi-Kältemantel",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Froschi-Frostbogen",
+          "typ": "Frost",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M044",
+      "name": "Glazaro",
+      "typen": [
+        "Frost",
+        "Flut"
+      ],
+      "beschreibung": "Eleganter Eisstromläufer mit transparenten Flossensegeln und sechseckigen Eiskämmen.",
+      "persoenlichkeitLebensraum": "Gelassen; lebt unter Gletscherseen.",
+      "kp": 89,
+      "angriff": 95,
+      "verteidigung": 89,
+      "tempo": 91,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Glazaro-Reifnadel",
+          "typ": "Frost",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Glazaro-Wellenfächer",
+          "typ": "Flut",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Glazaro-Kältemantel",
+          "typ": "Frost",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Glazaro-Strömungshieb",
+          "typ": "Flut",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M045",
+      "name": "Surrli",
+      "typen": [
+        "Klang"
+      ],
+      "beschreibung": "Winziges schwebendes Resonanzwesen mit zwei Trommelflächen an den Seiten.",
+      "persoenlichkeitLebensraum": "Lebhaft; versteckt sich in hohlen Bäumen.",
+      "kp": 47,
+      "angriff": 54,
+      "verteidigung": 50,
+      "tempo": 54,
+      "entwicklungLevel": 29,
+      "entwicktSichZu": "Resonox",
+      "attacken": [
+        {
+          "name": "Surrli-Hallimpuls",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Surrli-Resonanzstoß",
+          "typ": "Klang",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Surrli-Stimmgabel",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Surrli-Echokreis",
+          "typ": "Klang",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M046",
+      "name": "Resonox",
+      "typen": [
+        "Klang",
+        "Funke"
+      ],
+      "beschreibung": "Großes schwebendes Klangwesen mit konzentrischen Metallringen und funkelnden Schallkammern.",
+      "persoenlichkeitLebensraum": "Konzentriert; lebt in winddurchströmten Felstunneln.",
+      "kp": 94,
+      "angriff": 91,
+      "verteidigung": 85,
+      "tempo": 96,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Resonox-Hallimpuls",
+          "typ": "Klang",
+          "staerke": 45,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Resonox-Ladungszacke",
+          "typ": "Funke",
+          "staerke": 65,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Resonox-Stimmgabel",
+          "typ": "Klang",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Resonox-Funkenkette",
+          "typ": "Funke",
+          "staerke": 80,
+          "effekt": "10 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Normal",
+      "generation": 2
+    },
+    {
+      "id": "M047",
+      "name": "Soltherion",
+      "typen": [
+        "Glut",
+        "Klang"
+      ],
+      "beschreibung": "Vierbeiniger Sonnenwächter mit radialen Goldplatten um den Kopf und einem glühenden Brustkristall.",
+      "persoenlichkeitLebensraum": "Würdevoll; erscheint über den Morgenklippen.",
+      "kp": 108,
+      "angriff": 110,
+      "verteidigung": 96,
+      "tempo": 104,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Soltherion-Glutschritt",
+          "typ": "Glut",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Soltherion-Resonanzstoß",
+          "typ": "Klang",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Soltherion-Wächterschutz",
+          "typ": "Glut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Sonnenchor",
+          "typ": "Glut",
+          "staerke": 105,
+          "effekt": "20 % Chance, den Angriff des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 2
+    },
+    {
+      "id": "M048",
+      "name": "Aquarion",
+      "typen": [
+        "Flut",
+        "Wind"
+      ],
+      "beschreibung": "Langer Meeresgleiter mit schwebenden Flossenbändern und türkisfarbenen Leuchtadern.",
+      "persoenlichkeitLebensraum": "Geduldig; zieht durch tiefe Ozeanströmungen.",
+      "kp": 112,
+      "angriff": 102,
+      "verteidigung": 94,
+      "tempo": 115,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Aquarion-Quellstoß",
+          "typ": "Flut",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Aquarion-Luftschnitt",
+          "typ": "Wind",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Aquarion-Wächterschutz",
+          "typ": "Flut",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Tiefenwirbel",
+          "typ": "Flut",
+          "staerke": 100,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 2
+    },
+    {
+      "id": "M049",
+      "name": "Terrakron",
+      "typen": [
+        "Stein",
+        "Wuchs"
+      ],
+      "beschreibung": "Gewaltiger Felswächter mit verwurzelten Gelenken und grün leuchtenden Spalten.",
+      "persoenlichkeitLebensraum": "Unerschütterlich; bewacht die ältesten Waldberge.",
+      "kp": 120,
+      "angriff": 108,
+      "verteidigung": 120,
+      "tempo": 66,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Terrakron-Schotterstoß",
+          "typ": "Stein",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Terrakron-Blattklinge",
+          "typ": "Wuchs",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Terrakron-Wächterschutz",
+          "typ": "Stein",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Urgrundstoß",
+          "typ": "Stein",
+          "staerke": 110,
+          "effekt": "Anwender verliert 10 % seiner maximalen KP als Rückstoß."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 2
+    },
+    {
+      "id": "M050",
+      "name": "Noctarion",
+      "typen": [
+        "Nebel",
+        "Frost"
+      ],
+      "beschreibung": "Lautloser Nachtwächter mit sichelförmigen Schwebeschalen und violettem Nebelkern.",
+      "persoenlichkeitLebensraum": "Zurückgezogen; erscheint an mondlosen Frostnächten.",
+      "kp": 98,
+      "angriff": 109,
+      "verteidigung": 99,
+      "tempo": 117,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Noctarion-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Noctarion-Eisfächer",
+          "typ": "Frost",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Noctarion-Wächterschutz",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Dunkelschleier",
+          "typ": "Nebel",
+          "staerke": 95,
+          "effekt": "20 % Chance, die Genauigkeit des Ziels für 2 Runden um 10 % zu senken."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 2
+    },
+    {
+      "id": "M051",
+      "name": "Aetherion",
+      "typen": [
+        "Wind",
+        "Nebel"
+      ],
+      "beschreibung": "Schwebender Himmelswächter aus silbrigen Ringsegmenten und durchscheinenden Segelflügeln.",
+      "persoenlichkeitLebensraum": "Rätselhaft; streift die höchsten Wolkenschichten.",
+      "kp": 100,
+      "angriff": 106,
+      "verteidigung": 91,
+      "tempo": 120,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Aetherion-Böenstoß",
+          "typ": "Wind",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Aetherion-Dunstwirbel",
+          "typ": "Nebel",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Aetherion-Wächterschutz",
+          "typ": "Wind",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Raumfaltung",
+          "typ": "Wind",
+          "staerke": 100,
+          "effekt": "20 % Chance, dem nächsten gegnerischen Angriff auszuweichen."
+        }
+      ],
+      "kategorie": "Legendär",
+      "generation": 2
+    },
+    {
+      "id": "M052",
+      "name": "Ursphäron",
+      "typen": [
+        "Nebel",
+        "Metall"
+      ],
+      "beschreibung": "Dunkler Kristallkern, umkreist von sechs ungleich großen, frei schwebenden Steinringen.",
+      "persoenlichkeitLebensraum": "Uraltes Wesen; soll in versiegelten Hohlräumen zwischen den Elementen ruhen.",
+      "kp": 115,
+      "angriff": 115,
+      "verteidigung": 120,
+      "tempo": 90,
+      "entwicklungLevel": null,
+      "entwicktSichZu": null,
+      "attacken": [
+        {
+          "name": "Ursphäron-Schleierhieb",
+          "typ": "Nebel",
+          "staerke": 75,
+          "effekt": "Kein Zusatzeffekt."
+        },
+        {
+          "name": "Ursphäron-Stahlbogen",
+          "typ": "Metall",
+          "staerke": 90,
+          "effekt": "20 % Chance, das Tempo des Ziels für 2 Runden um 10 % zu senken."
+        },
+        {
+          "name": "Ursphäron-Wächterschutz",
+          "typ": "Nebel",
+          "staerke": 0,
+          "effekt": "Erhöht die eigene Verteidigung für 2 Runden um 15 %."
+        },
+        {
+          "name": "Ursprungspuls",
+          "typ": "Metall",
+          "staerke": 110,
+          "effekt": "20 % Chance, die Verteidigung des Ziels für 2 Runden um 15 % zu senken."
+        }
+      ],
+      "kategorie": "Geheimlegendär",
+      "generation": 2
+    }
+  ]
+}
