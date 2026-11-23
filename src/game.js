@@ -65,6 +65,9 @@ function makeMon(name, level) {
   calcStats(m); m.hp = m.maxhp; return m;
 }
 function movesOf(m) { const sp = SPECIES[m.sp]; let l = sp.attacken.filter(a => moveLevel(a, sp) <= m.level); if (!l.length) l = [sp.attacken[0]]; if (m.extra && m.extra.length) l = l.concat(m.extra.map(n => TP_MOVES[n]).filter(Boolean)); return l; }
+const MAX_MONEY = 1000000000;
+function fmtC(n) { return Math.floor(Number(n) || 0).toLocaleString('de-DE'); }
+function addMoney(n) { n = Math.floor(n); const before = G.money; G.money = Math.max(0, Math.min(MAX_MONEY, G.money + n)); if (n > 0 && G.money === MAX_MONEY && before + n > MAX_MONEY) toast(`🪙 Maximum erreicht: ${fmtC(MAX_MONEY)} Coins!`); }
 function healAll() { G.team.forEach(m => { m.hp = m.maxhp; cureStatus(m); }); }
 // ===== Statuseffekte =====
 const STATUS = {gift: {tag: 'GIF', col: '#9b59b6', name: 'vergiftet'}, para: {tag: 'PAR', col: '#e0b000', name: 'paralysiert'}, brand: {tag: 'BRT', col: '#e8572a', name: 'verbrannt'}, schlaf: {tag: 'SLF', col: '#7f8c8d', name: 'eingeschlafen'}, eis: {tag: 'GFR', col: '#3fb6e8', name: 'eingefroren'}};
@@ -568,7 +571,7 @@ const NPCS = {
            {id: 'c1', x: 16, y: 8, dir: 'left', look: LOOK.old, talk: async () => {
              await say('Arenaleiterin Brocka setzt auf Stein-Monster.\nFlut und Wuchs sind sehr effektiv dagegen!\nGlut-Attacken prallen dagegen eher ab.'); }},
            {id: 'c2', x: 5, y: 13, dir: 'up', look: LOOK.kid, talk: async () => {
-             await say('In der Heilstation wird dein Team kostenlos geheilt.\nIm Laden bekommst du Kapseln und Tränke – bezahlt wird mit Glimmer ✦!'); }}],
+             await say('In der Heilstation wird dein Team kostenlos geheilt.\nIm Laden bekommst du Kapseln und Tränke – bezahlt wird mit Coins 🪙!'); }}],
   route2: [{id: 'jonas', x: 12, y: 7, dir: 'left', look: LOOK.hiker, trainer: T('Bergsteiger Jonas', [['Kieselix', 9], ['Metalli', 10]], 300,
             'Hier oben weht ein rauer Wind.\nZeig mal, was du kannst!', 'Wie ein Felssturz!', 'Östlich von hier liegt die Glimmerhöhle.\nMan sagt, tief unten schläft etwas Uraltes …')},
            {id: 'lea', x: 7, y: 14, dir: 'right', look: LOOK.girl, trainer: T('Forscherin Lea', [['Flirri', 10], ['Toxli', 10], ['Dunkling', 11]], 340,
@@ -915,7 +918,7 @@ NPCS.arena6 = [{id: 'as6', x: 3, y: 6, dir: 'right', look: LOOK.worker, trainer:
     'Willkommen in der Stahlarena von Lumora!\nIch bin Ferrum. Meine Metall-Monster sind unzerbrechlich.', 'Unglaublich … du hast Stahl verbogen!\nDer Stahlorden gehört dir.', 'Im Norden liegt Wellenstrand. Pack deine Badehose ein!')];
 NPCS.stadt6 = [{id: 'g6', x: 11, y: 1, dir: 'down', look: LOOK.guard, talk: async () => { await say(G.badges.includes('Stahlorden') ? 'Route 8 führt ans Meer. Gute Reise!' : 'Halt! Route 8 ist nur für Trainer mit dem Stahlorden.'); }},
   {id: 'l1', x: 18, y: 13, dir: 'down', look: LOOK.beauty, talk: async () => { await say('Willkommen in Lumora, der größten Stadt der Region!\nOben links ist die Heilstation, daneben das Einkaufszentrum.'); }},
-  {id: 'l2', x: 30, y: 7, dir: 'left', look: LOOK.gent, talk: async () => { await say('Im Casino kann man am Einarmigen Banditen,\nam Roulette und beim Blackjack Glimmer gewinnen!'); }},
+  {id: 'l2', x: 30, y: 7, dir: 'left', look: LOOK.gent, talk: async () => { await say('Im Casino kann man am Einarmigen Banditen,\nam Roulette und beim Blackjack Coins gewinnen!'); }},
   {id: 'l3', x: 14, y: 18, dir: 'up', look: LOOK.kid, talk: async () => { await say('Im Haus hinter mir ist der Monster-Fanclub.\nDer Vorsitzende verschenkt manchmal tolle Sachen!'); }},
   {id: 'l4', x: 20, y: 11, dir: 'right', look: LOOK.worker, talk: async () => { await say('Arenaleiter Ferrum kämpft mit Metall-Monstern.\nGlut- und Nebel-Attacken sind sehr effektiv!'); }},
   {id: 'rival_s6', x: 0, y: 0, dir: 'down', look: LOOK.rival, show: () => G.flags.rivalShow === 'rival_s6', talk: async () => {}}];
@@ -1069,12 +1072,12 @@ const MONSTER_SHOP = [['Drakian', 25, 6000], ['Strahlino', 25, 6000], ['Surrli',
 async function talkMonsterShop() {
   await say('„Willkommen beim Monsterhandel!\nHier findest du Monster aus aller Welt.“');
   while (true) {
-    const i = await choose(MONSTER_SHOP.map(([n, l, p]) => ({label: `${spriteImg(n, 1.8)} <span style="flex:1">${n} <span class="small">Lv ${l}</span> ${badges(SPECIES[n].typen)}</span> <span class="small">${p} ✦</span>`})).concat(['Tschüss']),
-      {title: `Dein Glimmer: ${G.money} ✦`});
+    const i = await choose(MONSTER_SHOP.map(([n, l, p]) => ({label: `${spriteImg(n, 1.8)} <span style="flex:1">${n} <span class="small">Lv ${l}</span> ${badges(SPECIES[n].typen)}</span> <span class="small">${fmtC(p)} Coins</span>`})).concat(['Tschüss']),
+      {title: `Deine Coins: ${fmtC(G.money)}`});
     if (i < 0 || i === MONSTER_SHOP.length) break;
     const [n, l, p] = MONSTER_SHOP[i];
-    if (!(await yesNo(`${n} (Lv ${l}) für ${p} ✦ kaufen?`))) continue;
-    if (G.money < p) { await say('„Dafür reicht dein Glimmer leider nicht.“'); continue; }
+    if (!(await yesNo(`${n} (Lv ${l}) für ${fmtC(p)} Coins kaufen?`))) continue;
+    if (G.money < p) { await say('„Dafür reichen deine Coins leider nicht.“'); continue; }
     G.money -= p; const m = makeMon(n, l); markCaught(n);
     if (G.team.length < 6) { G.team.push(m); await say(`${n} ist jetzt in deinem Team!`); } else { G.box.push(m); await say(`${n} wurde in deine Box am PC geschickt.`); }
   }
@@ -1085,10 +1088,10 @@ async function talkMonsterShop() {
 async function talkSafari() {
   if (G.safari) { await say('„Viel Spaß im Safari-Park!“'); return; }
   await say('Ranger: „Willkommen im Safari-Park von Blütental!\nHier leben viele seltene Monster.“');
-  await say('„Der Eintritt kostet 500 ✦. Du bekommst 30 Safari-Kapseln\nund darfst 500 Schritte durch den Park gehen.“');
+  await say('„Der Eintritt kostet 500 Coins. Du bekommst 30 Safari-Kapseln\nund darfst 500 Schritte durch den Park gehen.“');
   await say('„Im Park kannst du nicht kämpfen – nur Kapseln, Köder\nund Steine werfen. Köder beruhigen, Steine machen wütend.“');
-  if (!(await yesNo('Möchtest du für 500 ✦ in den Safari-Park?'))) { await say('„Komm gerne wieder!“'); return; }
-  if (G.money < 500) { await say('„Oh, du hast leider nicht genug Glimmer.“'); return; }
+  if (!(await yesNo('Möchtest du für 500 Coins in den Safari-Park?'))) { await say('„Komm gerne wieder!“'); return; }
+  if (G.money < 500) { await say('„Oh, du hast leider nicht genug Coins.“'); return; }
   G.money -= 500; G.safari = {balls: 30, steps: 500};
   await say('{name} erhält 30 Safari-Kapseln!');
   await say('„Viel Glück! Zum Verlassen geh einfach unten aus dem Park.“');
@@ -1150,10 +1153,10 @@ async function safariBattle(foe) {
 }
 
 // ================= Casino =================
-function casinoHeader(title) { return `<h2>${title}</h2><div class="small">Dein Glimmer: <b>${G.money} ✦</b> · Nur Spielgeld – hör auf, wenn du vorne liegst!</div>`; }
+function casinoHeader(title) { return `<h2>${title}</h2><div class="small">Deine Coins: <b>${fmtC(G.money)} 🪙</b> · Nur Spielgeld – hör auf, wenn du vorne liegst!</div>`; }
 async function chooseBet(title) {
   const bets = [50, 100, 500, 1000, 5000];
-  const i = await choose(bets.map(b => ({label: `Einsatz ${b} ✦`, disabled: G.money < b})).concat(['Aufhören']), {title: `${title} · ${G.money} ✦`});
+  const i = await choose(bets.map(b => ({label: `Einsatz ${fmtC(b)} Coins`, disabled: G.money < b})).concat(['Aufhören']), {title: `${title} · ${fmtC(G.money)} Coins`});
   if (i < 0 || i === bets.length) return 0;
   return bets[i];
 }
@@ -1177,10 +1180,10 @@ async function playSlots() {
     if (final[0] === final[1] && final[1] === final[2]) mult = SLOT_PAY[final[0]];
     else if (final[0] === '🍒' && final[1] === '🍒') mult = 3;
     else if (final[0] === '🍒') mult = 1;
-    const win = bet * mult; G.money += win;
-    showPanel(slotHtml(reels, win ? `Gewonnen: ${win} ✦!` : 'Leider nichts gewonnen.'));
-    if (mult >= 30) await say(`JACKPOT! Du gewinnst ${win} ✦!`);
-    else if (win > bet) await say(`Gewonnen! Du erhältst ${win} ✦.`);
+    const win = bet * mult; addMoney(win);
+    showPanel(slotHtml(reels, win ? `Gewonnen: ${fmtC(win)} Coins!` : 'Leider nichts gewonnen.'));
+    if (mult >= 30) await say(`JACKPOT! Du gewinnst ${fmtC(win)} Coins!`);
+    else if (win > bet) await say(`Gewonnen! Du erhältst ${fmtC(win)} Coins.`);
     else if (win === bet) await say('Einsatz zurück!');
     else await say('Leider nichts gewonnen …');
   }
@@ -1196,7 +1199,7 @@ async function playRoulette() {
   while (true) {
     showPanel(rouletteHtml(last, 'Worauf setzt du?'));
     const types = ['Rot', 'Schwarz', 'Gerade', 'Ungerade', '1–18', '19–36', '1. Dutzend (1–12)', '2. Dutzend (13–24)', '3. Dutzend (25–36)', 'Eine Zahl', 'Aufhören'];
-    const t = await choose(types, {title: `Roulette · ${G.money} ✦`});
+    const t = await choose(types, {title: `Roulette · ${fmtC(G.money)} Coins`});
     if (t < 0 || t === 10) break;
     let num = null;
     if (t === 9) { const k = await choose(Array.from({length: 37}, (_, i) => `<span style="color:${numColor(i)};font-weight:800">● ${i}</span>`), {title: 'Welche Zahl?'}); if (k < 0) continue; num = k; }
@@ -1211,10 +1214,10 @@ async function playRoulette() {
     if (t === 4 && n >= 1 && n <= 18) mult = 2; if (t === 5 && n >= 19) mult = 2;
     if (t >= 6 && t <= 8 && n >= (t - 6) * 12 + 1 && n <= (t - 5) * 12) mult = 3;
     if (t === 9 && n === num) mult = 36;
-    const win = bet * mult; G.money += win;
+    const win = bet * mult; addMoney(win);
     const col = n === 0 ? 'Grün' : RED.has(n) ? 'Rot' : 'Schwarz';
-    showPanel(rouletteHtml(n, win ? `${n} ${col} – Gewonnen: ${win} ✦!` : `${n} ${col} – leider verloren.`));
-    await say(win ? `Die Kugel fällt auf ${n} (${col})!\nDu gewinnst ${win} ✦!` : `Die Kugel fällt auf ${n} (${col}).\nLeider verloren …`);
+    showPanel(rouletteHtml(n, win ? `${n} ${col} – Gewonnen: ${fmtC(win)} Coins!` : `${n} ${col} – leider verloren.`));
+    await say(win ? `Die Kugel fällt auf ${n} (${col})!\nDu gewinnst ${fmtC(win)} Coins!` : `Die Kugel fällt auf ${n} (${col}).\nLeider verloren …`);
   }
   hidePanel();
 }
@@ -1235,8 +1238,8 @@ async function playBlackjack() {
     let done = false, msg = '';
     showPanel(bjHtml(dealer, player, true));
     if (handVal(player) === 21) {
-      if (handVal(dealer) === 21) { G.money += bet; msg = 'Beide haben Blackjack – Unentschieden.'; }
-      else { const w = Math.floor(bet * 2.5); G.money += w; msg = `BLACKJACK! Du gewinnst ${w} ✦!`; }
+      if (handVal(dealer) === 21) { addMoney(bet); msg = 'Beide haben Blackjack – Unentschieden.'; }
+      else { const w = Math.floor(bet * 2.5); addMoney(w); msg = `BLACKJACK! Du gewinnst ${fmtC(w)} Coins!`; }
       showPanel(bjHtml(dealer, player, false, msg)); await say(msg); continue;
     }
     let first = true;
@@ -1251,8 +1254,8 @@ async function playBlackjack() {
       showPanel(bjHtml(dealer, player, false, 'Der Croupier deckt auf …')); await sleep(600);
       while (handVal(dealer) < 17) { dealer.push(deck.pop()); showPanel(bjHtml(dealer, player, false, 'Der Croupier zieht …')); await sleep(600); }
       const p = handVal(player), d = handVal(dealer);
-      if (d > 21 || p > d) { G.money += bet * 2; msg = `Du gewinnst ${bet * 2} ✦! (${p} gegen ${d > 21 ? 'überkauft' : d})`; }
-      else if (p === d) { G.money += bet; msg = `Unentschieden (${p}) – Einsatz zurück.`; }
+      if (d > 21 || p > d) { addMoney(bet * 2); msg = `Du gewinnst ${fmtC(bet * 2)} Coins! (${p} gegen ${d > 21 ? 'überkauft' : d})`; }
+      else if (p === d) { addMoney(bet); msg = `Unentschieden (${p}) – Einsatz zurück.`; }
       else msg = `Verloren … (${p} gegen ${d})`;
     }
     showPanel(bjHtml(dealer, player, false, msg));
@@ -1367,7 +1370,7 @@ NPCS.champhall = (DATA.champions || []).filter(c => CH_POS[c.id]).map(c => {
 });
 NPCS.champhall.push({id: 'chg', x: 12, y: 9, dir: 'left', look: LOOK.guard, talk: async () => {
   await say('Willkommen in der Champions-Halle!\nHier warten sechs Champions – jedes ihrer Monster ist auf Level 100.');
-  await say('Für jeden ersten Sieg gibt es Glimmer und einen Ehrentitel.\nTaron, der Meister aller Ringe, kämpft erst nach den anderen fünf.'); }});
+  await say('Für jeden ersten Sieg gibt es Coins und einen Ehrentitel.\nTaron, der Meister aller Ringe, kämpft erst nach den anderen fünf.'); }});
 
 // ================= Welt Teil 4: TPs, Feldattacken, Fahrrad, Brücke, Seepfad, Prof. Wandel =================
 const TP_MOVES = {
@@ -1450,9 +1453,9 @@ NPCS.bruecke = BR.map(([x, y, dir, name, team], i) => ({id: 'br' + i, x, y, dir,
 NPCS.bruecke.push({id: 'kralle1', x: 9, y: 3, dir: 'right', look: LOOK.kralle, trainer: Object.assign(T('Team Kralle Rüpel Grimm', [['Phantorim', 42], ['Stromirax', 42], ['Irrbrandor', 43]], 4000,
   'Glückwunsch! Du hast alle fünf Brückenkämpfer besiegt!\nHier ist dein Preis … aber Moment mal.\nSo starke Trainer wie dich suchen wir bei TEAM KRALLE!\nWir krallen uns die stärksten Monster der Welt!\nDu willst nicht mitmachen?! Dann eben auf die harte Tour!',
   'Grrr! Team Kralle hat verloren?!\nNa schön … nimm das Ding und lass mich in Ruhe!', 'Team Kralle wird sich rächen … irgendwann!'), {extra: async () => {
-    G.bag['VM Zerschneider'] = 1; G.money += 5000;
+    G.bag['VM Zerschneider'] = 1; addMoney(5000);
     await say('{name} erhält die VM Zerschneider!\n(Die hatte Team Kralle gestohlen.)');
-    await say('Und 5000 ✦ Brücken-Preisgeld!');
+    await say('Und 5000 Coins Brücken-Preisgeld!');
     await say('Tipp: Bring einem Monster im Beutel die VM bei.\nDann kann es kleine Büsche zerschneiden!');
   }})});
 
@@ -1465,7 +1468,7 @@ WARPS['radladen:7,1'] = {to: 'radarena', x: 5, y: 10, dir: 'up'};
 WARPS['radarena:5,11'] = {to: 'radladen', x: 7, y: 2, dir: 'down'};
 NPCS.radladen = [{id: 'radclerk', x: 3, y: 2, dir: 'down', look: LOOK.biker, talk: async () => {
     if (G.bag.Fahrrad) { await say('„Na, wie fährt sich dein Fahrrad? Mit R oder dem 🚲-Knopf steigst du auf!“'); return; }
-    await say('„Willkommen bei Speichenglück! Unser Super-Fahrrad kostet 100.000 ✦.“');
+    await say('„Willkommen bei Speichenglück! Unser Super-Fahrrad kostet 100.000 Coins.“');
     await say('„Zu teuer? Dann geh durch die Tür hinten in die Rad-Arena!\nWer Rad-Champion Turbo besiegt, bekommt ein Fahrrad gratis!“');
     await talkShop('rad', 'Fahrrad-Theke');
   }},
@@ -1556,7 +1559,7 @@ async function openChest(n) {
   const tot = LOOT.reduce((s, l) => s + l[2], 0); let r = Math.random() * tot, pick = LOOT[0];
   for (const l of LOOT) { r -= l[2]; if (r <= 0) { pick = l; break; } }
   if (pick[0] === 'TP') { const free = SHOP_LISTS.tp.filter(t => !G.bag[t]); if (free.length) { const t = free[Math.floor(Math.random() * free.length)]; G.bag[t] = 1; await say(`{name} öffnet die Kiste …\nDarin ist die ${t}! 💿`); return; } pick = ['GLIMMER', 0]; }
-  if (pick[0] === 'GLIMMER') { const g = 1000 + Math.floor(Math.random() * 9) * 500; G.money += g; await say(`{name} öffnet die Kiste …\nDarin sind ${g} ✦ Glimmer! ✨`); return; }
+  if (pick[0] === 'GLIMMER') { const g = 1000 + Math.floor(Math.random() * 9) * 500; addMoney(g); await say(`{name} öffnet die Kiste …\nDarin sind ${fmtC(g)} Coins! 🪙`); return; }
   const amt = pick[1] > 1 ? 1 + Math.floor(Math.random() * pick[1]) : 1;
   G.bag[pick[0]] = (G.bag[pick[0]] || 0) + amt;
   await say(`{name} öffnet die Kiste …\nDarin: ${amt}× ${pick[0]}!`);
@@ -2276,7 +2279,7 @@ Object.assign(ITEMS, {
   Carbon: {price: 3000, vit: 'spd', desc: 'Erhöht das Tempo eines Monsters dauerhaft um 5 (höchstens 5-mal).'},
   'KP-Plus': {price: 3000, vit: 'kp', desc: 'Erhöht die KP eines Monsters dauerhaft um 5 (höchstens 5-mal).'},
   Superschutz: {price: 700, desc: 'Hält 250 Schritte lang wilde Monster fern.'},
-  'Glückstaler': {price: 30000, key: true, desc: 'Verdoppelt das Glimmer aus allen Kämpfen. Wirkt, solange er im Beutel ist.'},
+  'Glückstaler': {price: 30000, key: true, desc: 'Verdoppelt die Coins aus allen Kämpfen. Wirkt, solange er im Beutel ist.'},
   Karte: {price: 0, key: true, desc: 'Eine Karte der ganzen Region. Zeigt dir, wo du gerade bist. (Taste K)'},
   'Turbo-Treter': {price: 0, key: true, desc: 'Superschnelle Schuhe von Mama! Shift halten oder T / 👟 drücken zum Rennen.'},
   Fahrrad: {price: 100000, key: true, desc: 'Damit fährst du doppelt so schnell! Taste R oder 🚲-Knopf zum Auf- und Absteigen.'}
@@ -2303,32 +2306,32 @@ async function talkShop(shopId, title) {
   const stern = shopId === 'stern';
   await say(stern ? '„Willkommen im Sternenladen!\nHier gibt es nur das Seltenste vom Seltenen.“' : title ? `„Willkommen an der ${title}! Was darf’s sein?“` : '„Hallo! Willkommen im Laden. Was darf’s sein?“');
   while (true) {
-    const m = await choose(['Kaufen', 'Verkaufen', 'Tschüss'], {title: `Dein Glimmer: ${G.money} ✦`});
+    const m = await choose(['Kaufen', 'Verkaufen', 'Tschüss'], {title: `Deine Coins: ${fmtC(G.money)}`});
     if (m === 0) {
       const names = SHOP_LISTS[shopId];
       while (true) {
-        const i = await choose(names.map(n => `<span style="flex:1">${n}</span> <span class="small">${ITEMS[n].price} ✦</span>`).concat(['Zurück']), {title: `Dein Glimmer: ${G.money} ✦`, onSel: k => showText(k < names.length ? ITEMS[names[k]].desc + (G.bag[names[k]] ? `\n(Im Beutel: ${G.bag[names[k]]})` : '') : 'Zurück zum Hauptmenü.')});
+        const i = await choose(names.map(n => `<span style="flex:1">${n}</span> <span class="small">${fmtC(ITEMS[n].price)} Coins</span>`).concat(['Zurück']), {title: `Deine Coins: ${fmtC(G.money)}`, onSel: k => showText(k < names.length ? ITEMS[names[k]].desc + (G.bag[names[k]] ? `\n(Im Beutel: ${G.bag[names[k]]})` : '') : 'Zurück zum Hauptmenü.')});
         hideText();
         if (i < 0 || i === names.length) break;
         const it = names[i];
-        const q = await choose(['1 Stück', '5 Stück', '10 Stück', 'Zurück'], {title: `${it} (${ITEMS[it].price} ✦)`, text: ITEMS[it].desc});
+        const q = await choose(['1 Stück', '5 Stück', '10 Stück', 'Zurück'], {title: `${it} (${fmtC(ITEMS[it].price)} Coins)`, text: ITEMS[it].desc});
         if (q < 0 || q === 3) continue;
         const n = ITEMS[it].key ? 1 : [1, 5, 10][q], cost = n * ITEMS[it].price;
-        if (cost > G.money) { await say('„Oh, dafür reicht dein Glimmer leider nicht.“'); continue; }
+        if (cost > G.money) { await say('„Oh, dafür reichen deine Coins leider nicht.“'); continue; }
         if (ITEMS[it].key && G.bag[it]) { await say('„Den hast du doch schon! Einer reicht.“'); continue; }
         G.money -= cost; G.bag[it] = (G.bag[it] || 0) + n;
-        await say(`Du kaufst ${n}× ${it} für ${cost} ✦.`);
+        await say(`Du kaufst ${n}× ${it} für ${fmtC(cost)} Coins.`);
         if (n >= 10 && isBall(it)) { G.bag.Fangkapsel = (G.bag.Fangkapsel || 0) + 1; await say('„Als Dankeschön gibt’s eine Fangkapsel gratis dazu!“'); }
       }
     } else if (m === 1) {
       while (true) {
         const names = ITEM_ORDER.filter(k => G.bag[k] > 0 && !ITEMS[k].key);
         if (!names.length) { await say('Du hast nichts zum Verkaufen.'); break; }
-        const i = await choose(names.map(n => `<span style="flex:1">${n} ×${G.bag[n]}</span> <span class="small">${Math.floor(ITEMS[n].price / 2)} ✦</span>`), {title: 'Was verkaufen? (halber Preis)'});
+        const i = await choose(names.map(n => `<span style="flex:1">${n} ×${G.bag[n]}</span> <span class="small">${fmtC(Math.floor(ITEMS[n].price / 2))} Coins</span>`), {title: 'Was verkaufen? (halber Preis)'});
         if (i < 0) break;
         const it = names[i], price = Math.floor(ITEMS[it].price / 2);
-        if (!(await yesNo(`${it} für ${price} ✦ verkaufen?`))) continue;
-        G.bag[it]--; G.money += price; await say(`Verkauft! Du erhältst ${price} ✦.`);
+        if (!(await yesNo(`${it} für ${fmtC(price)} Coins verkaufen?`))) continue;
+        G.bag[it]--; addMoney(price); await say(`Verkauft! Du erhältst ${fmtC(price)} Coins.`);
       }
     } else break;
   }
@@ -2512,7 +2515,7 @@ async function dexView() {
 async function trainerCard() {
   const all = {Steinorden: '🪨', Funkenorden: '⚡', Nebelorden: '🌫️', Frostorden: '❄️', Glutorden: '🔥', Stahlorden: '⚙️', Wellenorden: '🌊', Blütenorden: '🌸', Klangorden: '🎵', Windorden: '🌪️'};
   const b = Object.keys(all).map(n => `<div style="text-align:center;opacity:${G.badges.includes(n) ? 1 : .25}"><div style="font-size:2.2em">${all[n]}</div><div class="small">${n}</div></div>`).join('');
-  showPanel(`<h2>Trainerpass</h2><table><tr><td>Name</td><td><b>${G.name}</b></td></tr><tr><td>Glimmer</td><td>${G.money} ✦</td></tr>${(G.titles || []).length ? `<tr><td>Titel</td><td>${G.titles.join(' · ')}</td></tr>` : ''}<tr><td>Schillernde</td><td>${[...G.team, ...G.box].filter(m => m.shiny).length} ✨</td></tr><tr><td>Monsterdex</td><td>${Object.keys(G.caught).length} gefangen</td></tr><tr><td>Spielzeit</td><td>${Math.floor(G.time / 60)} Min.</td></tr></table><h2 style="margin-top:.6em">Orden (${G.badges.length}/10)${G.flags.champion ? ' · 🏆 Champion' : ''}</h2><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.6em">${b}</div>`, true);
+  showPanel(`<h2>Trainerpass</h2><table><tr><td>Name</td><td><b>${G.name}</b></td></tr><tr><td>Coins</td><td>${fmtC(G.money)} 🪙 <span class="small">(max. ${fmtC(MAX_MONEY)})</span></td></tr>${(G.titles || []).length ? `<tr><td>Titel</td><td>${G.titles.join(' · ')}</td></tr>` : ''}<tr><td>Schillernde</td><td>${[...G.team, ...G.box].filter(m => m.shiny).length} ✨</td></tr><tr><td>Monsterdex</td><td>${Object.keys(G.caught).length} gefangen</td></tr><tr><td>Spielzeit</td><td>${Math.floor(G.time / 60)} Min.</td></tr></table><h2 style="margin-top:.6em">Orden (${G.badges.length}/10)${G.flags.champion ? ' · 🏆 Champion' : ''}</h2><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.6em">${b}</div>`, true);
   await waitKey(); hidePanel();
 }
 
@@ -3376,7 +3379,7 @@ async function battleInner(cfg) {
       const exp = Math.max(1, Math.floor(sum / 4 * B.foe.level / 3 * (B.wild ? 1 : 1.5) * 1.5));
       for (const m of [...B.part]) if (m.hp > 0 && G.team.includes(m)) await gainExp(m, exp);
       if (G.bag['EP-Teiler']) { const rest = G.team.filter(m => m.hp > 0 && !B.part.has(m)); if (rest.length) { const half = Math.max(1, Math.floor(exp / 2)); await say(`EP-Teiler: Der Rest des Teams erhält je ${half} EP!`); for (const m of rest) { m.exp += half; await checkLevel(m); } } }
-      if (B.wild) { const coins = (B.foe.level * 6 + Math.floor(Math.random() * 10)) * (G.bag['Glückstaler'] ? 2 : 1); G.money += coins; await say(`Du sammelst ${coins} ✦ Glimmer ein!`); }
+      if (B.wild) { const coins = (B.foe.level * 6 + Math.floor(Math.random() * 10)) * (G.bag['Glückstaler'] ? 2 : 1); addMoney(coins); await say(`Du sammelst ${fmtC(coins)} Coins ein!`); }
       if (!B.wild && B.fi < B.foes.length - 1) {
         B.fi++; B.part = new Set([B.me].filter(m => m.hp > 0));
         const nx = B.foes[B.fi];
@@ -3402,13 +3405,13 @@ async function battleInner(cfg) {
     await say(`Du hast ${trainer.name} besiegt!`);
     await say(`${trainer.name}:\n${trainer.lose}`);
     const rw = (trainer.reward || 0) * (G.bag['Glückstaler'] ? 2 : 1);
-    if (rw) G.money += rw; if (rw) await say(`Du erhältst ${rw} ✦ Preisgeld.`);
+    if (rw) addMoney(rw); if (rw) await say(`Du erhältst ${fmtC(rw)} Coins Preisgeld.`);
   }
   if (result === 'lose' && trainer && trainer.win) await say(`${trainer.name}:\n${trainer.win}`);
   if (result === 'lose' && cfg.noWhiteout) await say('Du hast verloren … aber das war nur ein Übungskampf!');
   else if (result === 'lose') {
     await say('Du hast keine kampffähigen Monster mehr …');
-    await say('Keine Sorge – dein Glimmer behältst du!\nDu eilst zurück, um dein Team zu pflegen …');
+    await say('Keine Sorge – deine Coins behältst du!\nDu eilst zurück, um dein Team zu pflegen …');
   }
   await fade(true);
   $('battle').style.display = 'none'; $('hud').style.display = ''; $('meTrainer').style.display = 'none'; $('foeTrainer').style.display = 'none'; hideBall(); $('fx').innerHTML = '';
@@ -3686,7 +3689,7 @@ function titleScreen() {
   setTimeout(() => { const b = main.querySelector('button'); if (b) b.focus(); }, 50);
 }
 function startGame(state, fresh) {
-  G = state; G.pc = G.pc || {}; G.bag = G.bag || {};
+  G = state; G.pc = G.pc || {}; G.bag = G.bag || {}; G.money = Math.min(MAX_MONEY, Math.max(0, G.money || 0));
   $('title').style.display = 'none';
   document.activeElement && document.activeElement.blur && document.activeElement.blur();
   enterMap(G.map, G.x, G.y, G.dir);
@@ -3699,4 +3702,4 @@ function startGame(state, fresh) {
 }
 titleScreen();
 requestAnimationFrame(loop);
-window.__game = {attackFx, statusMoveFx, fxPattern, openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};
+window.__game = {addMoney, fmtC, attackFx, statusMoveFx, fxPattern, openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};
