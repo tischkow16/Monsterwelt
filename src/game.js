@@ -2651,22 +2651,296 @@ async function recallAnim(el) {
 async function faintAnim(el) { await play(el, [{transform: 'translateY(0)', opacity: 1}, {transform: 'translateY(45%)', opacity: 0}], {duration: 520, easing: 'ease-in'}); el.style.transform = ''; el.style.opacity = 0; }
 function shakeScreen(strong) { play($('battle'), [{transform: 'translate(0,0)'}, {transform: `translate(${strong ? -2 : -1}%,1%)`}, {transform: `translate(${strong ? 2 : 1}%,-1%)`}, {transform: `translate(${strong ? -1.5 : -.5}%,0)`}, {transform: 'translate(0,0)'}], 320); }
 async function blink(el) { await play(el, [{opacity: 1}, {opacity: .15}, {opacity: 1}, {opacity: .15}, {opacity: 1}], 420); }
-async function attackFx(isMe, move, tm, crit) {
-  const from = isMe ? POS.me : POS.foe, to = isMe ? POS.foe : POS.me;
-  const uEl = isMe ? $('meMon') : $('foeMon');
-  const col = TYPE_COLORS[move.typ] || '#fff';
-  await play(uEl, [{transform: 'translate(0,0)'}, {transform: isMe ? 'translate(8%,-6%)' : 'translate(-8%,6%)', offset: .4}, {transform: 'translate(0,0)'}], 300);
-  const p = document.createElement('div'); p.className = 'proj'; p.textContent = TYPE_ICON[move.typ] || '✦'; p.style.setProperty('--c', col);
-  p.style.cssText += `;left:${from.x}%;top:${from.y}%`;
-  $('fx').appendChild(p);
-  const big = move.staerke >= 85;
-  for (let i = 1; i <= 3; i++) { const g = p.cloneNode(true); g.style.opacity = 0.5 - i * 0.12; $('fx').appendChild(g); play(g, [{left: from.x + '%', top: from.y + '%', transform: 'translate(-50%,-50%) scale(.5)'}, {left: to.x + '%', top: to.y + '%', transform: 'translate(-50%,-50%) scale(.9)'}], {duration: 380, delay: i * 45, easing: 'ease-in'}).then(() => g.remove()); }
-  if (crit) { const fl = document.createElement('div'); fl.style.cssText = 'position:absolute;inset:0;background:#fff'; $('fx').appendChild(fl); play(fl, [{opacity: .8}, {opacity: 0}], 300).then(() => fl.remove()); }
-  await play(p, [{left: from.x + '%', top: from.y + '%', transform: 'translate(-50%,-50%) scale(.6)'}, {left: to.x + '%', top: to.y + '%', transform: `translate(-50%,-50%) scale(${big ? 1.8 : 1.2})`}], {duration: 380, easing: 'ease-in'});
-  p.remove();
-  burst(to.x, to.y, col, big ? 20 : 13, big ? 8 : 6, big ? 1.4 : 1.1);
-  if (crit || tm > 1) shakeScreen(tm > 1);
+// ================= Attacken-Animationen (Canvas) =================
+// Jede Attacke bekommt ihre eigene Animation: Typ bestimmt die Partikel (Flammen, Tropfen, Blätter …),
+// der Name bestimmt die Bewegung (Stoß, Hieb, Welle, Wirbel, Blitz …), und ein Hash des Namens variiert Details.
+const FXT = {
+  Glut: {main: 'flame', sub: 'ember', c1: '#ffe066', c2: '#ff5a1f', glow: 1},
+  Flut: {main: 'drop', sub: 'bubble', c1: '#d6f0ff', c2: '#2f7fe0'},
+  Wuchs: {main: 'leaf', sub: 'leaf', c1: '#b8f27a', c2: '#2e9a3a'},
+  Funke: {main: 'spark', sub: 'spark', c1: '#fffbd0', c2: '#ffcc00', glow: 1},
+  Stein: {main: 'rock', sub: 'dust', c1: '#d7c2a3', c2: '#7d5f43'},
+  Frost: {main: 'shard', sub: 'flake', c1: '#ffffff', c2: '#6fd3f0', glow: 1},
+  Klang: {main: 'note', sub: 'ring', c1: '#ffd1fb', c2: '#c04fc0'},
+  Nebel: {main: 'puff', sub: 'bubble', c1: '#d9c8ff', c2: '#7a5cc0'},
+  Metall: {main: 'steel', sub: 'spark', c1: '#ffffff', c2: '#8c99a6', glow: 1},
+  Wind: {main: 'slice', sub: 'puff', c1: '#f0fff6', c2: '#5fbf86'},
+  Geist: {main: 'wisp', sub: 'wisp', c1: '#b49cff', c2: '#3b2477'}
+};
+const FX_PATTERNS = [
+  ['field', ['feld', 'schmelze', 'gedächtnis', 'stillstand', 'faltung', 'akkord', 'chor', 'zenit', 'abgrund', 'ursprung', 'welten', 'erwachen', 'finsternis', 'verrückung', 'harmonie', 'blüte', 'brand']],
+  ['bite', ['biss']],
+  ['bind', ['griff', 'faden', 'zug', 'ranke', 'netz', 'fessel']],
+  ['lightning', ['blitz', 'kette', 'zacke', 'ladung', 'spannung', 'donner', 'volt']],
+  ['rain', ['regen', 'hagel', 'sturz']],
+  ['beam', ['strahl', 'puls', 'fokus', 'kern', 'kegel', 'hauch']],
+  ['rings', ['klang', 'hall', 'ruf', 'echo', 'resonanz', 'ton']],
+  ['wave', ['welle', 'woge', 'flut', 'front', 'gezeiten', 'schwall']],
+  ['vortex', ['wirbel', 'sturm', 'kreis', 'ring', 'rinne', 'strudel', 'sog', 'spirale', 'feger', 'walze']],
+  ['fan', ['fächer']],
+  ['arc', ['bogen', 'wurf']],
+  ['volley', ['stich', 'nadel', 'splitter', 'tupfer', 'stachel', 'spitze']],
+  ['slash', ['hieb', 'schnitt', 'klinge', 'sichel', 'kante', 'ritze', 'grat', 'riss', 'schere']],
+  ['impact', ['stoß', 'schub', 'prall', 'druck', 'wucht', 'schlag', 'tritt', 'sprung', 'lauf', 'schritt', 'bruch', 'kamm', 'takt', 'ramme']]
+];
+const FX_SHIELD = ['schild', 'wall', 'mantel', 'haut', 'panzer', 'hülle', 'kleid', 'schirm', 'schutz', 'haltung', 'wand', 'hut'];
+function fxHash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function fxRng(seed) { let a = seed || 1; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function fxPattern(move) {
+  const l = (move.anzeige || move.name || '').toLowerCase();
+  if (move.staerke >= 120) return 'field';
+  for (const [p, ws] of FX_PATTERNS) if (ws.some(w => l.includes(w))) return p;
+  return 'proj';
 }
+function fxEnv() {
+  const c = $('fxc'); if (!c) return null;
+  const r = c.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+  const W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
+  if (c.width !== W || c.height !== H) { c.width = W; c.height = H; }
+  return {c, ctx: c.getContext('2d'), W, H, u: W / 100};
+}
+const fxP = (env, p) => ({x: p.x / 100 * env.W, y: p.y / 100 * env.H});
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+function hexA(hex, a) { const n = parseInt(hex.slice(1), 16); return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`; }
+
+// ---- Partikel-Zeichner ----
+function fxTok(ctx, kind, x, y, s, rot, a, th, seed) {
+  if (a <= 0 || s <= 0) return;
+  ctx.save(); ctx.translate(x, y); ctx.rotate(rot || 0); ctx.globalAlpha = Math.min(1, a);
+  const c1 = th.c1, c2 = th.c2;
+  switch (kind) {
+    case 'flame': case 'ember': {
+      ctx.globalCompositeOperation = 'lighter';
+      const g = ctx.createRadialGradient(0, 0, 0, 0, 0, s); g.addColorStop(0, '#fffbe0'); g.addColorStop(.35, c1); g.addColorStop(.7, hexA(c2, .8)); g.addColorStop(1, hexA(c2, 0));
+      ctx.fillStyle = g; ctx.beginPath(); if (kind === 'flame') { ctx.moveTo(0, -s * 1.5); ctx.quadraticCurveTo(s, -s * .2, 0, s); ctx.quadraticCurveTo(-s, -s * .2, 0, -s * 1.5); } else ctx.arc(0, 0, s * .6, 0, 7); ctx.fill(); break; }
+    case 'drop': {
+      const g = ctx.createLinearGradient(-s, -s, s, s); g.addColorStop(0, c1); g.addColorStop(1, c2);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -s * 1.3); ctx.quadraticCurveTo(s, 0, 0, s); ctx.quadraticCurveTo(-s, 0, 0, -s * 1.3); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.beginPath(); ctx.arc(-s * .3, -s * .1, s * .2, 0, 7); ctx.fill(); break; }
+    case 'bubble': ctx.strokeStyle = c1; ctx.lineWidth = Math.max(1, s * .18); ctx.beginPath(); ctx.arc(0, 0, s * .7, 0, 7); ctx.stroke(); ctx.fillStyle = hexA(c2, .25); ctx.fill(); ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-s * .25, -s * .25, s * .15, 0, 7); ctx.fill(); break;
+    case 'leaf': {
+      ctx.fillStyle = (seed & 1) ? c2 : '#5fbf3a'; ctx.beginPath(); ctx.ellipse(0, 0, s, s * .45, 0, 0, 7); ctx.fill();
+      ctx.strokeStyle = c1; ctx.lineWidth = Math.max(1, s * .12); ctx.beginPath(); ctx.moveTo(-s, 0); ctx.lineTo(s, 0); ctx.stroke(); break; }
+    case 'spark': {
+      ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = c1; ctx.strokeStyle = c2; ctx.lineWidth = Math.max(1, s * .25);
+      ctx.beginPath(); for (let i = 0; i < 8; i++) { const r = i % 2 ? s * .25 : s; ctx.lineTo(Math.cos(i * Math.PI / 4) * r, Math.sin(i * Math.PI / 4) * r); } ctx.closePath(); ctx.fill(); break; }
+    case 'rock': case 'dust': {
+      if (kind === 'dust') { ctx.fillStyle = hexA(c1, .55); ctx.beginPath(); ctx.arc(0, 0, s, 0, 7); ctx.fill(); break; }
+      const r = fxRng(seed + 7); ctx.fillStyle = c2; ctx.strokeStyle = '#3e2c1c'; ctx.lineWidth = Math.max(1, s * .15);
+      ctx.beginPath(); for (let i = 0; i < 6; i++) { const rr = s * (.7 + r() * .45); ctx.lineTo(Math.cos(i * 1.047) * rr, Math.sin(i * 1.047) * rr); } ctx.closePath(); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = hexA(c1, .7); ctx.beginPath(); ctx.arc(-s * .25, -s * .25, s * .25, 0, 7); ctx.fill(); break; }
+    case 'shard': {
+      ctx.globalCompositeOperation = 'lighter'; const g = ctx.createLinearGradient(0, -s * 1.4, 0, s * 1.4); g.addColorStop(0, '#fff'); g.addColorStop(1, c2);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -s * 1.5); ctx.lineTo(s * .45, 0); ctx.lineTo(0, s * 1.5); ctx.lineTo(-s * .45, 0); ctx.closePath(); ctx.fill(); break; }
+    case 'flake': ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1, s * .15); ctx.beginPath(); for (let i = 0; i < 3; i++) { const an = i * Math.PI / 3; ctx.moveTo(Math.cos(an) * s, Math.sin(an) * s); ctx.lineTo(-Math.cos(an) * s, -Math.sin(an) * s); } ctx.stroke(); break;
+    case 'note': ctx.fillStyle = (seed & 1) ? c2 : '#ff7ad9'; ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1, s * .12); ctx.font = `bold ${s * 2.4}px sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.strokeText((seed & 2) ? '♫' : '♪', 0, 0); ctx.fillText((seed & 2) ? '♫' : '♪', 0, 0); break;
+    case 'ring': ctx.strokeStyle = c2; ctx.lineWidth = Math.max(1, s * .2); ctx.beginPath(); ctx.arc(0, 0, s, 0, 7); ctx.stroke(); break;
+    case 'puff': { const g = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 1.4); g.addColorStop(0, hexA(c1, .9)); g.addColorStop(.6, hexA(c2, .45)); g.addColorStop(1, hexA(c2, 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, s * 1.4, 0, 7); ctx.fill(); break; }
+    case 'steel': { const g = ctx.createLinearGradient(-s, 0, s, 0); g.addColorStop(0, '#5d6873'); g.addColorStop(.5, '#ffffff'); g.addColorStop(1, '#8c99a6'); ctx.fillStyle = g; ctx.strokeStyle = '#3b4350'; ctx.lineWidth = Math.max(1, s * .12); ctx.beginPath(); ctx.moveTo(-s * 1.3, 0); ctx.lineTo(0, -s * .45); ctx.lineTo(s * 1.3, 0); ctx.lineTo(0, s * .45); ctx.closePath(); ctx.fill(); ctx.stroke(); break; }
+    case 'slice': ctx.strokeStyle = c1; ctx.lineWidth = Math.max(1, s * .3); ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(0, 0, s, -1.2, 1.2); ctx.stroke(); ctx.strokeStyle = hexA(c2, .7); ctx.lineWidth = Math.max(1, s * .14); ctx.beginPath(); ctx.arc(-s * .25, 0, s * .8, -1, 1); ctx.stroke(); break;
+    case 'wisp': { const g = ctx.createRadialGradient(0, 0, 0, 0, 0, s * 1.2); g.addColorStop(0, c1); g.addColorStop(.5, hexA(c2, .8)); g.addColorStop(1, hexA(c2, 0)); ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(0, -s * 1.8); ctx.quadraticCurveTo(s * 1.1, -s * .2, 0, s * 1.1); ctx.quadraticCurveTo(-s * 1.1, -s * .2, 0, -s * 1.8); ctx.fill(); ctx.fillStyle = '#fff'; ctx.fillRect(-s * .35, -s * .2, s * .2, s * .3); ctx.fillRect(s * .15, -s * .2, s * .2, s * .3); break; }
+  }
+  ctx.restore();
+}
+
+// ---- Ablauf-Engine ----
+function fxRun(build) {
+  const env = fxEnv(); if (!env) return Promise.resolve();
+  const parts = [], layers = [], evs = [];
+  const api = {
+    env, parts,
+    layer: (at, dur, draw) => layers.push({at, dur, draw}),
+    at: (t, fn) => evs.push({t, fn}),
+    part: o => parts.push(Object.assign({vx: 0, vy: 0, g: 0, drag: 1, rot: 0, vr: 0, life: 600, age: 0, s: 1, fade: 1, grow: 0}, o)),
+  };
+  build(api);
+  const total = Math.max(0, ...layers.map(l => l.at + l.dur), ...evs.map(e => e.t));
+  const gen = fxRun.gen = (fxRun.gen || 0) + 1;
+  return new Promise(res => {
+    const t0 = performance.now(); let last = t0, resolved = false;
+    const frame = now => {
+      if (gen !== fxRun.gen) { if (!resolved) { resolved = true; res(); } return; }
+      const t = now - t0, dt = Math.min(50, now - last); last = now;
+      const {ctx, W, H} = env; ctx.clearRect(0, 0, W, H);
+      for (const e of evs) if (!e.done && t >= e.t) { e.done = 1; e.fn(); }
+      for (const l of layers) { const lt = t - l.at; if (lt >= 0 && lt <= l.dur) { ctx.save(); l.draw(ctx, lt / l.dur, lt); ctx.restore(); } }
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const p = parts[i]; p.age += dt; if (p.age >= p.life) { parts.splice(i, 1); continue; }
+        if (p.age < 0) continue;
+        const k = dt / 16.7; p.vx *= Math.pow(p.drag, k); p.vy *= Math.pow(p.drag, k); p.vy += p.g * k; p.x += p.vx * k; p.y += p.vy * k; p.rot += p.vr * k;
+        const lf = p.age / p.life; const a = p.fade ? 1 - lf * lf : 1; const sz = p.s * (1 + p.grow * lf);
+        fxTok(ctx, p.kind, p.x, p.y, sz, p.rot, a, p.th, p.seed);
+      }
+      if (!resolved && t >= total + 80) { resolved = true; res(); }
+      if (t < total + 60 || (parts.length && t < total + 900)) requestAnimationFrame(frame);
+      else { ctx.clearRect(0, 0, W, H); if (!resolved) { resolved = true; res(); } }
+    };
+    requestAnimationFrame(frame);
+  });
+}
+function fxBurst(api, x, y, th, n, speed, size, r, kinds) {
+  const u = api.env.u;
+  for (let i = 0; i < n; i++) { const an = r() * Math.PI * 2, sp = (0.4 + r() * 0.8) * speed * u * .35; const kind = kinds ? kinds[i % kinds.length] : (i % 3 ? th.main : th.sub);
+    api.part({kind, x, y, vx: Math.cos(an) * sp, vy: Math.sin(an) * sp - (kind === 'flame' || kind === 'wisp' ? u * .15 : 0), drag: .9, g: kind === 'rock' || kind === 'drop' ? u * .02 : 0, s: size * u * (.6 + r() * .6), rot: r() * 6, vr: (r() - .5) * .3, life: 380 + r() * 380, th, seed: (r() * 1e6) | 0}); }
+}
+function fxShock(api, at, x, y, th, maxR, w) {
+  const u = api.env.u;
+  api.layer(at, 380, (ctx, p) => { ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = hexA(th.c2, 1 - p); ctx.lineWidth = w * u * (1 - p) + 1; ctx.beginPath(); ctx.ellipse(x, y, maxR * u * ease(p), maxR * u * ease(p) * .6, 0, 0, 7); ctx.stroke(); ctx.strokeStyle = hexA(th.c1, (1 - p) * .9); ctx.lineWidth = Math.max(1, w * u * .4 * (1 - p)); ctx.stroke(); });
+}
+function fxFlash(api, at, col, a, dur) { api.layer(at, dur || 180, (ctx, p) => { ctx.fillStyle = hexA(col, a * (1 - p)); ctx.fillRect(0, 0, api.env.W, api.env.H); }); }
+function fxTrail(api, x, y, th, r, k) { const u = api.env.u; api.part({kind: k || th.main, x: x + (r() - .5) * u * 2, y: y + (r() - .5) * u * 2, vx: (r() - .5) * u * .1, vy: (r() - .5) * u * .1 - (th.main === 'flame' ? u * .05 : 0), drag: .92, s: u * (1 + r() * 1.2), rot: r() * 6, vr: (r() - .5) * .2, life: 260 + r() * 200, th, seed: (r() * 1e6) | 0}); }
+
+// ---- Muster ----
+function fxBuild(api, pat, A, B, th, r, power, big, isMe) {
+  const u = api.env.u, dx = B.x - A.x, dy = B.y - A.y, len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len;
+  const curve = (r() - .5) * 2 * u * 12, sz = (big ? 1.35 : 1) * (0.9 + r() * .4);
+  const impact = (t, n) => { api.at(t, () => fxBurst(api, B.x, B.y, th, n || (big ? 26 : 16), big ? 3.2 : 2.4, 2.2 * sz, r)); fxShock(api, t, B.x, B.y, th, big ? 20 : 13, 3); };
+  switch (pat) {
+    case 'proj': {
+      const dur = 380, wob = r() < .5;
+      api.layer(0, dur, (ctx, p) => { const e = ease(p); const x = lerp(A.x, B.x, e) + nx * Math.sin(p * Math.PI) * curve + (wob ? Math.sin(p * 18) * u * 1.2 : 0), y = lerp(A.y, B.y, e) + ny * Math.sin(p * Math.PI) * curve;
+        fxTok(ctx, th.main, x, y, u * 3.2 * sz * (0.7 + p * .5), p * 8, 1, th, 3); for (let i = 0; i < 2; i++) fxTrail(api, x, y, th, r); });
+      impact(dur); break; }
+    case 'volley': {
+      const n = 3 + Math.floor(r() * 4), gap = 70 + r() * 40;
+      for (let i = 0; i < n; i++) { const off = (r() - .5) * u * 10, t0 = i * gap, k = th.main === 'flame' ? 'ember' : th.main;
+        api.layer(t0, 220, (ctx, p) => { const x = lerp(A.x, B.x + nx * off, p), y = lerp(A.y, B.y + ny * off, p); ctx.strokeStyle = hexA(th.c1, .6); ctx.lineWidth = u * .5; ctx.beginPath(); ctx.moveTo(lerp(A.x, B.x, Math.max(0, p - .15)), lerp(A.y, B.y, Math.max(0, p - .15))); ctx.lineTo(x, y); ctx.stroke(); fxTok(ctx, k, x, y, u * 2.3 * sz, Math.atan2(dy, dx) + Math.PI / 2, 1, th, i); });
+        api.at(t0 + 220, () => fxBurst(api, B.x + nx * off, B.y + ny * off, th, 6, 1.6, 1.4, r)); }
+      fxShock(api, n * gap + 150, B.x, B.y, th, 12, 2); break; }
+    case 'arc': case 'fan': {
+      const n = pat === 'fan' ? 5 : 1 + Math.floor(r() * 2), h = u * (18 + r() * 14);
+      for (let i = 0; i < n; i++) { const spread = pat === 'fan' ? (i - (n - 1) / 2) * u * 7 : 0, t0 = pat === 'fan' ? i * 40 : i * 150;
+        api.layer(t0, 480, (ctx, p) => { const x = lerp(A.x, B.x, p) + nx * spread * Math.sin(p * Math.PI), y = lerp(A.y, B.y, p) - Math.sin(p * Math.PI) * h + ny * spread * Math.sin(p * Math.PI); fxTok(ctx, th.main, x, y, u * 3.2 * sz, p * 10, 1, th, i); fxTrail(api, x, y, th, r, th.sub); }); }
+      impact(pat === 'fan' ? 480 + (n - 1) * 40 : 480 + (n - 1) * 150); break; }
+    case 'beam': {
+      const dur = 620, wv = 2 + r() * 3;
+      api.layer(0, dur, (ctx, p) => { const grow = Math.min(1, p * 3), fade = p > .75 ? 1 - (p - .75) * 4 : 1, ex = lerp(A.x, B.x, grow), ey = lerp(A.y, B.y, grow), w = u * (big ? 4.5 : 3.2) * (0.8 + .2 * Math.sin(p * 40));
+        ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
+        ctx.strokeStyle = hexA(th.c2, .55 * fade); ctx.lineWidth = w * 2; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(ex, ey); ctx.stroke();
+        ctx.strokeStyle = hexA(th.c1, .9 * fade); ctx.lineWidth = w; ctx.stroke();
+        ctx.strokeStyle = `rgba(255,255,255,${fade})`; ctx.lineWidth = w * .35; ctx.stroke();
+        for (let i = 0; i < 2; i++) { const q = r() * grow; fxTrail(api, lerp(A.x, B.x, q) + nx * Math.sin(q * wv * 6 + p * 20) * u * 2, lerp(A.y, B.y, q) + ny * Math.sin(q * wv * 6 + p * 20) * u * 2, th, r, th.sub); } });
+      api.at(200, () => fxBurst(api, B.x, B.y, th, 10, 1.5, 1.6, r)); impact(560, 18); break; }
+    case 'wave': {
+      const n = 2 + Math.floor(r() * 2), fx_ = dx / len, fy_ = dy / len, bul = u * (3 + r() * 3);
+      for (let i = 0; i < n; i++) api.layer(i * 120, 520, (ctx, p) => { const e = ease(p), cx = lerp(A.x, B.x, e), cy = lerp(A.y, B.y, e), half = u * (8 + p * 7), fade = p > .8 ? (1 - p) * 5 : 1;
+        const pts = []; for (let k = -12; k <= 12; k++) { const sN = k / 12, bulge = (1 - sN * sN) * bul + Math.sin(sN * 9 + p * 14) * u * .6; pts.push([cx + nx * sN * half + fx_ * bulge, cy + ny * sN * half + fy_ * bulge]); }
+        ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        for (const [w, col] of [[u * 3.2, hexA(th.c2, .45 * fade)], [u * 1.6, hexA(th.c2, .9 * fade)], [u * .6, hexA(th.c1, fade)]]) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); pts.forEach((q, j) => j ? ctx.lineTo(q[0], q[1]) : ctx.moveTo(q[0], q[1])); ctx.stroke(); }
+        if (r() < .8) { const q = pts[(r() * pts.length) | 0]; fxTrail(api, q[0], q[1], th, r); } });
+      impact(520 + (n - 1) * 120, 14); break; }
+    case 'vortex': {
+      const dur = 700, turns = 2 + r() * 2, dir = r() < .5 ? 1 : -1, cnt = 10 + Math.floor(r() * 8);
+      api.layer(0, dur, (ctx, p) => { for (let i = 0; i < cnt; i++) { const an = dir * (p * turns * Math.PI * 2 + i / cnt * Math.PI * 2), rad = u * (16 - 12 * ease(p)) * (0.6 + (i % 3) * .25);
+        fxTok(ctx, i % 2 ? th.main : th.sub, B.x + Math.cos(an) * rad, B.y + Math.sin(an) * rad * .55 - (1 - p) * u * 4, u * 2.1 * sz, an, Math.min(1, p * 4), th, i); }
+        ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = hexA(th.c1, .4 * (1 - p)); ctx.lineWidth = u * .6; ctx.beginPath(); ctx.ellipse(B.x, B.y, u * 14 * (1 - p * .6), u * 7 * (1 - p * .6), p * 4, 0, 7); ctx.stroke(); });
+      impact(dur, 20); break; }
+    case 'rain': {
+      const n = 8 + Math.floor(r() * 6), big2 = r() < .4;
+      for (let i = 0; i < n; i++) { const ox = (r() - .5) * u * 22, t0 = i * 45 + r() * 40;
+        api.layer(t0, 300, (ctx, p) => { const x = B.x + ox + (1 - p) * u * 6, y = lerp(-u * 5, B.y + (r() - .5) * u * 2, p * p); fxTok(ctx, th.main, x, y, u * (big2 && i === n - 1 ? 4.5 : 2.6) * sz, th.main === 'shard' || th.main === 'drop' ? 0 : 2.4, 1, th, i); fxTrail(api, x, y, th, r, th.sub); });
+        api.at(t0 + 300, () => fxBurst(api, B.x + ox, B.y, th, 4, 1.2, 1.2, r)); }
+      impact(n * 45 + 340, 14); break; }
+    case 'lightning': {
+      const bolts = 2 + Math.floor(r() * 2), fromSky = r() < .6;
+      for (let b = 0; b < bolts; b++) { const t0 = b * 140, seed = (r() * 1e6) | 0;
+        api.layer(t0, 160, (ctx, p) => { const rr = fxRng(seed + Math.floor(p * 4)), sx = fromSky ? B.x + (rr() - .5) * u * 10 : A.x, sy = fromSky ? 0 : A.y, segs = 9;
+          ctx.globalCompositeOperation = 'lighter'; ctx.lineJoin = 'round';
+          for (const [w, col] of [[u * 3.6, hexA(th.c2, .5)], [u * 1.6, hexA(th.c1, 1)], [u * .6, '#ffffff']]) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(sx, sy); for (let i = 1; i < segs; i++) { const q = i / segs; ctx.lineTo(lerp(sx, B.x, q) + (rr() - .5) * u * 7, lerp(sy, B.y, q) + (rr() - .5) * u * 3); } ctx.lineTo(B.x, B.y); ctx.stroke(); } });
+        fxFlash(api, t0, '#ffffff', .35, 120); api.at(t0 + 80, () => fxBurst(api, B.x, B.y, th, 8, 2, 1.4, r)); }
+      impact(bolts * 140 + 40, 16); break; }
+    case 'slash': {
+      const n = 2 + Math.floor(r() * 2), ang0 = r() * Math.PI;
+      for (let i = 0; i < n; i++) { const t0 = 80 + i * 110, an = ang0 + i * (Math.PI / n) + (r() - .5) * .4, L = u * (14 + r() * 4);
+        api.layer(t0, 190, (ctx, p) => { const e = ease(Math.min(1, p * 1.6)), fade = 1 - Math.max(0, p - .5) * 2, cx = B.x, cy = B.y, x1 = cx - Math.cos(an) * L, y1 = cy - Math.sin(an) * L * .8, x2 = cx + Math.cos(an) * L, y2 = cy + Math.sin(an) * L * .8;
+          const ex = lerp(x1, x2, e), ey = lerp(y1, y2, e), mx = (x1 + ex) / 2 - Math.sin(an) * u * 4, my = (y1 + ey) / 2 + Math.cos(an) * u * 4;
+          ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
+          for (const [w, col] of [[u * 3.4, hexA(th.c2, .6 * fade)], [u * 1.5, hexA(th.c1, fade)], [u * .55, `rgba(255,255,255,${fade})`]]) { ctx.strokeStyle = col; ctx.lineWidth = w; ctx.beginPath(); ctx.moveTo(x1, y1); ctx.quadraticCurveTo(mx, my, ex, ey); ctx.stroke(); }
+          if (p < .6) fxTrail(api, ex, ey, th, r, th.sub); });
+        api.at(t0 + 120, () => fxBurst(api, B.x, B.y, th, 6, 1.8, 1.3, r)); }
+      fxShock(api, 80 + n * 110, B.x, B.y, th, 12, 2.5); break; }
+    case 'bite': {
+      const dur = 420, w = u * 9, th2 = u * 4.5;
+      api.layer(0, dur, (ctx, p) => { const close = p < .55 ? 1 - ease(p / .55) : 0, gap = u * 9 * close, a = p > .8 ? (1 - p) * 5 : 1;
+        ctx.globalAlpha = a; ctx.lineJoin = 'round'; ctx.lineWidth = u * .5;
+        for (const sg of [-1, 1]) { const base = B.y + sg * (gap + th2 + u * 2), tip = B.y + sg * gap;
+          ctx.fillStyle = hexA(th.c2, .85); ctx.beginPath(); ctx.ellipse(B.x, base + sg * u * 1.5, w * 1.15, u * 3, 0, 0, 7); ctx.fill();
+          ctx.fillStyle = '#ffffff'; ctx.strokeStyle = '#2a2140'; ctx.beginPath(); ctx.moveTo(B.x - w, base);
+          for (let i = 0; i < 5; i++) { const x0 = B.x - w + i * 2 * w / 5; ctx.lineTo(x0 + w / 5, tip + sg * (i === 0 || i === 4 ? u * 1.2 : 0)); ctx.lineTo(x0 + 2 * w / 5, base); }
+          ctx.closePath(); ctx.fill(); ctx.stroke(); } });
+      impact(240, 14); break; }
+    case 'bind': {
+      const dur = 760, wv = 3 + Math.floor(r() * 3);
+      api.layer(0, dur, (ctx, p) => { const g = Math.min(1, p * 2.2), fade = p > .8 ? (1 - p) * 5 : 1; ctx.strokeStyle = hexA(th.c2, fade); ctx.lineWidth = u * 1.1; ctx.lineCap = 'round'; ctx.beginPath();
+        for (let i = 0; i <= 30; i++) { const q = i / 30 * g, w = Math.sin(q * Math.PI * wv + p * 10) * u * 2.5; const x = lerp(A.x, B.x, q) + nx * w, y = lerp(A.y, B.y, q) + ny * w; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); } ctx.stroke();
+        if (p > .45) { const q = (p - .45) / .55; for (let k = 0; k < 3; k++) { ctx.strokeStyle = hexA(th.c1, fade); ctx.lineWidth = u * .8; ctx.beginPath(); ctx.ellipse(B.x, B.y - u * 4 + k * u * 4, u * (12 - q * 6), u * (3 - q), 0, 0, 7); ctx.stroke(); } } });
+      api.at(dur * .7, () => fxBurst(api, B.x, B.y, th, 10, 1.6, 1.5, r)); fxShock(api, dur * .8, B.x, B.y, th, 10, 2); break; }
+    case 'rings': {
+      const n = 3 + Math.floor(r() * 3);
+      for (let i = 0; i < n; i++) api.layer(i * 90, 420, (ctx, p) => { const x = lerp(A.x, B.x, p), y = lerp(A.y, B.y, p), rad = u * (3 + p * 7); ctx.strokeStyle = hexA(th.c2, 1 - p * .6); ctx.lineWidth = u * .8; ctx.beginPath(); ctx.arc(x, y, rad, Math.atan2(dy, dx) - 1, Math.atan2(dy, dx) + 1); ctx.stroke(); if (i % 2 === 0 && th.main === 'note') fxTrail(api, x, y, th, r, 'note'); else if (r() < .3) fxTrail(api, x, y, th, r, th.main); });
+      impact(n * 90 + 380, 14); break; }
+    case 'impact': {
+      const t = 230;
+      api.layer(0, t, (ctx, p) => { for (let i = 0; i < 2; i++) fxTrail(api, lerp(A.x, B.x, p * .8), lerp(A.y, B.y, p * .8), th, r, th.sub); });
+      api.layer(t, 170, (ctx, p) => { ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = hexA(th.c1, 1 - p); ctx.beginPath(); const R = u * (6 + p * 10); for (let i = 0; i < 16; i++) { const rr = i % 2 ? R * .45 : R; ctx.lineTo(B.x + Math.cos(i * Math.PI / 8 + .2) * rr, B.y + Math.sin(i * Math.PI / 8 + .2) * rr); } ctx.closePath(); ctx.fill(); });
+      impact(t, big ? 26 : 18); break; }
+    case 'field': {
+      const dur = 1000;
+      api.layer(0, dur + 200, (ctx, p) => { const a = p < .15 ? p / .15 : p > .85 ? (1 - p) / .15 : 1; ctx.fillStyle = `rgba(10,8,30,${.55 * a})`; ctx.fillRect(0, 0, api.env.W, api.env.H); const g = ctx.createRadialGradient(B.x, B.y, 0, B.x, B.y, api.env.W * .6); g.addColorStop(0, hexA(th.c2, .45 * a)); g.addColorStop(1, hexA(th.c2, 0)); ctx.fillStyle = g; ctx.fillRect(0, 0, api.env.W, api.env.H); });
+      api.layer(80, dur - 200, (ctx, p) => { for (let i = 0; i < 3; i++) api.part({kind: r() < .5 ? th.main : th.sub, x: r() * api.env.W, y: api.env.H + u * 3, vx: (r() - .5) * u * .2, vy: -u * (1.2 + r() * 1.5), drag: .995, s: u * (1 + r() * 1.5), rot: r() * 6, vr: (r() - .5) * .2, life: 700, th, seed: (r() * 1e6) | 0}); });
+      api.layer(300, 600, (ctx, p) => { ctx.globalCompositeOperation = 'lighter'; const R = u * 22 * (1 - ease(p)) + u * 3; ctx.strokeStyle = hexA(th.c1, .8); ctx.lineWidth = u * 1.2; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.arc(B.x, B.y, R * (1 + k * .35), p * 6 + k, p * 6 + k + 4); ctx.stroke(); } });
+      fxFlash(api, 900, '#ffffff', .8, 260); impact(900, 34); fxShock(api, 980, B.x, B.y, th, 30, 4); break; }
+  }
+}
+async function attackFx(isMe, move, tm, crit) {
+  const uEl = isMe ? $('meMon') : $('foeMon');
+  const env = fxEnv();
+  const th = FXT[move.typ] || FXT.Metall, h = fxHash((move.anzeige || move.name || '') + move.typ), r = fxRng(h);
+  const pat = fxPattern(move), big = move.staerke >= 85;
+  const A = env ? fxP(env, isMe ? POS.me : POS.foe) : null, B = env ? fxP(env, isMe ? POS.foe : POS.me) : null;
+  // Anwender-Bewegung passend zum Muster
+  const dirx = isMe ? 1 : -1;
+  if (pat === 'impact' || pat === 'bite') play(uEl, [{transform: 'translate(0,0)'}, {transform: `translate(${dirx * 30}%,${-dirx * 22}%) scale(1.08)`, offset: .45}, {transform: `translate(${dirx * 34}%,${-dirx * 25}%) scale(1.08)`, offset: .55}, {transform: 'translate(0,0)'}], 480);
+  else if (pat === 'field') play(uEl, [{transform: 'translateY(0)', filter: 'none'}, {transform: 'translateY(-10%) scale(1.12)', filter: `drop-shadow(0 0 12px ${th.c2}) brightness(1.4)`, offset: .5}, {transform: 'translateY(0)', filter: 'none'}], 700);
+  else { play(uEl, [{transform: 'translate(0,0)'}, {transform: `translate(${dirx * 8}%,${-dirx * 6}%)`, offset: .4}, {transform: 'translate(0,0)'}], 260); await sleep(110); }
+  if (crit) { const fl = document.createElement('div'); fl.style.cssText = 'position:absolute;inset:0;background:#fff'; $('fx').appendChild(fl); play(fl, [{opacity: .8}, {opacity: 0}], 300).then(() => fl.remove()); }
+  if (!env) return;
+  let shookAt = null;
+  await fxRun(api => {
+    fxBuild(api, pat, A, B, th, r, move.staerke, big, isMe);
+    // Treffer-Zeitpunkt: Bildschirm wackeln
+    const hitT = {proj: 380, volley: 300, arc: 480, fan: 640, beam: 560, wave: 640, vortex: 700, rain: 600, lightning: 320, slash: 200, bite: 260, bind: 530, rings: 600, impact: 230, field: 900}[pat] || 400;
+    api.at(hitT, () => { if (crit || tm > 1 || pat === 'field' || big) shakeScreen(tm > 1 || pat === 'field'); });
+  });
+}
+// Animation für Attacken ohne Schaden (Schilde, Ruhe, Auren, Flüche)
+async function statusMoveFx(isMe, move) {
+  const env = fxEnv(); const uEl = isMe ? $('meMon') : $('foeMon');
+  const th = FXT[move.typ] || FXT.Metall, r = fxRng(fxHash((move.anzeige || '') + move.typ)), l = (move.anzeige || '').toLowerCase();
+  if (!env) { await play(uEl, [{transform: 'scale(1)'}, {transform: 'scale(1.1)', offset: .5}, {transform: 'scale(1)'}], 350); return; }
+  const fx = move.fx || {};
+  const onFoe = fx.foe && !fx.self && !fx.heal;
+  const P = fxP(env, (isMe ? !onFoe : onFoe) ? POS.me : POS.foe), u = env.u;
+  const kind = FX_SHIELD.some(w => l.includes(w)) ? 'shield' : l.includes('ruhe') || fx.heal ? 'calm' : onFoe ? 'curse' : 'aura';
+  play(uEl, [{transform: 'scale(1)'}, {transform: 'scale(1.08)', offset: .5}, {transform: 'scale(1)'}], 500);
+  await fxRun(api => {
+    if (kind === 'shield') {
+      const hex = r() < .5;
+      api.layer(0, 760, (ctx, p) => { const a = p < .3 ? p / .3 : p > .75 ? (1 - p) / .25 : 1, R = u * 15 * (p < .3 ? ease(p / .3) : 1);
+        ctx.globalCompositeOperation = 'lighter'; const g = ctx.createRadialGradient(P.x, P.y, R * .3, P.x, P.y, R); g.addColorStop(0, hexA(th.c2, 0)); g.addColorStop(1, hexA(th.c2, .45 * a)); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(P.x, P.y, R, 0, 7); ctx.fill();
+        ctx.strokeStyle = hexA(th.c1, a); ctx.lineWidth = u * .7; ctx.beginPath(); if (hex) { for (let i = 0; i < 7; i++) ctx.lineTo(P.x + Math.cos(i * Math.PI / 3 + p) * R, P.y + Math.sin(i * Math.PI / 3 + p) * R); } else ctx.arc(P.x, P.y, R, 0, 7); ctx.stroke();
+        if (r() < .5) fxTrail(api, P.x + Math.cos(p * 20) * R, P.y + Math.sin(p * 20) * R, th, r, th.sub); });
+    } else if (kind === 'calm') {
+      api.layer(0, 800, (ctx, p) => { for (let i = 0; i < 2; i++) api.part({kind: r() < .5 ? th.sub : 'spark', x: P.x + (r() - .5) * u * 18, y: P.y + u * 8, vy: -u * (.3 + r() * .4), s: u * (.8 + r()), life: 650, th: {c1: '#eaffea', c2: th.c2}, seed: i}); ctx.globalCompositeOperation = 'lighter'; ctx.fillStyle = hexA(th.c1, .25 * Math.sin(p * Math.PI)); ctx.beginPath(); ctx.ellipse(P.x, P.y, u * 14, u * 10, 0, 0, 7); ctx.fill(); });
+    } else if (kind === 'curse') {
+      api.layer(0, 720, (ctx, p) => { const cnt = 8; for (let i = 0; i < cnt; i++) { const an = p * 9 + i / cnt * Math.PI * 2, rad = u * (14 - p * 6); fxTok(ctx, th.sub, P.x + Math.cos(an) * rad, P.y + Math.sin(an) * rad * .5, u * 1.4, an, Math.sin(p * Math.PI), th, i); } ctx.fillStyle = hexA(th.c2, .2 * Math.sin(p * Math.PI)); ctx.beginPath(); ctx.arc(P.x, P.y, u * 12, 0, 7); ctx.fill(); });
+    } else {
+      api.layer(0, 760, (ctx, p) => { for (let i = 0; i < 3; i++) api.part({kind: i % 2 ? th.main : th.sub, x: P.x + (r() - .5) * u * 16, y: P.y + u * 6, vy: -u * (.6 + r() * .6), vx: (r() - .5) * u * .1, s: u * (1 + r()), life: 520, th, seed: (r() * 1e6) | 0}); ctx.globalCompositeOperation = 'lighter'; ctx.strokeStyle = hexA(th.c1, .7 * Math.sin(p * Math.PI)); ctx.lineWidth = u * .6; for (let k = 0; k < 2; k++) { ctx.beginPath(); ctx.ellipse(P.x, P.y + u * 6 - ((p * 2 + k * .5) % 1) * u * 14, u * 11, u * 3, 0, 0, 7); ctx.stroke(); } });
+    }
+  });
+}
+
 async function statFx(isMe, up, stat) {
   const pos = isMe ? POS.me : POS.foe;
   rise(pos.x, pos.y, up ? '#ff7a59' : '#59a6ff', 10);
@@ -2890,7 +3164,7 @@ async function doMove(isMe, move) {
   }
   if (user.status === 'para' && Math.random() < 0.25) { anim(uEl, 'shake'); await say(`${uName} ist paralysiert!\nEs kann sich nicht bewegen! ⚡`); return; }
   showText(`${uName} setzt ${move.anzeige} ein!`); await sleep(550);
-  if (move.staerke <= 0) await play(isMe ? $('meMon') : $('foeMon'), [{transform: 'scale(1)'}, {transform: 'scale(1.1)', offset: .5}, {transform: 'scale(1)'}], 350);
+  if (move.staerke <= 0) await statusMoveFx(isMe, move);
   const fx = move.fx;
   if (fx.onceMove) { if (B.used.has(user.uid + move.name)) { await say('Diese Spezialattacke geht nur einmal pro Kampf!'); return; } B.used.add(user.uid + move.name); }
   if (move.staerke > 0) {
@@ -3425,4 +3699,4 @@ function startGame(state, fresh) {
 }
 titleScreen();
 requestAnimationFrame(loop);
-window.__game = {openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};
+window.__game = {attackFx, statusMoveFx, fxPattern, openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};
