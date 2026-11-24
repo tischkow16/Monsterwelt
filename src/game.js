@@ -3714,7 +3714,7 @@ function startGame(state, fresh) {
   });
 }
 // ================= Online-Modus =================
-const MW_API_DEFAULT = 'https://monsterwelt.WORKERS_SUBDOMAIN.workers.dev';
+const MW_API_DEFAULT = 'https://monsterwelt.tischkow16.workers.dev';
 const MW_API = (() => { try { return localStorage.getItem('mw_api') || MW_API_DEFAULT; } catch (e) { return MW_API_DEFAULT; } })();
 let onTok = null; try { onTok = localStorage.getItem('mw_token'); } catch (e) {}
 let onSaving = false, onQueued = false, onLast = 0, onTimer = null, onState = 'ok', onReject = null;
