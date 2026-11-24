@@ -3880,7 +3880,7 @@ function titleScreen() {
   if (window.MW_PWA || apiOverride) {
     const ob = document.createElement('button'); ob.className = 'onlineBtn'; ob.textContent = '🌐 Online spielen'; ob.onclick = () => onlineTitle(main, titleScreen); main.appendChild(ob);
     const ol = document.createElement('div'); ol.className = 'hint'; ol.textContent = '— oder offline auf diesem Gerät —'; main.appendChild(ol);
-  } else { const ol = document.createElement('div'); ol.className = 'hint'; ol.innerHTML = '🌐 Online mit Freunden: <b>tischkow16.github.io/monsterwelt</b>'; main.appendChild(ol); }
+  } else { const ol = document.createElement('div'); ol.className = 'hint'; ol.innerHTML = '🌐 Online mit Freunden: <b>tischkow16.github.io/Monsterwelt</b>'; main.appendChild(ol); }
   const sv = loadSave();
   setTimeout(() => addInstallButton(main), 0);
   if (sv) { const b = document.createElement('button'); const top = (sv.team || []).reduce((mx, m) => Math.max(mx, m.level), 0); b.textContent = `Weiter (${sv.name}${top ? ' · Lv ' + top : ''} · ${(sv.badges || []).length} Orden)`; b.onclick = () => startGame(sv); main.appendChild(b); }
