@@ -2397,14 +2397,16 @@ async function boxMenu() {
 async function mainMenu() {
   while (true) {
     const opts = ['Team', 'Beutel', 'Monsterdex', 'Trainerpass', 'Speichern', 'Schließen'];
-    if (G.bag.Karte) opts.splice(2, 0, 'Karte');
+    if (G.online) opts.splice(0, 0, '🌐 Online');
+    if (G.bag.Karte) opts.splice(G.online ? 3 : 2, 0, 'Karte');
     let i = await choose(opts, {title: 'Menü'});
+    if (G.online) { if (i === 0) { await onlineMenu(); continue; } i--; }
     if (G.bag.Karte) { if (i === 2) { await openWorldMap(); continue; } if (i > 2) i--; }
     if (i === 0) await teamMenu();
     else if (i === 1) { if ((await bagMenu(false)) === 'closeMenu') break; }
     else if (i === 2) await dexView();
     else if (i === 3) await trainerCard();
-    else if (i === 4) { save(); await say(cloudDoc ? 'Spiel gespeichert!\n(Auch online in deinem Konto – so geht nichts verloren.)' : 'Spiel gespeichert!'); }
+    else if (i === 4) { save(); await say(G.online ? 'Spiel gespeichert!\n(Auf dem Server – du kannst auf jedem Gerät weiterspielen.)' : cloudDoc ? 'Spiel gespeichert!\n(Auch online in deinem Konto – so geht nichts verloren.)' : 'Spiel gespeichert!'); }
     else break;
   }
 }
@@ -3563,6 +3565,7 @@ function update(dt) {
   if (!G || !map) return;
   G.time = (G.time || 0) + dt / 1000;
   if (!B) { G.pclock = (G.pclock || 0) + dt / 1000; poisonCheck(); } else if (_phud) { _phud = ''; $('poisonHud').style.display = 'none'; }
+  onlineUpdate(dt);
   if (moving) {
     moving.t += dt;
     if (moving.t >= moving.dur) { G.x = moving.tx; G.y = moving.ty; moving = null; onStepDone(); }
@@ -3603,7 +3606,7 @@ function drawNpc(n, x, y) {
 }
 function draw() {
   ctx.fillStyle = '#000'; ctx.fillRect(0, 0, cv.width, cv.height);
-  if (!G || !map) return;
+  if (!G || !map) { nameTags = []; flushNameTags(); return; }
   let px = G.x * 16, py = G.y * 16;
   if (moving) { const k = moving.t / moving.dur; px = (moving.fx + (moving.tx - moving.fx) * k) * 16; py = (moving.fy + (moving.ty - moving.fy) * k) * 16; }
   const mw = map.w * 16, mh = map.h * 16;
@@ -3618,7 +3621,10 @@ function draw() {
     drawPlayerSprite(px - camX, py - camY, step);
     const t = tileAt(G.x, G.y); if (t === 'G' && !moving && !G.bike) { const gx = G.x * 16 - camX, gy = G.y * 16 - camY; for (let i = 0; i < 4; i++) { R_(ctx, gx + i * 4, gy + 10, 1, 6, '#3f8a30'); R_(ctx, gx + i * 4 + 1, gy + 9, 1, 7, '#78c95a'); R_(ctx, gx + i * 4 + 2, gy + 11, 2, 5, '#5fae46'); } }
   }});
+  ents.push(...otherEnts(camX, camY));
   ents.sort((a, b) => a.y - b.y).forEach(e => e.f());
+  flushNameTags();
+  if (myEmote && performance.now() - myEmote.t < 2500) { const x = Math.round(px - camX), y = Math.round(py - camY); ctx.fillStyle = '#fff'; ctx.strokeStyle = '#1d1f2a'; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(x + 1, y - 22, 14, 12, 3); ctx.fill(); ctx.stroke(); ctx.font = '8px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000'; ctx.fillText(myEmote.e, x + 8, y - 15.5); ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic'; }
   drawOParts(camX, camY);
   const now = performance.now();
   if (map.fog) { ctx.fillStyle = 'rgba(225,222,245,0.16)'; ctx.fillRect(0, 0, cv.width, cv.height); for (let i = 0; i < 5; i++) { const fx = ((now / 60 + i * 97) % (cv.width + 120)) - 120 - camX * 0.3 % 40, fy = (i * 41 + 13) % cv.height; ctx.fillStyle = 'rgba(240,238,255,0.22)'; ctx.beginPath(); ctx.ellipse(fx + 60, fy, 70, 14, 0, 0, 7); ctx.fill(); } }
@@ -3632,9 +3638,9 @@ function loop(now) { const dt = Math.min(50, now - last); last = now; update(dt)
 const SAVE_KEY = 'monsterwelt_save_v1';
 let cloudDoc = null, cloudSave = null, cloudWriting = false, cloudQueued = false, lastCloudWrite = 0, cloudTimer = null;
 function toast(t) { const el = $('saveToast'); if (!el) return; el.textContent = t; el.style.opacity = 1; clearTimeout(el._t); el._t = setTimeout(() => el.style.opacity = 0, 1400); }
-function writeLocal() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(G)); return true; } catch (e) { return false; } }
+function writeLocal() { if (G && G.online) return true; try { localStorage.setItem(SAVE_KEY, JSON.stringify(G)); return true; } catch (e) { return false; } }
 async function cloudWrite() {
-  if (!cloudDoc || !G) return;
+  if (!cloudDoc || !G || G.online) return;
   if (cloudWriting) { cloudQueued = true; return; }
   cloudWriting = true; clearTimeout(cloudTimer); lastCloudWrite = Date.now();
   try { await cloudDoc.set({json: JSON.stringify(G), savedAt: G.savedAt || Date.now(), name: G.name}); }
@@ -3643,17 +3649,17 @@ async function cloudWrite() {
   if (cloudQueued) { cloudQueued = false; cloudWrite(); }
 }
 // Speichern: lokal sofort, online (falls verfügbar) sofort
-function save(silent) { if (!G) return; G.savedAt = Date.now(); writeLocal(); if (cloudDoc) cloudWrite(); if (!silent) toast('💾 Gespeichert'); }
+function save(silent) { if (!G) return; G.savedAt = Date.now(); if (G.online) { onlineSave(); if (!silent) toast('💾 Online gespeichert'); return; } writeLocal(); if (cloudDoc) cloudWrite(); if (!silent) toast('💾 Gespeichert'); }
 // Automatisch: lokal sofort, online höchstens alle 15 Sekunden
 function autosave() {
-  if (!G || !G.team) return; G.savedAt = Date.now(); writeLocal();
+  if (!G || !G.team) return; G.savedAt = Date.now(); if (G.online) { onlineAutosave(); return; } writeLocal();
   if (cloudDoc) { if (Date.now() - lastCloudWrite > 15000) cloudWrite(); else { clearTimeout(cloudTimer); cloudTimer = setTimeout(cloudWrite, 15000 - (Date.now() - lastCloudWrite)); } }
 }
 function loadLocal() { try { const s = localStorage.getItem(SAVE_KEY); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
 function loadSave() { const l = loadLocal(), c = cloudSave; if (l && c) return (c.savedAt || 0) > (l.savedAt || 0) ? c : l; return l || c; }
 setInterval(() => { if (G && !B && $('title').style.display === 'none') autosave(); }, 20000);
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && G && $('title').style.display === 'none') save(true); });
-window.addEventListener('pagehide', () => { if (G && $('title').style.display === 'none') { G.savedAt = Date.now(); writeLocal(); } });
+window.addEventListener('pagehide', () => { if (G && G.online && onTok) { try { fetch(MW_API + '/api/save', {method: 'PUT', keepalive: true, headers: {'Content-Type': 'application/json', Authorization: 'Bearer ' + onTok}, body: JSON.stringify(G)}); } catch (e) {} return; } if (G && $('title').style.display === 'none') { G.savedAt = Date.now(); writeLocal(); } });
 (async () => {
   try {
     if (!window.claude || !window.claude.use) return;
@@ -3674,7 +3680,13 @@ function titleScreen() {
   const tm = $('titleMons'); tm.innerHTML = '';
   for (const n of ['Zirkelu', 'Plitscho', 'Moosli']) { const c = document.createElement('canvas'); c.width = c.height = 32; paintSprite(c, n); tm.appendChild(c); }
   const main = $('titleMain'); main.innerHTML = '';
+  let apiOverride = false; try { apiOverride = !!localStorage.getItem('mw_api'); } catch (e) {}
+  if (window.MW_PWA || apiOverride) {
+    const ob = document.createElement('button'); ob.className = 'onlineBtn'; ob.textContent = '🌐 Online spielen'; ob.onclick = () => onlineTitle(main, titleScreen); main.appendChild(ob);
+    const ol = document.createElement('div'); ol.className = 'hint'; ol.textContent = '— oder offline auf diesem Gerät —'; main.appendChild(ol);
+  } else { const ol = document.createElement('div'); ol.className = 'hint'; ol.innerHTML = '🌐 Online mit Freunden: <b>tischkow16.github.io/monsterwelt</b>'; main.appendChild(ol); }
   const sv = loadSave();
+  setTimeout(() => addInstallButton(main), 0);
   if (sv) { const b = document.createElement('button'); const top = (sv.team || []).reduce((mx, m) => Math.max(mx, m.level), 0); b.textContent = `Weiter (${sv.name}${top ? ' · Lv ' + top : ''} · ${(sv.badges || []).length} Orden)`; b.onclick = () => startGame(sv); main.appendChild(b); }
   const nb = document.createElement('button'); nb.textContent = 'Neues Spiel'; nb.onclick = askName; main.appendChild(nb);
   function askName() {
@@ -3691,6 +3703,7 @@ function titleScreen() {
 function startGame(state, fresh) {
   G = state; G.pc = G.pc || {}; G.bag = G.bag || {}; G.money = Math.min(MAX_MONEY, Math.max(0, G.money || 0));
   $('title').style.display = 'none';
+  if (G.online) { wsConnect(); updateOnlineChip(); } else { wsClose(); updateOnlineChip(); }
   document.activeElement && document.activeElement.blur && document.activeElement.blur();
   enterMap(G.map, G.x, G.y, G.dir);
   if (fresh) script(async () => {
@@ -3700,6 +3713,220 @@ function startGame(state, fresh) {
     await say('Tipp: Mit Esc oder X öffnest du das Menü.\nMit Enter oder Leertaste sprichst du mit Leuten.');
   });
 }
+// ================= Online-Modus =================
+const MW_API_DEFAULT = 'https://monsterwelt.WORKERS_SUBDOMAIN.workers.dev';
+const MW_API = (() => { try { return localStorage.getItem('mw_api') || MW_API_DEFAULT; } catch (e) { return MW_API_DEFAULT; } })();
+let onTok = null; try { onTok = localStorage.getItem('mw_token'); } catch (e) {}
+let onSaving = false, onQueued = false, onLast = 0, onTimer = null, onState = 'ok', onReject = null;
+let myEmote = null, ws = null, wsTry = 0, wsKey = '', wsMap = null, wsSentAt = 0, OTHERS = {}, onlineCount = 0;
+function setTok(t) { onTok = t; try { t ? localStorage.setItem('mw_token', t) : localStorage.removeItem('mw_token'); } catch (e) {} }
+async function api(method, path, body) {
+  const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 12000);
+  try {
+    const r = await fetch(MW_API + path, {method, signal: ctl.signal, headers: {'Content-Type': 'application/json', ...(onTok ? {Authorization: 'Bearer ' + onTok} : {})}, body: body === undefined ? undefined : typeof body === 'string' ? body : JSON.stringify(body)});
+    let d = {}; try { d = await r.json(); } catch (e) {}
+    d.status = r.status; return d;
+  } finally { clearTimeout(to); }
+}
+function setOnlineState(s) { onState = s; updateOnlineChip(); }
+function updateOnlineChip() {
+  const c = $('onlineChip'); if (!c) return;
+  if (!G || !G.online) { c.style.display = 'none'; return; }
+  c.style.display = '';
+  const live = ws && ws.readyState === 1;
+  c.className = onState === 'ok' && live ? 'ok' : onState === 'ok' ? 'wait' : 'bad';
+  c.textContent = onState === 'auth' ? '🌐 Bitte neu einloggen' : onState === 'err' ? '🌐 Keine Verbindung' : live ? `🌐 ${onlineCount} online` : '🌐 Verbinde …';
+}
+async function onlineSave() {
+  if (!G || !G.online || !onTok) return;
+  if (onSaving) { onQueued = true; return; }
+  onSaving = true; clearTimeout(onTimer); onLast = Date.now();
+  try {
+    const d = await api('PUT', '/api/save', JSON.stringify(G));
+    if (d.ok) setOnlineState('ok');
+    else if (d.status === 401 || d.status === 403) { setOnlineState('auth'); toast('⚠ ' + (d.error || 'Bitte neu einloggen')); }
+    else if (d.rejected) { onReject = d; setOnlineState('ok'); }
+    else setOnlineState('err');
+  } catch (e) { setOnlineState('err'); }
+  onSaving = false;
+  if (onQueued) { onQueued = false; onlineSave(); }
+}
+function onlineAutosave() {
+  if (Date.now() - onLast > 15000) onlineSave();
+  else { clearTimeout(onTimer); onTimer = setTimeout(onlineSave, 15000 - (Date.now() - onLast)); }
+}
+// abgelehnter Spielstand: letzten gültigen Server-Spielstand laden
+function onlineRejectCheck() {
+  if (!onReject || handlers.length || scriptLock || B || moving) return;
+  const d = onReject; onReject = null;
+  script(async () => {
+    await say(`⚠ Der Server hat deinen Spielstand abgelehnt:\n„${d.error}“`);
+    await say('Damit niemand schummeln kann, wird jetzt dein letzter\ngültiger Spielstand geladen.');
+    const name = G.name;
+    if (d.save) { d.save.online = true; G = d.save; }
+    else { newGame(name); G.online = true; }
+    enterMap(G.map, G.x, G.y, G.dir);
+  });
+}
+// --- Echtzeit: andere Spieler sehen ---
+function wsConnect() {
+  if (!G || !G.online || !onTok || ws) return;
+  try { ws = new WebSocket(MW_API.replace(/^http/, 'ws') + '/api/world?token=' + onTok); } catch (e) { ws = null; return; }
+  ws.onopen = () => { wsTry = 0; wsKey = ''; sendPos(true); updateOnlineChip(); };
+  ws.onmessage = e => { let m; try { m = JSON.parse(e.data); } catch (er) { return; } onWsMsg(m); };
+  ws.onclose = ev => { ws = null; OTHERS = {}; updateOnlineChip(); if (ev.code === 4000) { toast('🌐 Du hast dich woanders eingeloggt'); return; } if (G && G.online) setTimeout(wsConnect, Math.min(30000, 1000 * Math.pow(2, wsTry++))); };
+}
+function wsClose() { if (ws) { try { ws.onclose = null; ws.close(); } catch (e) {} ws = null; } OTHERS = {}; }
+function onWsMsg(m) {
+  if (m.t === 'hello' || m.t === 'pong') { onlineCount = m.online; updateOnlineChip(); }
+  else if (m.t === 'here') { OTHERS = {}; for (const p of m.players) if (p.map === G.map) addOther(p); }
+  else if (m.t === 'pos') { if (m.map !== G.map) { delete OTHERS[m.name]; return; } addOther(m); }
+  else if (m.t === 'leave') delete OTHERS[m.name];
+  else if (m.t === 'emote') { const o = OTHERS[m.name]; if (o) { o.emote = m.e; o.emoteT = performance.now(); } }
+}
+function lookFor(name) {
+  let h = 0; for (const c of name) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  const SH = ['#e67e22', '#27ae60', '#8e44ad', '#16a085', '#d35400', '#c0392b', '#2c3e50', '#f1c40f', '#e84393', '#00b894'], HT = ['#2d3436', '#0984e3', '#6c5ce7', '#fdcb6e', '#00cec9', '#e17055', '#ffffff', '#55efc4'], HR = ['#3b2a20', '#1d1f2a', '#a0522d', '#f5d76e', '#7f8c8d'];
+  return {hair: HR[h % HR.length], hat: HT[(h >> 4) % HT.length], shirt: SH[(h >> 8) % SH.length], pants: '#28324a'};
+}
+function addOther(p) {
+  const o = OTHERS[p.name];
+  if (o) Object.assign(o, {x: p.x, y: p.y, dir: p.dir, ride: p.ride});
+  else OTHERS[p.name] = {name: p.name, x: p.x, y: p.y, dir: p.dir, ride: p.ride, px: p.x * 16, py: p.y * 16, look: lookFor(p.name)};
+}
+function sendPos(force) {
+  if (!G) return;
+  if (G.map !== wsMap) { wsMap = G.map; OTHERS = {}; }
+  if (!ws || ws.readyState !== 1) return;
+  const ride = G.surf ? 'surf' : G.bike ? 'bike' : null, key = `${G.map}|${G.x}|${G.y}|${G.dir}|${ride}`;
+  if (!force && (key === wsKey || performance.now() - wsSentAt < 90)) return;
+  wsKey = key; wsSentAt = performance.now();
+  try { ws.send(JSON.stringify({t: 'pos', map: G.map, x: G.x, y: G.y, dir: G.dir, ride})); } catch (e) {}
+}
+setInterval(() => { if (ws && ws.readyState === 1) try { ws.send('{"t":"ping"}'); } catch (e) {} }, 25000);
+function onlineUpdate(dt) {
+  if (!G || !G.online) return;
+  sendPos(false); onlineRejectCheck();
+  const sp = dt * 0.14;
+  for (const o of Object.values(OTHERS)) {
+    const tx = o.x * 16, ty = o.y * 16, dx = tx - o.px, dy = ty - o.py;
+    if (Math.abs(dx) > 48 || Math.abs(dy) > 48) { o.px = tx; o.py = ty; }
+    else { o.px += Math.sign(dx) * Math.min(Math.abs(dx), sp * (o.ride === 'bike' ? 2 : 1)); o.py += Math.sign(dy) * Math.min(Math.abs(dy), sp * (o.ride === 'bike' ? 2 : 1)); }
+    o.moving = o.px !== tx || o.py !== ty;
+  }
+}
+let nameTags = [];
+const _tagPool = {};
+function flushNameTags() {
+  const layer = $('nameLayer'); if (!layer) return;
+  const r = cv.getBoundingClientRect(), pr = layer.parentElement.getBoundingClientRect(), k = r.width / cv.width;
+  const seen = new Set();
+  for (const [n, x, y] of nameTags) {
+    let el = _tagPool[n]; if (!el) { el = _tagPool[n] = document.createElement('div'); el.className = 'ntag'; el.textContent = n; layer.appendChild(el); }
+    el.style.display = ''; el.style.left = (r.left - pr.left + x * k) + 'px'; el.style.top = (r.top - pr.top + y * k) + 'px'; seen.add(n);
+  }
+  for (const n in _tagPool) if (!seen.has(n)) _tagPool[n].style.display = 'none';
+  nameTags = [];
+}
+function otherEnts(camX, camY) {
+  if (!G || !G.online) return [];
+  return Object.values(OTHERS).map(o => ({y: o.py, f: () => drawOther(o, Math.round(o.px - camX), Math.round(o.py - camY))}));
+}
+function drawOther(o, x, y) {
+  const now = performance.now();
+  if (o.ride === 'surf') {
+    ctx.fillStyle = '#1d3f7a'; ctx.beginPath(); ctx.ellipse(x + 8, y + 11, 8, 5, 0, 0, 7); ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.rect(x - 4, y - 8, 24, 16); ctx.clip(); drawPerson(ctx, x, y - 6, o.dir, o.look, 0); ctx.restore();
+  } else if (o.ride === 'bike') {
+    ctx.fillStyle = '#1d1f2a'; if (o.dir === 'left' || o.dir === 'right') { ctx.beginPath(); ctx.arc(x + 3, y + 13, 3, 0, 7); ctx.arc(x + 13, y + 13, 3, 0, 7); ctx.fill(); } else R_(ctx, x + 6, y + 9, 4, 7, '#1d1f2a');
+    drawPerson(ctx, x, y - 3, o.dir, o.look, 0);
+  } else drawPerson(ctx, x, y - 3, o.dir, o.look, o.moving ? (Math.floor(now / 130) % 2) + 1 : 0);
+  nameTags.push([o.name, x + 8, y - 5]);
+  if (o.emote && now - o.emoteT < 2500) {
+    ctx.fillStyle = '#fff'; ctx.strokeStyle = '#1d1f2a'; ctx.lineWidth = 1; ctx.beginPath(); ctx.roundRect(x + 1, y - 26, 14, 12, 3); ctx.fill(); ctx.stroke();
+    ctx.font = '8px sans-serif'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#000'; ctx.fillText(o.emote, x + 8, y - 19.5);
+  }
+  ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+}
+async function onlineMenu() {
+  let list = [];
+  try { const d = await api('GET', '/api/online'); if (d.ok) list = d.players; } catch (e) {}
+  const where = p => (MAPS[p.map] && MAPS[p.map].name) || '…';
+  const others = list.filter(p => p.name !== G.name);
+  const txt = others.length ? others.map(p => `• ${p.name} – ${where(p)}${p.map === G.map ? ' (hier!)' : ''}`).join('\n') : 'Gerade ist niemand außer dir online.';
+  const i = await choose(['👋 Winken', '❤️ Herz', '😂 Lachen', '⚔️ Kampf?', '🔁 Tausch?', 'Abmelden', 'Zurück'], {title: `🌐 Online: ${list.length} Spieler`, text: txt});
+  const E = ['👋', '❤️', '😂', '⚔️', '🔁'];
+  if (i >= 0 && i < 5) { try { ws && ws.readyState === 1 && ws.send(JSON.stringify({t: 'emote', e: E[i]})); } catch (e) {} myEmote = {e: E[i], t: performance.now()}; toast(`${E[i]} gesendet`); }
+  else if (i === 5) { if (await yesNo('Wirklich abmelden? Dein Spielstand wird vorher gespeichert.')) { await onlineSave(); try { await api('POST', '/api/logout'); } catch (e) {} setTok(null); wsClose(); location.reload(); } }
+}
+// --- App installieren (Handy / PC) ---
+let installPrompt = null;
+window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; const m = $('titleMain'); if (m && $('title').style.display !== 'none') addInstallButton(m); });
+function addInstallButton(main) {
+  if (!window.MW_PWA || main.querySelector('.installBtn')) return;
+  const standalone = matchMedia('(display-mode: standalone)').matches || matchMedia('(display-mode: fullscreen)').matches || navigator.standalone;
+  if (standalone) return;
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (installPrompt) {
+    const b = document.createElement('button'); b.className = 'installBtn'; b.textContent = '📲 Als App installieren';
+    b.onclick = async () => { installPrompt.prompt(); const r = await installPrompt.userChoice; installPrompt = null; if (r.outcome === 'accepted') b.remove(); };
+    main.appendChild(b);
+  } else if (ios) {
+    const h = document.createElement('div'); h.className = 'hint installBtn'; h.innerHTML = '📲 Als App: unten auf <b>Teilen</b> ⬆️ tippen → <b>„Zum Home-Bildschirm“</b>';
+    main.appendChild(h);
+  }
+}
+// --- Titelbildschirm: Online-Bereich ---
+function onlineTitle(main, back) {
+  const box = document.createElement('div'); box.className = 'onbox'; main.innerHTML = ''; main.appendChild(box);
+  const msg = t => { const h = box.querySelector('.hint') || box.appendChild(Object.assign(document.createElement('div'), {className: 'hint'})); h.textContent = t; };
+  const btn = (t, fn, parent) => { const b = document.createElement('button'); b.textContent = t; b.onclick = fn; (parent || box).appendChild(b); return b; };
+  async function start() {
+    box.innerHTML = '<div class="hint">Verbinde mit dem Server …</div>';
+    if (onTok) {
+      let me = null; try { me = await api('GET', '/api/me'); } catch (e) {}
+      if (me && me.ok) return menu(me.name);
+      if (!me) { box.innerHTML = ''; msg('Der Server ist gerade nicht erreichbar. Prüfe dein Internet.'); btn('Nochmal versuchen', start); btn('Zurück', back); return; }
+      setTok(null);
+    }
+    form();
+  }
+  function form() {
+    box.innerHTML = '<div class="sub">🌐 Online spielen</div>';
+    const n = Object.assign(document.createElement('input'), {placeholder: 'Name', maxLength: 12, autocomplete: 'username'});
+    const p = Object.assign(document.createElement('input'), {placeholder: 'Passwort', type: 'password', maxLength: 64, autocomplete: 'current-password'});
+    box.appendChild(n); box.appendChild(p);
+    const row = document.createElement('div'); row.className = 'row'; box.appendChild(row);
+    const go = async reg => {
+      const name = n.value.trim(), pass = p.value;
+      if (!name || !pass) return msg('Bitte Name und Passwort eingeben.');
+      msg(reg ? 'Account wird erstellt …' : 'Einloggen …');
+      let d = null; try { d = await api('POST', reg ? '/api/register' : '/api/login', {name, pass}); } catch (e) {}
+      if (!d) return msg('Server nicht erreichbar. Prüfe dein Internet.');
+      if (!d.ok) return msg(d.error || 'Fehler');
+      setTok(d.token); menu(d.name);
+    };
+    btn('Einloggen', () => go(false), row); btn('Account erstellen', () => go(true), row);
+    p.addEventListener('keydown', e => { if (e.key === 'Enter') go(false); });
+    btn('Zurück', back);
+    msg('Neu hier? Name und Passwort ausdenken und „Account erstellen“ drücken.');
+    n.focus();
+  }
+  async function menu(name) {
+    box.innerHTML = '<div class="hint">Spielstand wird geladen …</div>';
+    let d = null; try { d = await api('GET', '/api/save'); } catch (e) {}
+    box.innerHTML = `<div class="sub">🌐 Eingeloggt als <b>${name}</b></div>`;
+    if (!d || !d.ok) { msg('Spielstand konnte nicht geladen werden.'); btn('Nochmal versuchen', () => menu(name)); btn('Zurück', back); return; }
+    const sv = d.save;
+    if (sv) { const top = (sv.team || []).reduce((mx, m) => Math.max(mx, m.level), 0); btn(`Weiter (Lv ${top} · ${(sv.badges || []).length} Orden)`, () => { sv.online = true; startGame(sv, false); }); }
+    else btn('Online-Abenteuer starten', () => { newGame(name); G.online = true; startGame(G, true); onlineSave(); });
+    btn('Abmelden', async () => { try { await api('POST', '/api/logout'); } catch (e) {} setTok(null); form(); });
+    btn('Zurück', back);
+    msg('Online wird dein Spielstand auf dem Server gespeichert und geprüft. Offline-Spielstände zählen hier nicht.');
+  }
+  start();
+}
+
 titleScreen();
 requestAnimationFrame(loop);
-window.__game = {addMoney, fmtC, attackFx, statusMoveFx, fxPattern, openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};
+window.__game = {get OTHERS() { return OTHERS; }, onlineSave, addMoney, fmtC, attackFx, statusMoveFx, fxPattern, openWorldMap, wmNode, applyItem, toggleBike, script, teachTP, wildMon, safariBattle, SOLID, NPCS2: NPCS, WARPS, get busy() { return handlers.length + scriptLock; }, NPCS, get G() { return G; }, MAPS, SPECIES, press, held, get map() { return map; }, battle, makeMon, enterMap, get B() { return B; }, typeMult};

@@ -1,0 +1,17 @@
+name: Server deployen
+on:
+  push:
+    branches: [main]
+    paths: ['server/**', '.github/workflows/deploy-server.yml']
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Monsterwelt-Server zu Cloudflare hochladen
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: server

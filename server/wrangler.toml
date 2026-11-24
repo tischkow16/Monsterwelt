@@ -1,0 +1,17 @@
+name = "monsterwelt"
+main = "src/index.js"
+compatibility_date = "2025-11-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "monsterwelt-db"
+database_id = "b3c8a4e1-d62e-4b8c-abc7-10e61799846c"
+
+[[durable_objects.bindings]]
+name = "WORLD"
+class_name = "World"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["World"]
