@@ -216,6 +216,7 @@ function parseEffect(t) {
   if (/auszuweichen/.test(t)) e.evade = true;
   if ((m = t.match(/gegnerische[n]? (Angriff|Verteidigung|Tempo) für (\d+) Runden? um (\d+)/))) e.foe = {stat: m[1], turns: +m[2], mult: 1 - m[3] / 100};
   if (/einmal pro Kampf/i.test(t) && !e.heal) e.onceMove = true;
+  if ((m = t.match(/(\d+)\s*% Chance, das Ziel (?:zu )?(vergiften|paralysieren|verbrennen|einzuschläfern|einzufrieren)/))) e.status = {chance: +m[1] / 100, kind: {vergiften: 'gift', paralysieren: 'para', verbrennen: 'brand', einzuschläfern: 'schlaf', einzufrieren: 'eis'}[m[2]]};
   if ((m = t.match(/(Angriff|Verteidigung|Tempo) des Ziels um eine Stufe/))) e.foe = {stat: m[1], turns: 3, mult: 0.8};
   if ((m = t.match(/[Ee]rhöht (?:das |die |den )?eigene[ns]? (Angriff|Verteidigung|Tempo) um eine Stufe/))) e.self = {stat: m[1], turns: 3, mult: 1.2};
   if ((m = t.match(/sinkt der eigene (Angriff|Verteidigung|Tempo) für (\d+) Runden? um (\d+)/))) e.selfAfter = {stat: m[1], turns: +m[2], mult: 1 - m[3] / 100};
@@ -235,6 +236,39 @@ function typeMult(at, defTypes) {
   const t = DATA.typTabelle[at]; if (!t) return 1; let m = 1;
   for (const d of defTypes) { if (t.starkGegen.includes(d)) m *= 2; else if (t.schwachGegen.includes(d)) m *= 0.5; }
   return m;
+}
+// ===== Neue starke Attacken (lernt jedes Monster passend zu seinem Typ) =====
+const POWER_MOVES = {
+  Glut: [['Feuerhieb', 90, '20 % Chance, das Ziel zu verbrennen.'], ['Flammenwoge', 110, '30 % Chance: Verteidigung des Ziels für 2 Runden −15 %.'], ['Infernostrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Sonnenbrand', 150, 'Einmal pro Kampf. 30 % Chance, das Ziel zu verbrennen.']],
+  Flut: [['Strudelbiss', 90, '20 % Chance: Tempo des Ziels für 2 Runden −15 %.'], ['Tsunamiwelle', 110, 'Der Anwender verliert 10 % seiner maximalen KP.'], ['Hydrostrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Ozeanerwachen', 150, 'Einmal pro Kampf. Eine riesige Flutwelle reißt alles mit.']],
+  Wuchs: [['Dornenhieb', 90, '20 % Chance, das Ziel zu vergiften.'], ['Wurzelwirbel', 110, '30 % Chance: Tempo des Ziels für 2 Runden −20 %.'], ['Solarstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Urwaldfeld', 150, 'Einmal pro Kampf. 30 % Chance, das Ziel einzuschläfern.']],
+  Funke: [['Blitzschlag', 90, '20 % Chance, das Ziel zu paralysieren.'], ['Plasmawelle', 110, '30 % Chance, das Ziel zu paralysieren.'], ['Gigavolt-Strahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Gewitterfeld', 150, 'Einmal pro Kampf. 40 % Chance, das Ziel zu paralysieren.']],
+  Stein: [['Felsklinge', 90, '20 % Chance: Verteidigung des Ziels für 2 Runden −15 %.'], ['Bergsturz', 110, 'Der Anwender verliert 10 % seiner maximalen KP.'], ['Erdbebenstoß', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Urgesteinfeld', 150, 'Einmal pro Kampf. Der Boden selbst greift an.']],
+  Frost: [['Eisbiss', 90, '15 % Chance, das Ziel einzufrieren.'], ['Blizzardwirbel', 110, '30 % Chance: Tempo des Ziels für 2 Runden −20 %.'], ['Polarstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Eiszeitfeld', 150, 'Einmal pro Kampf. 25 % Chance, das Ziel einzufrieren.']],
+  Klang: [['Bassstoß', 90, '15 % Chance, das Ziel einzuschläfern.'], ['Resonanzwelle', 110, '30 % Chance: Angriff des Ziels für 2 Runden −15 %.'], ['Megaphonstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Sinfoniefeld', 150, 'Einmal pro Kampf. 30 % Chance, das Ziel einzuschläfern.']],
+  Nebel: [['Giftbiss', 90, '30 % Chance, das Ziel zu vergiften.'], ['Giftwirbel', 110, '40 % Chance, das Ziel zu vergiften.'], ['Säurestrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Smogfeld', 150, 'Einmal pro Kampf. 50 % Chance, das Ziel zu vergiften.']],
+  Metall: [['Stahlklinge', 90, '20 % Chance: Verteidigung des Ziels für 2 Runden −15 %.'], ['Eisenhagel', 110, 'Der Anwender verliert 10 % seiner maximalen KP.'], ['Titanstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Schmiedefeld', 150, 'Einmal pro Kampf. Glühender Stahl regnet herab.']],
+  Wind: [['Böenklinge', 90, '20 % Chance: Verteidigung des Ziels für 2 Runden −15 %.'], ['Orkanwirbel', 110, '30 % Chance: Tempo des Ziels für 2 Runden −20 %.'], ['Jetstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Sturmfeld', 150, 'Einmal pro Kampf. Ein Orkan fegt über das Feld.']],
+  Geist: [['Schattenbiss', 90, '20 % Chance: Verteidigung des Ziels für 2 Runden −15 %.'], ['Seelenwirbel', 110, '30 % Chance: Angriff des Ziels für 2 Runden −15 %.'], ['Phantomstrahl', 130, 'Danach sinkt der eigene Angriff für 2 Runden um 20 %.'], ['Jenseitsfeld', 150, 'Einmal pro Kampf. 30 % Chance, das Ziel einzuschläfern.']]
+};
+const POWER_LV = [28, 42, 56, 70];
+const PMOVE = {};
+for (const t in POWER_MOVES) POWER_MOVES[t] = POWER_MOVES[t].map(([n, st, ef], i) => { const a = {name: 'PM:' + n, anzeige: n, typ: t, staerke: st, effekt: ef, power: true, tier: i}; a.fx = parseEffect(ef); PMOVE[n] = a; return a; });
+// Lernliste: eigene 4 Attacken + starke Attacken des Haupttyps (alle 4) und des Zweittyps (die ersten 2, etwas später)
+function learnset(sp) {
+  if (sp._learn) return sp._learn;
+  const L = sp.attacken.map(a => ({a, lv: moveLevel(a, sp)}));
+  const [t1, t2] = sp.typen;
+  (POWER_MOVES[t1] || []).forEach((a, i) => L.push({a, lv: POWER_LV[i]}));
+  if (t2 && POWER_MOVES[t2]) POWER_MOVES[t2].slice(0, 2).forEach((a, i) => L.push({a, lv: POWER_LV[i] + 6}));
+  return sp._learn = L;
+}
+// Höchstens 6 eigene Attacken: Status-Attacken (max. 2) + die stärksten Angriffe
+function pickMoves(list) {
+  const st = list.filter(a => !(a.staerke > 0)).slice(0, 2);
+  let dmg = list.filter(a => a.staerke > 0);
+  if (dmg.length + st.length > 6) { const keep = dmg.slice().sort((a, b) => b.staerke - a.staerke).slice(0, 6 - st.length); dmg = dmg.filter(a => keep.includes(a)); }
+  return list.length <= 6 ? list : dmg.concat(st);
 }
 function moveLevel(a, sp) {
   if (isLegend(sp.name)) return 1;
@@ -260,7 +294,7 @@ function makeMon(name, level) {
   const m = {sp: name, level, exp: expFor(level), uid: Math.random().toString(36).slice(2)};
   calcStats(m); m.hp = m.maxhp; return m;
 }
-function movesOf(m) { const sp = SPECIES[m.sp]; let l = sp.attacken.filter(a => moveLevel(a, sp) <= m.level); if (!l.length) l = [sp.attacken[0]]; if (m.extra && m.extra.length) l = l.concat(m.extra.map(n => TP_MOVES[n]).filter(Boolean)); return l; }
+function movesOf(m) { const sp = SPECIES[m.sp]; let l = pickMoves(learnset(sp).filter(e => e.lv <= m.level).map(e => e.a)); if (!l.length) l = [sp.attacken[0]]; if (m.extra && m.extra.length) l = l.concat(m.extra.map(n => TP_MOVES[n]).filter(Boolean)); return l; }
 const MAX_MONEY = 1000000000;
 function fmtC(n) { return Math.floor(Number(n) || 0).toLocaleString('de-DE'); }
 function addMoney(n) { n = Math.floor(n); const before = G.money; G.money = Math.max(0, Math.min(MAX_MONEY, G.money + n)); if (n > 0 && G.money === MAX_MONEY && before + n > MAX_MONEY) toast(`🪙 Maximum erreicht: ${fmtC(MAX_MONEY)} Coins!`); }
@@ -1581,6 +1615,17 @@ const TP_MOVES = {
   Stahlfaust: {typ: 'Metall', staerke: 90, effekt: 'Kein Zusatzeffekt.'},
   Orkanstoß: {typ: 'Wind', staerke: 90, effekt: 'Kein Zusatzeffekt.'},
   Spukball: {typ: 'Geist', staerke: 90, effekt: '10 % Chance, die Verteidigung des Ziels für 2 Runden um 15 % zu senken.'},
+  Feuersturm: {typ: 'Glut', staerke: 120, super: true, types: ['Glut'], effekt: '30 % Chance, das Ziel zu verbrennen.'},
+  Flutwelle: {typ: 'Flut', staerke: 120, super: true, types: ['Flut'], effekt: 'Kein Zusatzeffekt.'},
+  Lianenfessel: {typ: 'Wuchs', staerke: 120, super: true, types: ['Wuchs'], effekt: '30 % Chance: Tempo des Ziels für 2 Runden −20 %.'},
+  Kugelblitz: {typ: 'Funke', staerke: 120, super: true, types: ['Funke'], effekt: '30 % Chance, das Ziel zu paralysieren.'},
+  Meteorsturz: {typ: 'Stein', staerke: 120, super: true, types: ['Stein'], effekt: 'Kein Zusatzeffekt.'},
+  Gletscherhieb: {typ: 'Frost', staerke: 120, super: true, types: ['Frost'], effekt: '20 % Chance, das Ziel einzufrieren.'},
+  Überschallecho: {typ: 'Klang', staerke: 120, super: true, types: ['Klang'], effekt: '20 % Chance, das Ziel einzuschläfern.'},
+  Toxinwelle: {typ: 'Nebel', staerke: 120, super: true, types: ['Nebel'], effekt: '40 % Chance, das Ziel zu vergiften.'},
+  Eisenwalze: {typ: 'Metall', staerke: 120, super: true, types: ['Metall'], effekt: '30 % Chance: Verteidigung des Ziels für 2 Runden −20 %.'},
+  Wirbelsturm: {typ: 'Wind', staerke: 120, super: true, types: ['Wind'], effekt: 'Kein Zusatzeffekt.'},
+  Albtraumbiss: {typ: 'Geist', staerke: 120, super: true, types: ['Geist'], effekt: '30 % Chance, das Ziel einzuschläfern.'},
   Kraftschub: {typ: 'Klang', staerke: 0, effekt: 'Erhöht eigenen Angriff für 3 Runden um 30 %.'},
   Eisenhaut: {typ: 'Metall', staerke: 0, effekt: 'Erhöht eigene Verteidigung für 3 Runden um 30 %.'},
   Turbo: {typ: 'Wind', staerke: 0, effekt: 'Erhöht eigenes Tempo für 3 Runden um 30 %.'},
@@ -2464,7 +2509,7 @@ const TP_PRICE = 4000;
 for (const n in TP_MOVES) {
   const d = TP_MOVES[n];
   if (d.field) ITEMS['VM ' + n] = {price: 0, key: true, tp: n, desc: `Versteckte Maschine: bringt einem Monster „${n}“ bei (${badgeText(d.typ)}, Stärke ${d.staerke}). ${d.types ? 'Nur für ' + d.types.map(badgeText).join('/') + '-Monster. ' : ''}${d.effekt.replace('Kein Zusatzeffekt. ', '')} Wiederverwendbar.`};
-  else ITEMS['TP ' + n] = {price: TP_PRICE, key: true, tp: n, desc: `Technikplatte: bringt einem Monster „${n}“ bei (${badgeText(d.typ)}${d.staerke ? ', Stärke ' + d.staerke : ''}). ${d.effekt} Wiederverwendbar.`};
+  else ITEMS['TP ' + n] = {price: d.super ? 35000 : TP_PRICE, key: true, tp: n, desc: `${d.super ? '💥 Super-' : ''}Technikplatte: bringt einem Monster „${n}“ bei (${badgeText(d.typ)}${d.staerke ? ', Stärke ' + d.staerke : ''}). ${d.types ? 'Nur für ' + d.types.map(badgeText).join('/') + '-Monster. ' : ''}${d.effekt} Wiederverwendbar.`};
 }
 Object.assign(ITEMS, {
   'X-Angriff': {price: 500, xstat: 'Angriff', desc: 'Nur im Kampf: Angriff des eigenen Monsters für 5 Runden um 30 % erhöhen.'},
@@ -2489,13 +2534,15 @@ SHOP_LISTS.shop3.push('Sonderbonbon', 'X-Angriff', 'X-Verteidigung', 'X-Tempo', 
 SHOP_LISTS.late.push('Sonderbonbon', 'X-Angriff', 'X-Verteidigung', 'X-Tempo', 'Superschutz', 'Protein', 'Eisen', 'Carbon', 'KP-Plus');
 SHOP_LISTS.mall_spec.push('Glückstaler', 'Superschutz', 'Protein', 'Eisen', 'Carbon', 'KP-Plus');
 SHOP_LISTS.liga.push('X-Angriff', 'X-Verteidigung', 'X-Tempo', 'Protein', 'Eisen', 'Carbon', 'KP-Plus');
-SHOP_LISTS.tp = Object.keys(TP_MOVES).filter(n => !TP_MOVES[n].field).map(n => 'TP ' + n);
+SHOP_LISTS.tp = Object.keys(TP_MOVES).filter(n => !TP_MOVES[n].field && !TP_MOVES[n].super).map(n => 'TP ' + n);
+SHOP_LISTS.supertp = Object.keys(TP_MOVES).filter(n => TP_MOVES[n].super).map(n => 'TP ' + n);
 SHOP_LISTS.shop4.push('X-Angriff', 'X-Verteidigung', 'X-Tempo', 'Superschutz', 'Protein', 'Eisen', 'Carbon', 'KP-Plus', 'Glückstaler', ...SHOP_LISTS.tp);
 SHOP_LISTS.rad = ['Fahrrad'];
 { const C = ['Gegengift', 'Para-Heiler', 'Brandsalbe', 'Aufwecker', 'Eisheiler'];
   SHOP_LISTS.shop1.push('Gegengift', 'Para-Heiler');
   for (const k of ['shop2', 'shop3', 'shop4', 'late', 'mall_med']) SHOP_LISTS[k].push(...C, 'Hyperheiler');
   SHOP_LISTS.liga.push('Gegengift', 'Hyperheiler'); }
+SHOP_LISTS.liga.push(...SHOP_LISTS.supertp); SHOP_LISTS.late.push(...SHOP_LISTS.supertp);
 }
 initItems4();
 async function talkShop(shopId, title) {
@@ -2611,7 +2658,8 @@ function summaryHtml(m) {
   const nextExp = m.level < 100 ? expFor(m.level + 1) - m.exp : 0;
   const bar = (v) => `<span class="statbar"><i style="width:${Math.min(100, v / 1.6)}%"></i></span>`;
   const extraRows = (m.extra || []).map(n => { const a = TP_MOVES[n]; return `<tr><td><b>${a.anzeige}</b> <span class="small">(TP)</span></td><td>${badge(a.typ)}</td><td>${a.staerke || '–'}</td><td class="small">${a.effekt}</td></tr>`; }).join('');
-  const mv = sp.attacken.map(a => { const ok = moveLevel(a, sp) <= m.level; return `<tr style="${ok ? '' : 'opacity:.45'}"><td><b>${a.anzeige}</b></td><td>${badge(a.typ)}</td><td>${a.staerke || '–'}</td><td class="small">${ok ? a.effekt : 'ab Lv ' + moveLevel(a, sp)}</td></tr>`; }).join('');
+  const act = movesOf(m);
+  const mv = learnset(sp).map(({a, lv}) => { const ok = lv <= m.level && act.includes(a); return `<tr style="${ok ? '' : 'opacity:.45'}"><td><b>${a.anzeige}</b></td><td>${badge(a.typ)}</td><td>${a.staerke || '–'}</td><td class="small">${ok ? a.effekt : lv <= m.level ? '(ersetzt durch stärkere Attacke)' : 'ab Lv ' + lv}${a.power ? ' 💥' : ''}</td></tr>`; }).join('');
   const evo = sp.entwicktSichZu ? `Entwickelt sich ab Lv ${sp.entwicklungLevel} zu <b>${sp.entwicktSichZu}</b>.` : 'Letzte Entwicklungsstufe.';
   return `<div style="display:flex;gap:1em;align-items:flex-start"><div style="text-align:center">${spriteImg(m.sp, 6, m.shiny)}<div class="small">${sp.kategorie && sp.kategorie !== 'Normal' ? sp.kategorie : ''}</div></div>
   <div style="flex:1"><h2>${m.sp} <span class="small">Lv ${m.level}</span> ${badges(sp.typen)} ${statusTag(m)}</h2>${m.status && m.hp > 0 ? `<div class="small" style="color:${STATUS[m.status].col}">Status: ${STATUS[m.status].name}${m.poisonDeadline != null ? ` – noch ${fmtTime(m.poisonDeadline - (G.pclock || 0))} bis zur Heilstation!` : ''}</div>` : ''}<div class="small">${sp.beschreibung} ${sp.persoenlichkeitLebensraum}</div>
@@ -2889,9 +2937,8 @@ function fxHash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h 
 function fxRng(seed) { let a = seed || 1; return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 function fxPattern(move) {
   const l = (move.anzeige || move.name || '').toLowerCase();
-  if (move.staerke >= 120) return 'field';
   for (const [p, ws] of FX_PATTERNS) if (ws.some(w => l.includes(w))) return p;
-  return 'proj';
+  return move.staerke >= 120 ? 'field' : 'proj';
 }
 function fxEnv() {
   const c = $('fxc'); if (!c) return null;
@@ -3391,6 +3438,7 @@ async function doMove(isMe, move) {
     if (target.hp > 0 && target.status === 'eis' && move.typ === 'Glut') { target.status = null; refreshBattle(); await say(`${tName} ist aufgetaut!`); }
     const sbt = STATUS_BY_TYPE[move.typ];
     if (sbt && target.hp > 0 && Math.random() < sbt[1]) await inflictStatus(!isMe, target, sbt[0]);
+    if (fx.status && target.hp > 0 && !target.status && Math.random() < fx.status.chance) await inflictStatus(!isMe, target, fx.status.kind);
     if (fx.recoil) { const r = Math.max(1, Math.floor(user.maxhp * fx.recoil)); user.hp = Math.max(0, user.hp - r); refreshBattle(); await sleep(300); await say(`${uName} erleidet Rückstoß!`); }
     if (target.hp > 0 && Math.random() < fx.chance) {
       if (fx.foe) { addBuff(tSide, fx.foe); await statFx(!isMe, false, fx.foe.stat); const [a, s, v] = statPhrase(fx.foe.stat, false); await say(`${a} ${s} von ${tName} ${v}!`); }
